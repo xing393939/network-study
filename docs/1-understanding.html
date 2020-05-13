@@ -171,19 +171,23 @@
 <li>&#x5B9E;&#x4F8B;&#x5316;Http&#x670D;&#x52A1;&#xFF0C;&#x5B83;&#x4F9D;&#x8D56;&#x4E86;Router&#x670D;&#x52A1;(&#x4E5F;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;)</li>
 <li>Http&#x670D;&#x52A1;&#xFF1A;Response=Http-&gt;handle(Request)<ol>
 <li>handle()&#x5305;&#x542B;sendRequestThroughRouter()</li>
-<li>&#x5305;&#x542B;bootstrap()&#xFF0C;&#x6267;&#x884C;6&#x4E2A;&#x670D;&#x52A1;&#xFF1A;</li>
+<li>&#x5305;&#x542B;bootstrap()&#xFF0C;&#x6267;&#x884C;6&#x4E2A;&#x670D;&#x52A1;&#xFF1A;<ul>
 <li>LoadEnvironmentVariables</li>
 <li>LoadConfiguration</li>
 <li>HandleExceptions</li>
 <li>RegisterFacades</li>
 <li>RegisterProviders</li>
 <li>BootProviders</li>
-<li>&#x5305;&#x542B;(new Pipeline())-&gt;send()-&gt;through()-&gt;then()&#xFF0C;5&#x5927;&#x4E2D;&#x95F4;&#x4EF6;</li>
+</ul>
+</li>
+<li>&#x5305;&#x542B;(new Pipeline())-&gt;send()-&gt;through()-&gt;then()&#xFF0C;5&#x5927;&#x4E2D;&#x95F4;&#x4EF6;<ul>
 <li>CheckForMaintenanceMode&#xFF0C;&#x68C0;&#x67E5; artisan down</li>
 <li>ValidatePostSize&#xFF0C;&#x9A8C;&#x8BC1; POST &#x6570;&#x636E;&#x5927;&#x5C0F;</li>
 <li>TrimStrings&#xFF0C;trim $_GET &#x548C; $_POST</li>
 <li>ConvertEmptyStringsToNull&#xFF0C;$_GET &#x548C; $_POST &#x7684;&#x5143;&#x7D20;&#x82E5;&#x4E3A;&apos;&apos;&#x5219;&#x7F6E;&#x4E3A;null</li>
 <li>TrustProxies&#xFF0C;&#x8BBE;&#x7F6E;&#x53D7;&#x4FE1;&#x4EFB;&#x7684;&#x4EE3;&#x7406;</li>
+</ul>
+</li>
 </ol>
 </li>
 <li>&#x6267;&#x884C;$response-&gt;send()</li>
@@ -228,7 +232,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.认知篇","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/1-understanding.md","mtime":"2020-05-13T12:43:08.031Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-13T12:43:35.862Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.认知篇","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/1-understanding.md","mtime":"2020-05-13T13:29:52.565Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-13T13:30:23.521Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
