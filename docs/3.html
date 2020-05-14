@@ -187,8 +187,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x6A21;&#x578B;observer&#x3001;&#x6A21;&#x578B;notifications&#x3001;&#x6A21;&#x578B;policy">&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x6A21;&#x578B;Observer&#x3001;&#x6A21;&#x578B;Notifications&#x3001;&#x6A21;&#x578B;Policy</h3>
-<h1 id="&#x4E8B;&#x4EF6;">&#x4E8B;&#x4EF6;</h1>
-<h1 id="&#x6A21;&#x578B;observer">&#x6A21;&#x578B;Observer</h1>
+<h4 id="&#x4E8B;&#x4EF6;">&#x4E8B;&#x4EF6;</h4>
+<h4 id="&#x6A21;&#x578B;observer">&#x6A21;&#x578B;Observer</h4>
 <ol>
 <li><a href="https://learnku.com/articles/6657" target="_blank">Laravel &#x4E2D;&#x7684;&#x6A21;&#x578B;&#x4E8B;&#x4EF6;&#x4E0E; Observer</a></li>
 <li>Eloquent &#x7684;&#x64CD;&#x4F5C;&#x4F1A;&#x4EA7;&#x751F;&#x6A21;&#x578B;&#x4E8B;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&quot;&#x6A21;&#x578B;Observer&quot;&#x6765;&#x505A;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#x3002;&#x6DFB;&#x52A0;&quot;&#x6A21;&#x578B;Observer&quot;&#x662F;&#x57FA;&#x4E8E;laravel&#x7684;&#x4E8B;&#x4EF6;&#x7684;&#x3002;</li>
@@ -198,8 +198,9 @@
 </ol>
 </li>
 </ol>
-<h1 id="&#x6A21;&#x578B;notifications">&#x6A21;&#x578B;Notifications</h1>
+<h4 id="&#x6A21;&#x578B;notifications">&#x6A21;&#x578B;Notifications</h4>
 <ol>
+<li>&#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A;&quot;&#x6A21;&#x578B;Notifications&quot;&#x662F;&quot;&#x6A21;&#x578B;Observer&quot;&#x7684;&#x5B50;&#x96C6;&#xFF0C;&#x662F;&#x4E00;&#x5957;&#x6D88;&#x606F;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#xFF0C;&#x901A;&#x77E5;&#x9891;&#x9053;&#x6709;&#x6570;&#x636E;&#x5E93;&#x3001;&#x90AE;&#x4EF6;&#x3001;&#x77ED;&#x4FE1;&#x7B49;&#x3002;</li>
 <li><a href="https://learnku.com/docs/laravel/7.x/notifications/7489" target="_blank">Laravel &#x6587;&#x6863;-&#x6D88;&#x606F;&#x901A;&#x77E5;</a></li>
 <li>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;<ol>
 <li>php artisan make:notification UserNotification</li>
@@ -208,6 +209,18 @@
 </ol>
 </li>
 <li>&#x5982;&#x679C;&#x8981;&#x628A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5316;&#xFF0C;UserNotification&#x9700;&#x8981;&#x7EE7;&#x627F;ShouldQueue&#xFF0C;&#x5E76;&#x4F7F;&#x7528;Queueable&#x7684;trait</li>
+</ol>
+<h4 id="&#x6A21;&#x578B;policy">&#x6A21;&#x578B;Policy</h4>
+<ol>
+<li><a href="https://learnku.com/articles/9275" target="_blank">Laravel Policy &#x4F7F;&#x7528;</a></li>
+<li>&#x5EFA;&#x8BAE;&#x7528;&#x6237;&#x6388;&#x6743;&#x5C31;&#x7528;&quot;&#x6A21;&#x578B;Policy&quot;&#x800C;&#x4E0D;&#x8981;&#x7528;&#x95E8;&#x9762;Gate&#x7C7B;</li>
+<li>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;<ol>
+<li>php artisan make:policy PostPolicy</li>
+<li>laravel 5.8&#x4EE5;&#x4E0B;&#x7684;&#x7248;&#x672C;&#x9700;&#x8981;&#x5728;AuthServiceProvider&#x7C7B;&#x7684;$policies&#x5C5E;&#x6027;&#x6CE8;&#x518C;PostPolicy</li>
+<li>&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#x4F7F;&#x7528;&#xFF1A;$this-&gt;authorize(&apos;update&apos;, $post);</li>
+<li>&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4F7F;&#x7528;&#xFF1A;@can(&quot;update&quot;, $post)</li>
+</ol>
+</li>
 </ol>
 
                                 
@@ -248,7 +261,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.业务层的事件、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"previous":{"title":"2.事件驱动编程","level":"1.3","depth":1,"path":"docs/2.md","ref":"docs/2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/3.md","mtime":"2020-05-14T09:52:52.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-14T09:53:19.346Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.业务层的事件、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"previous":{"title":"2.事件驱动编程","level":"1.3","depth":1,"path":"docs/2.md","ref":"docs/2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/3.md","mtime":"2020-05-14T12:34:20.243Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-14T12:34:44.622Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
