@@ -186,7 +186,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x6A21;&#x578B;observer&#x3001;&#x6A21;&#x578B;notifications&#x3001;&#x6A21;&#x578B;policy">&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x6A21;&#x578B;Observer&#x3001;&#x6A21;&#x578B;Notifications&#x3001;&#x6A21;&#x578B;Policy</h3>
+                                <h3 id="&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x961F;&#x5217;&#x3001;&#x6A21;&#x578B;observer&#x3001;&#x6A21;&#x578B;notifications&#x3001;&#x6A21;&#x578B;policy">&#x4E1A;&#x52A1;&#x5C42;&#x7684;&#x4E8B;&#x4EF6;&#x3001;&#x961F;&#x5217;&#x3001;&#x6A21;&#x578B;Observer&#x3001;&#x6A21;&#x578B;Notifications&#x3001;&#x6A21;&#x578B;Policy</h3>
 <h4 id="&#x4E8B;&#x4EF6;">&#x4E8B;&#x4EF6;</h4>
 <ol>
 <li><a href="https://learnku.com/articles/13515" target="_blank">Laravel &#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7528;&#x6CD5;&#x603B;&#x7ED3;</a></li>
@@ -200,6 +200,22 @@
 <li>php artisan queue:work&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x8C03;&#x7528;SendWelcomeMail&#x7684;handle()</li>
 </ul>
 </li>
+</ol>
+</li>
+</ol>
+<h4 id="&#x961F;&#x5217;">&#x961F;&#x5217;</h4>
+<ol>
+<li><a href="https://learnku.com/articles/28872" target="_blank">Laravel &#x961F;&#x5217;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</a>  </li>
+<li>&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x4F7F;&#x7528;&#x4E86;&#x4E09;&#x4E2A;&#x961F;&#x5217;&#xFF1A;<ol>
+<li>queue:default:delayed  // &#x5B58;&#x50A8;&#x5EF6;&#x8FDF;&#x4EFB;&#x52A1;</li>
+<li>queue:default          // &#x5B58;&#x50A8;&#x672A;&#x5904;&#x7406;&#x4EFB;&#x52A1;</li>
+<li>queue:default:reserved // &#x5B58;&#x50A8;&#x5F85;&#x5904;&#x7406;&#x4EFB;&#x52A1;</li>
+</ol>
+</li>
+<li>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;<ol>
+<li>&#x521B;&#x5EFA;&#x961F;&#x5217;&#x7C7B;&#xFF1A;php artisan make:job Demo&#xFF0C;&#x7C7B;&#x8981;&#x7EE7;&#x627F;ShouldQueue</li>
+<li>&#x751F;&#x6210;&#x961F;&#x5217;&#xFF1A;Demo::dispatch($args);</li>
+<li>php artisan queue:work&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x8C03;&#x7528;Demo&#x7684;handle()</li>
 </ol>
 </li>
 </ol>
@@ -276,7 +292,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.业务层的事件、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"previous":{"title":"2.事件驱动编程","level":"1.3","depth":1,"path":"docs/2.md","ref":"docs/2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/3.md","mtime":"2020-05-14T13:01:10.105Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-14T13:01:40.457Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.业务层的事件、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"previous":{"title":"2.事件驱动编程","level":"1.3","depth":1,"path":"docs/2.md","ref":"docs/2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/3.md","mtime":"2020-05-14T13:28:02.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-14T13:28:33.776Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
