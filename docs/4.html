@@ -229,11 +229,22 @@
 <li>-&gt;first([&apos;column1&apos;, &apos;column2&apos;])&#xFF0C;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;</li>
 <li>-&gt;value(&apos;column1&apos;)&#xFF0C;&#x83B7;&#x53D6;&#x5355;&#x503C;</li>
 <li>-&gt;pluck(&apos;name&apos;, &apos;id&apos;)&#xFF0C;&#x8868;&#x793A;&#x4EE5;id&#x4E3A;&#x952E;&#xFF0C;name&#x4E3A;&#x503C;&#x7684;&#x4E8C;&#x7EF4;&#x7ED3;&#x679C;</li>
-<li>-&gt;where([&apos;id&apos;=&gt;1])</li>
+<li>-&gt;where([&apos;id&apos; =&gt; 1])</li>
 <li>-&gt;where(&apos;id&apos;, 1)</li>
 <li>-&gt;where(&apos;id&apos;, &apos;&gt;&apos;, 1)</li>
 <li>-&gt;wherein(&apos;id&apos;, [1, 2])</li>
+<li>-&gt;all()&#xFF0C;&#x67E5;&#x8BE2;&#x6240;&#x6709;</li>
+<li>-&gt;find(1)&#xFF0C;&#x4E3B;&#x952E;&#x67E5;&#x8BE2;&#x5355;&#x6761;&#x8BB0;&#x5F55;</li>
 <li>&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF1A;-&gt;count()&#x3001;-&gt;avg()</li>
+</ol>
+<h1 id="&#x6539;">&#x6539;</h1>
+<ol>
+<li>-&gt;increment(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;+1</li>
+<li>-&gt;decrement(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;-1</li>
+</ol>
+<h1 id="&#x5220;">&#x5220;</h1>
+<ol>
+<li>-&gt;delete()</li>
 </ol>
 
                                 
@@ -278,7 +289,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.Model操作","level":"1.5","depth":1,"next":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2020-07-14T03:30:58.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T03:31:20.983Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.Model操作","level":"1.5","depth":1,"next":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2020-07-14T03:36:04.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T03:36:31.242Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
