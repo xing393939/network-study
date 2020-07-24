@@ -1,3 +1,6 @@
+### 参考资料
+1. [laravel 核心组件分析](https://sunnyingit.github.io/book)
+
 ### 导读
 此专栏需要开发人员有一定的laravel基础，比如如何搭建和运行laravel框架，如何使用composer包管理工具，如何使用laravel自带的Artisan命令行脚手架工具。
 
