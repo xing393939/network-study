@@ -237,14 +237,26 @@
 <li>-&gt;find(1)&#xFF0C;&#x4E3B;&#x952E;&#x67E5;&#x8BE2;&#x5355;&#x6761;&#x8BB0;&#x5F55;</li>
 <li>&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF1A;-&gt;count()&#x3001;-&gt;avg()</li>
 </ol>
-<h1 id="&#x6539;">&#x6539;</h1>
+<h4 id="&#x6539;">&#x6539;</h4>
 <ol>
 <li>-&gt;increment(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;+1</li>
 <li>-&gt;decrement(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;-1</li>
 </ol>
-<h1 id="&#x5220;">&#x5220;</h1>
+<h4 id="&#x5220;">&#x5220;</h4>
 <ol>
 <li>-&gt;delete()</li>
+</ol>
+<h4 id="&#x590D;&#x6742;&#x67E5;&#x8BE2;">&#x590D;&#x6742;&#x67E5;&#x8BE2;</h4>
+<ol>
+<li><a href="https://xueyuanjun.com/post/9698" target="_blank">&#x901A;&#x8FC7;&#x67E5;&#x8BE2;&#x6784;&#x5EFA;&#x5668;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</a><pre><code class="lang-php">LiveComment::select(<span class="hljs-string">&apos;*&apos;</span>)-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">1</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;&apos;</span>)-&gt;where(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
+ $query-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-number">0</span>)-&gt;orWhere(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
+     $query-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">21</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;21&apos;</span>);
+ })-&gt;orWhere(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
+     $query-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">22</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;22&apos;</span>);
+ });
+})-&gt;get();
+</code></pre>
+</li>
 </ol>
 
                                 
@@ -289,7 +301,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.Model操作","level":"1.5","depth":1,"next":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2020-07-27T06:03:07.066Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-27T06:03:29.859Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.Model操作","level":"1.5","depth":1,"next":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2020-07-29T10:00:20.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-29T10:00:52.541Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
