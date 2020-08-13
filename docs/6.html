@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.入口文件public/index.php分析 · GitBook</title>
+        <title>6.辅助函数 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="2.html" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="5.html" />
     
 
     </head>
@@ -104,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="1.html">
+        <li class="chapter " data-level="1.2" data-path="1.html">
             
                 <a href="1.html">
             
@@ -169,7 +167,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="6.html">
+        <li class="chapter active" data-level="1.7" data-path="6.html">
             
                 <a href="6.html">
             
@@ -212,7 +210,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >1.入口文件public/index.php分析</a>
+        <a href=".." >6.辅助函数</a>
     </h1>
 </div>
 
@@ -227,38 +225,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x5165;&#x53E3;&#x6587;&#x4EF6;publicindexphp&#x5206;&#x6790;">&#x5165;&#x53E3;&#x6587;&#x4EF6;public/index.php&#x5206;&#x6790;</h3>
+                                <h3 id="&#x8F85;&#x52A9;&#x51FD;&#x6570;">&#x8F85;&#x52A9;&#x51FD;&#x6570;</h3>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ol>
-<li>bootstrap/app.php&#xFF0C;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x5BB9;&#x5668;$app&#xFF0C;&#x5355;&#x4F8B;&#x7ED1;&#x5B9A;Http&#x3001;Console&#x3001;Exceptions&#x670D;&#x52A1;<ol>
-<li>registerBaseBindings()&#xFF0C;instance&#x7ED1;&#x5B9A;Container&#xFF0C;&#x5355;&#x4F8B;&#x7ED1;&#x5B9A;Mix&#x3001;PackageManifest</li>
-<li>registerBaseServiceProviders()&#xFF0C;&#x4E09;&#x5927;&#x57FA;&#x7840;&#x670D;&#x52A1;provider&#xFF1A;Event&#x3001;Log&#x3001;Routing</li>
-<li>registerCoreContainerAliases()&#xFF0C;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x522B;&#x540D;&#xFF1A;&#x5982;app&#x3001;auth&#x3001;cache&#x3001;config&#x3001;cookie&#x3001;db&#x3001;events&#x3001;files&#x3001;log&#x3001;redis&#x3001;session</li>
+<li><a href="https://learnku.com/docs/laravel/7.x/helpers/7486" target="_blank">&#x8F85;&#x52A9;&#x51FD;&#x6570;</a></li>
 </ol>
-</li>
-<li>&#x5B9E;&#x4F8B;&#x5316;Http&#x670D;&#x52A1;&#xFF0C;&#x5B83;&#x4F9D;&#x8D56;&#x4E86;Router&#x670D;&#x52A1;(&#x4E5F;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;)</li>
-<li>Http&#x670D;&#x52A1;&#xFF1A;Response=Http-&gt;handle(Request)<ol>
-<li>handle()&#x5305;&#x542B;sendRequestThroughRouter()</li>
-<li>&#x5305;&#x542B;bootstrap()&#xFF0C;&#x6267;&#x884C;6&#x4E2A;&#x670D;&#x52A1;&#xFF1A;<ul>
-<li>LoadEnvironmentVariables</li>
-<li>LoadConfiguration</li>
-<li>HandleExceptions</li>
-<li>RegisterFacades</li>
-<li>RegisterProviders</li>
-<li>BootProviders</li>
-</ul>
-</li>
-<li>&#x5305;&#x542B;(new Pipeline())-&gt;send()-&gt;through()-&gt;then()&#xFF0C;5&#x5927;&#x4E2D;&#x95F4;&#x4EF6;<ul>
-<li>CheckForMaintenanceMode&#xFF0C;&#x68C0;&#x67E5; artisan down</li>
-<li>ValidatePostSize&#xFF0C;&#x9A8C;&#x8BC1; POST &#x6570;&#x636E;&#x5927;&#x5C0F;</li>
-<li>TrimStrings&#xFF0C;trim $_GET &#x548C; $_POST</li>
-<li>ConvertEmptyStringsToNull&#xFF0C;$_GET &#x548C; $_POST &#x7684;&#x5143;&#x7D20;&#x82E5;&#x4E3A;&apos;&apos;&#x5219;&#x7F6E;&#x4E3A;null</li>
-<li>TrustProxies&#xFF0C;&#x8BBE;&#x7F6E;&#x53D7;&#x4FE1;&#x4EFB;&#x7684;&#x4EE3;&#x7406;</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>&#x6267;&#x884C;$response-&gt;send()</li>
-<li>Http&#x670D;&#x52A1;&#xFF1A;terminate()&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#x3001;&#x5BB9;&#x5668;&#x7684;&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;</li>
+<h4 id="arr&#x7C7B;">Arr&#x7C7B;</h4>
+<ol>
+<li>Arr::except([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
+<li>Arr::only([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
+<li>Arr::query([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100]);</li>
 </ol>
 
                                 
@@ -287,14 +263,10 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="5.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5.Composer自动加载源码分析">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="2.html" class="navigation navigation-next " aria-label="Next page: 2.事件驱动编程">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -303,7 +275,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.入口文件public/index.php分析","level":"1.2","depth":1,"next":{"title":"2.事件驱动编程","level":"1.3","depth":1,"path":"docs/2.md","ref":"docs/2.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/1.md","mtime":"2020-08-13T02:22:15.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T02:22:44.103Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.辅助函数","level":"1.7","depth":1,"previous":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/6.md","mtime":"2020-08-13T02:22:15.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-13T02:22:44.103Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
