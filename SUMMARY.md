@@ -7,3 +7,4 @@
 * [3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy](docs/3.md)
 * [4.Model操作](docs/4.md)
 * [5.Composer自动加载源码分析](docs/5.md)
+* [6.辅助函数](docs/6.md)
