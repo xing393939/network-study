@@ -279,6 +279,36 @@
 <li><a href="https://phpunit.readthedocs.io/zh_CN/latest/test-doubles.html" target="_blank">&#x6D4B;&#x8BD5;&#x66FF;&#x8EAB;</a></li>
 <li>&#x4EFF;&#x4EF6;&#x5BF9;&#x8C61;&#x8FDC;&#x4E0D;&#x6B62;&#x662F;&#x6869;&#x4EF6;&#x52A0;&#x65AD;&#x8A00;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;test&#x6D4B;&#x8BD5;&#x5BF9;&#x8C61;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8C03;&#x7528;&#x591A;&#x5C11;&#x6B21;</li>
 </ol>
+<h4 id="&#x6848;&#x4F8B;&#x7ECF;&#x9A8C;">&#x6848;&#x4F8B;&#x7ECF;&#x9A8C;</h4>
+<ol>
+<li><a href="http://lijinma.com/blog/2017/01/29/phpunit-optimizing/" target="_blank">&#x3010;phpunit&#x3011;&#x8FD9;&#x6837;&#x8DD1;&#x6D4B;&#x8BD5;&#xFF0C;&#x7ADF;&#x7136;&#x8282;&#x7701;&#x4E86;&#x6211;&#x4EEC; 90% &#x7684;&#x65F6;&#x95F4;</a></li>
+<li><a href="https://segmentfault.com/a/1190000010605518" target="_blank">&#x4F7F;&#x7528;&#x6869;&#x4EF6; (Stub) &#x89E3;&#x51B3; Laravel &#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4E2D;&#x7684;&#x4F9D;&#x8D56;</a></li>
+<li>&#x6570;&#x636E;&#x9694;&#x79BB;&#x7684;&#x529E;&#x6CD5;&#xFF1A;1)&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;&#x3002;2)migrate&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x7528;sqlite</li>
+</ol>
+<h4 id="lumen-&#x6D4B;&#x8BD5;&#x6587;&#x6863;">lumen &#x6D4B;&#x8BD5;&#x6587;&#x6863;</h4>
+<ol>
+<li><a href="https://learnku.com/docs/lumen/5.7/testing/2419" target="_blank">&#x6D4B;&#x8BD5;</a></li>
+<li>&#x6A21;&#x62DF;&#x767B;&#x5F55;&#xFF1A;$this-&gt;actingAs($user)-&gt;get(&apos;/user&apos;)&#xFF0C;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x662F;&#x9879;&#x76EE;&#x7528;Auth&#x6A21;&#x5757;&#x4F5C;&#x4E3A;&#x767B;&#x5F55;&#x8BA4;&#x8BC1;</li>
+<li>&#x9A8C;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6570;&#x636E;&#xFF1A;$this-&gt;seeInDatabase(&apos;users&apos;, [&apos;email&apos; =&gt; &apos;sally@foo.com&apos;]);</li>
+<li>&#x6BCF;&#x6B21;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#x91CD;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<ol>
+<li>&#x8FC1;&#x79FB;&#xFF1A;&#x6BCF;&#x6B21;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#x56DE;&#x6EDA;&#x6570;&#x636E;&#x5E93;&#xFF0C;Laravel\Lumen\Testing\DatabaseMigrations</li>
+<li>&#x4E8B;&#x52A1;&#xFF1A;&#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5305;&#x88C5;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x4E2D;&#xFF0C;Laravel\Lumen\Testing\DatabaseTransactions</li>
+</ol>
+</li>
+<li>&#x6A21;&#x578B;&#x5DE5;&#x5382;&#xFF0C;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;&#x4E3A;&#xFF1A;<ol>
+<li>&#x5728;database/factories&#x4E0B;&#x5B9A;&#x4E49;&#x5DE5;&#x5382;&#xFF08;&#x4F9D;&#x8D56;Faker&#x5305;&#x751F;&#x6210;&#x5404;&#x79CD;&#x968F;&#x673A;&#x6570;&#x636E;&#x4EE5;&#x65B9;&#x4FBF;&#x6D4B;&#x8BD5;&#xFF09;</li>
+<li>&#x5728;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4E2D;&#x4F7F;&#x7528;&#xFF1A;$user = factory(&apos;App\User&apos;)-&gt;make();</li>
+<li>factory&#x5BF9;&#x8C61;&#x7684;make&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6A21;&#x578B;&#x4F9B;&#x4F60;&#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;create&#x5C06;&#x521B;&#x5EFA;&#x5B83;&#x5E76;&#x5C06;&#x5176;&#x6301;&#x4E45;&#x5316;&#x5230;&#x4F60;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E2D;</li>
+</ol>
+</li>
+<li>&#x907F;&#x514D;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF1A;<ol>
+<li>$this-&gt;expectsEvents(&apos;App\Events\UserRegistered&apos;); UserRegistered&#x7684;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x5C06;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;</li>
+<li>$this-&gt;withoutEvents(); &#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x90FD;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;</li>
+</ol>
+</li>
+<li>&#x6A21;&#x62DF;&#x4EFB;&#x52A1;&#xFF1A;$this-&gt;expectsJobs(&apos;App\Jobs\UserRegistered&apos;); &#x53EA;&#x9A8C;&#x8BC1;UserRegistered&#x6709;&#x6CA1;&#x6709;&#x6D3E;&#x9001;&#xFF0C;&#x4F46;&#x662F;&#x4EFB;&#x52A1;&#x672C;&#x8EAB;&#x4E0D;&#x6267;&#x884C;</li>
+<li>&#x6A21;&#x62DF;&#x95E8;&#x9762;&#x5982;Cache&#xFF1A;Cache::shouldReceive(&apos;get&apos;)-&gt;once()-&gt;with(&apos;key&apos;)-&gt;andReturn(&apos;value&apos;)</li>
+</ol>
 
                                 
                                 </section>
@@ -318,7 +348,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.单元测试","level":"1.8","depth":1,"previous":{"title":"6.辅助函数","level":"1.7","depth":1,"path":"docs/6.md","ref":"docs/6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/7.md","mtime":"2020-09-29T04:00:34.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-29T04:01:07.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.单元测试","level":"1.8","depth":1,"previous":{"title":"6.辅助函数","level":"1.7","depth":1,"path":"docs/6.md","ref":"docs/6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/7.md","mtime":"2020-09-30T10:25:21.455Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-30T10:25:54.108Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
