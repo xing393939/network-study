@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>6.辅助函数 · GitBook</title>
+        <title>8.核心容器类的使用 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="7.html" />
     
-    
-    <link rel="prev" href="5.html" />
+    <link rel="prev" href="7.html" />
     
 
     </head>
@@ -169,7 +167,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="6.html">
+        <li class="chapter " data-level="1.7" data-path="6.html">
             
                 <a href="6.html">
             
@@ -195,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="8.html">
+        <li class="chapter active" data-level="1.9" data-path="8.html">
             
                 <a href="8.html">
             
@@ -238,7 +236,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >6.辅助函数</a>
+        <a href=".." >8.核心容器类的使用</a>
     </h1>
 </div>
 
@@ -253,16 +251,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x8F85;&#x52A9;&#x51FD;&#x6570;">&#x8F85;&#x52A9;&#x51FD;&#x6570;</h3>
+                                <h3 id="&#x6838;&#x5FC3;&#x5BB9;&#x5668;&#x7C7B;&#x7684;&#x4F7F;&#x7528;">&#x6838;&#x5FC3;&#x5BB9;&#x5668;&#x7C7B;&#x7684;&#x4F7F;&#x7528;</h3>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ol>
-<li><a href="https://learnku.com/docs/laravel/7.x/helpers/7486" target="_blank">&#x8F85;&#x52A9;&#x51FD;&#x6570;</a></li>
+<li><a href="https://sunnyingit.github.io/book" target="_blank">&#x501F;&#x9274;laravel&#x6253;&#x9020;&#x4E00;&#x5957;&#x5FAE;&#x670D;&#x52A1;&#x5316;&#x6846;&#x67B6;</a></li>
 </ol>
-<h4 id="arr&#x7C7B;">Arr&#x7C7B;</h4>
+<h4 id="&#x5BB9;&#x5668;&#x7684;&#x7ED1;&#x5B9A;&#x65B9;&#x5F0F;&#xFF1A;">&#x5BB9;&#x5668;&#x7684;&#x7ED1;&#x5B9A;&#x65B9;&#x5F0F;&#xFF1A;</h4>
 <ol>
-<li>Arr::except([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
-<li>Arr::only([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
-<li>Arr::query([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100]);</li>
+<li>instance($abstract, $instance)&#xFF1A;&#x76F4;&#x63A5;&#x7ED1;&#x5B9A;&#x5B9E;&#x4F8B;&#x5316;&#x597D;&#x7684;value</li>
+<li>bind($abstract, $concrete, $shared)&#xFF1A;&#x7ED1;&#x5B9A;&#x53EF;&#x4EE5;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x533F;&#x540D;&#x51FD;&#x6570;</li>
+<li>singleton&#xFF1A;&#x5355;&#x4F8B;&#x7ED1;&#x5B9A;&#x53EF;&#x4EE5;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x533F;&#x540D;&#x51FD;&#x6570;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;bind($abstract, $concrete, true)</li>
+<li>bindIf&#xFF1A;&#x5728;bind&#x524D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x7ED1;&#x5B9A;&#x8FC7;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x590D;&#x7ED1;&#x5B9A;</li>
+</ol>
+<h4 id="&#x5BB9;&#x5668;&#x4E8B;&#x4EF6;&#xFF1A;">&#x5BB9;&#x5668;&#x4E8B;&#x4EF6;&#xFF1A;</h4>
+<ol>
+<li>$app-&gt;resolving(&#x95ED;&#x5305;)&#xFF0C;&#x89E3;&#x6790;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x8C03;&#x7528;</li>
+<li>$app-&gt;resolving(XXX::class, &#x95ED;&#x5305;)&#xFF0C;&#x89E3;&#x6790;XXX&#x65F6;&#x8C03;&#x7528;</li>
+<li>$app-&gt;afterResolving(&#x95ED;&#x5305;)&#xFF0C;&#x89E3;&#x6790;&#x5B8C;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x8C03;&#x7528;</li>
+<li>$app-&gt;afterResolving(XXX::class, &#x95ED;&#x5305;)&#xFF0C;&#x89E3;&#x6790;&#x5B8C;XXX&#x65F6;&#x8C03;&#x7528;</li>
+</ol>
+<h4 id="&#x5BB9;&#x5668;call&#x65B9;&#x6CD5;">&#x5BB9;&#x5668;call&#x65B9;&#x6CD5;</h4>
+<ol>
+<li>$app-&gt;call(&apos;simpleFunction&apos;)&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x540D;</li>
+<li>$app-&gt;call(&quot;TestClass@func&quot;)&#xFF0C;&#x5148;&#x5B9E;&#x4F8B;&#x5316;&#x7C7B;&#xFF0C;&#x518D;&#x8C03;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;</li>
+<li>$app-&gt;call($instance)&#xFF0C;&#x8C03;&#x7528;&#x5B9E;&#x4F8B;&#xFF0C;&#x9ED8;&#x8BA4;&#x8C03;&#x7528;__invoke&#x65B9;&#x6CD5;</li>
+<li>$app-&gt;call([$instance, &quot;func&quot;])&#xFF0C;&#x8C03;&#x7528;&#x5B9E;&#x4F8B;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>$app-&gt;call([$instance, &quot;staticFunc&quot;])&#xFF0C;&#x8C03;&#x7528;&#x5B9E;&#x4F8B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
+<li>$app-&gt;call([&quot;TestClass&quot;, &quot;staticFunc&quot;])&#xFF0C;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
+<li>$app-&gt;call(&quot;TestClass::staticFunc&quot;)&#xFF0C;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
+</ol>
+<h4 id="&#x5BB9;&#x5668;&#x4E0A;&#x4E0B;&#x6587;&#x7ED1;&#x5B9A;&#xFF1A;">&#x5BB9;&#x5668;&#x4E0A;&#x4E0B;&#x6587;&#x7ED1;&#x5B9A;&#xFF1A;</h4>
+<ol>
+<li>$app-&gt;when(PhotoController::class)-&gt;needs(Filesystem::class)-&gt;give(LocalFilesystem::class)</li>
+<li>$app-&gt;when(PhotoController::class)-&gt;needs(Filesystem::class)-&gt;give(&quot;s3&quot;)</li>
 </ol>
 
                                 
@@ -291,14 +312,10 @@
 
             
                 
-                <a href="5.html" class="navigation navigation-prev " aria-label="Previous page: 5.Composer自动加载源码分析">
+                <a href="7.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 7.单元测试">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="7.html" class="navigation navigation-next " aria-label="Next page: 7.单元测试">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -307,7 +324,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.辅助函数","level":"1.7","depth":1,"next":{"title":"7.单元测试","level":"1.8","depth":1,"path":"docs/7.md","ref":"docs/7.md","articles":[]},"previous":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/6.md","mtime":"2020-10-09T09:52:55.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T09:53:24.264Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.核心容器类的使用","level":"1.9","depth":1,"previous":{"title":"7.单元测试","level":"1.8","depth":1,"path":"docs/7.md","ref":"docs/7.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/8.md","mtime":"2020-10-09T09:52:55.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T09:53:24.264Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
