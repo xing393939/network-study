@@ -307,8 +307,8 @@
 <li>&#x6A21;&#x62DF;&#x767B;&#x5F55;&#xFF1A;$this-&gt;actingAs($user)-&gt;get(&apos;/user&apos;)&#xFF0C;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x662F;&#x9879;&#x76EE;&#x7528;Auth&#x6A21;&#x5757;&#x4F5C;&#x4E3A;&#x767B;&#x5F55;&#x8BA4;&#x8BC1;</li>
 <li>&#x9A8C;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6570;&#x636E;&#xFF1A;$this-&gt;seeInDatabase(&apos;users&apos;, [&apos;email&apos; =&gt; &apos;sally@foo.com&apos;]);</li>
 <li>&#x6BCF;&#x6B21;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#x91CD;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<ol>
-<li>&#x8FC1;&#x79FB;&#xFF1A;&#x6BCF;&#x6B21;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#x56DE;&#x6EDA;&#x6570;&#x636E;&#x5E93;&#xFF0C;Laravel\Lumen\Testing\DatabaseMigrations</li>
-<li>&#x4E8B;&#x52A1;&#xFF1A;&#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5305;&#x88C5;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x4E2D;&#xFF0C;Laravel\Lumen\Testing\DatabaseTransactions</li>
+<li>&#x8FC1;&#x79FB;&#xFF1A;Laravel\Lumen\Testing\DatabaseMigrations&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;func&#x5F00;&#x59CB;&#x524D;&#x90FD;migrate&#xFF0C;&#x7ED3;&#x675F;&#x65F6;migrate:rollback&#x3002;</li>
+<li>&#x4E8B;&#x52A1;&#xFF1A;Laravel\Lumen\Testing\DatabaseTransactions&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;func&#x5F00;&#x59CB;&#x524D;&#x90FD;transaction begin&#xFF0C;&#x7ED3;&#x675F;&#x65F6;transaction rollback&#x3002;</li>
 </ol>
 </li>
 <li>&#x6A21;&#x578B;&#x5DE5;&#x5382;&#xFF0C;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;&#x4E3A;&#xFF1A;<ol>
@@ -324,6 +324,11 @@
 </li>
 <li>&#x6A21;&#x62DF;&#x4EFB;&#x52A1;&#xFF1A;$this-&gt;expectsJobs(&apos;App\Jobs\UserRegistered&apos;); &#x53EA;&#x9A8C;&#x8BC1;UserRegistered&#x6709;&#x6CA1;&#x6709;&#x6D3E;&#x9001;&#xFF0C;&#x4F46;&#x662F;&#x4EFB;&#x52A1;&#x672C;&#x8EAB;&#x4E0D;&#x6267;&#x884C;</li>
 <li>&#x6A21;&#x62DF;&#x95E8;&#x9762;&#x5982;Cache&#xFF1A;Cache::shouldReceive(&apos;get&apos;)-&gt;once()-&gt;with(&apos;key&apos;)-&gt;andReturn(&apos;value&apos;)</li>
+<li>&#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<ul>
+<li>&#x5728;phpunit.xml&#x8BBE;&#x7F6E;env&#xFF0C;&#x8986;&#x76D6;.env&#x7684;&#x914D;&#x7F6E;</li>
+<li>&#x5728;phpunit.xml&#x8BBE;&#x7F6E;env&#xFF0C;&#x4EC5;&#x8BBE;&#x7F6E;APP_ENV=testing&#xFF0C;&#x7136;&#x540E;&#x5728;.env.testing&#x4E2D;&#x914D;&#x7F6E;</li>
+</ul>
+</li>
 </ol>
 
                                 
@@ -368,7 +373,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.单元测试","level":"1.8","depth":1,"next":{"title":"8.核心容器类的使用","level":"1.9","depth":1,"path":"docs/8.md","ref":"docs/8.md","articles":[]},"previous":{"title":"6.辅助函数","level":"1.7","depth":1,"path":"docs/6.md","ref":"docs/6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/7.md","mtime":"2020-10-09T09:52:55.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T09:53:24.264Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.单元测试","level":"1.8","depth":1,"next":{"title":"8.核心容器类的使用","level":"1.9","depth":1,"path":"docs/8.md","ref":"docs/8.md","articles":[]},"previous":{"title":"6.辅助函数","level":"1.7","depth":1,"path":"docs/6.md","ref":"docs/6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/7.md","mtime":"2020-10-19T02:59:13.645Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-19T02:59:42.798Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
