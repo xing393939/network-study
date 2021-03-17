@@ -1,19 +1,4 @@
 ### 参考资料
 1. [laravel 核心组件分析](https://sunnyingit.github.io/book)
-
-### 导读
-此专栏需要开发人员有一定的laravel基础，比如如何搭建和运行laravel框架，如何使用composer包管理工具，如何使用laravel自带的Artisan命令行脚手架工具。
-
-我会从laravel的框架层和业务层两个角度去分析框架，框架层去了解框架的整体设计思想，业务层去了解如何去使用它和为什么这么使用。
-
-这里推荐使用SMART原则去学习知识，时常问问自己我学习的目标是什么？怎么衡量这个具体目标？好实现吗？对你的主目标有帮助吗？需要多少时间？
-
-此专栏基于Laravel Framework 7.9.2。
-
-每个章节讲解是思路如下：
-1. 例子：先提供如何使用的例子，再去理解它;
-1. 核心思想：章节的核心思想；
-1. 通俗来讲：通俗的讲解；
-1. 问题描述：描述一个对应的场景；
-1. 解决方案：针对这个场景如何去解决它；
-1. 优点缺点：此方案的优点缺点。
+1. [看懂UML类图和时序图](https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html)
+1. [Laravel内核分析](https://learnku.com/docs/laravel-kernel)
