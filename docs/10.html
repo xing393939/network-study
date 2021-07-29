@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>6.辅助函数 · GitBook</title>
+        <title>10.核心组件分析 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="7.html" />
     
-    
-    <link rel="prev" href="5.html" />
+    <link rel="prev" href="9.html" />
     
 
     </head>
@@ -169,7 +167,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="6.html">
+        <li class="chapter " data-level="1.7" data-path="6.html">
             
                 <a href="6.html">
             
@@ -221,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="10.html">
+        <li class="chapter active" data-level="1.11" data-path="10.html">
             
                 <a href="10.html">
             
@@ -264,7 +262,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >6.辅助函数</a>
+        <a href=".." >10.核心组件分析</a>
     </h1>
 </div>
 
@@ -279,18 +277,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x8F85;&#x52A9;&#x51FD;&#x6570;">&#x8F85;&#x52A9;&#x51FD;&#x6570;</h3>
-<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
-<ol>
-<li><a href="https://learnku.com/docs/laravel/7.x/helpers/7486" target="_blank">&#x8F85;&#x52A9;&#x51FD;&#x6570;</a></li>
-</ol>
-<h4 id="arr&#x7C7B;">Arr&#x7C7B;</h4>
-<ol>
-<li>Arr::except([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
-<li>Arr::only([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
-<li>Arr::query([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100]);</li>
-</ol>
+                                <h3 id="&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;">&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;</h3>
+<pre><code>\Cache::rememberForever(&quot;key&quot;, null);
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Cache&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Cache::class
+1. &#x627E;&#x5230;cache&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Cache\CacheManager::class
+1. &#x5B83;&#x7684;__call&#x65B9;&#x6CD5;&#x662F;&#xFF1A;$this-&gt;store()-&gt;$method(...$parameters);
+1. $this-&gt;store()&#x662F;$this-&gt;createFileDriver()&#xFF0C;&#x6700;&#x7EC8;&#x662F;$this-&gt;repository(new FileStore())
 
+\Mail::to($user)-&gt;send(null);
+1. config/app.php&#x7684;MailServiceProvider&#x91CC;&#x9762;&#x7ED1;&#x5B9A;&#x4E86;mailer&#x7684;&#x5B9E;&#x73B0;&#xFF1A;
+  * mailer&#x5BF9;&#x5E94;\Illuminate\Mail\Mailer::class
+  * swift.mailer&#x5BF9;&#x5E94;\Swift_Mailer::class
+  * swift.transport&#x5BF9;&#x5E94;\Illuminate\Mail\TransportManager::class&#x3002;&#x901A;&#x8FC7;$this[&apos;app&apos;][&apos;config&apos;][&apos;mail&apos;][&apos;driver&apos;]&#x9009;&#x53D6;&#x5F15;&#x64CE;
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Mail&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Mail::class
+1. &#x627E;&#x5230;mailer&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Mail\Mailer::class
+1. &#x5B83;&#x7684;to&#x65B9;&#x6CD5;&#x662F;&#xFF1A;new PendingMail($this)
+1. send&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x5BF9;&#x5E94;Illuminate\Mail\Mailable-&gt;send()
+</code></pre>
                                 
                                 </section>
                             
@@ -317,14 +320,10 @@
 
             
                 
-                <a href="5.html" class="navigation navigation-prev " aria-label="Previous page: 5.Composer自动加载源码分析">
+                <a href="9.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 9.CSRF和XSRF">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="7.html" class="navigation navigation-next " aria-label="Next page: 7.单元测试">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -333,7 +332,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.辅助函数","level":"1.7","depth":1,"next":{"title":"7.单元测试","level":"1.8","depth":1,"path":"docs/7.md","ref":"docs/7.md","articles":[]},"previous":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/6.md","mtime":"2021-07-29T08:32:17.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T08:32:41.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.核心组件分析","level":"1.11","depth":1,"previous":{"title":"9.CSRF和XSRF","level":"1.10","depth":1,"path":"docs/9.md","ref":"docs/9.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/10.md","mtime":"2021-07-29T08:32:17.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T08:32:41.495Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
