@@ -280,7 +280,7 @@
                                 <h3 id="&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;">&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;</h3>
 <pre><code>\Cache::rememberForever(&quot;key&quot;, null);
 1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Cache&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Cache::class
-1. &#x627E;&#x5230;cache&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Cache\CacheManager::class
+1. &#x627E;&#x5230;cache&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Cache\CacheManager::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;CacheServiceProvider&#xFF09;
 1. &#x5B83;&#x7684;__call&#x65B9;&#x6CD5;&#x662F;&#xFF1A;$this-&gt;store()-&gt;$method(...$parameters);
 1. $this-&gt;store()&#x662F;$this-&gt;createFileDriver()&#xFF0C;&#x6700;&#x7EC8;&#x662F;$this-&gt;repository(new FileStore())
 
@@ -290,9 +290,16 @@
   * swift.mailer&#x5BF9;&#x5E94;\Swift_Mailer::class
   * swift.transport&#x5BF9;&#x5E94;\Illuminate\Mail\TransportManager::class&#x3002;&#x901A;&#x8FC7;$this[&apos;app&apos;][&apos;config&apos;][&apos;mail&apos;][&apos;driver&apos;]&#x9009;&#x53D6;&#x5F15;&#x64CE;
 1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Mail&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Mail::class
-1. &#x627E;&#x5230;mailer&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Mail\Mailer::class
+1. &#x627E;&#x5230;mailer&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Mail\Mailer::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;MailServiceProvider&#xFF09;
 1. &#x5B83;&#x7684;to&#x65B9;&#x6CD5;&#x662F;&#xFF1A;new PendingMail($this)
 1. send&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x5BF9;&#x5E94;Illuminate\Mail\Mailable-&gt;send()
+
+\Redis::set(&quot;key&quot;, null)
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Redis&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Redis::class
+1. &#x627E;&#x5230;redis&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Redis\RedisManager::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;RedisServiceProvider&#xFF09;
+1. &#x5B83;&#x7684;__call&#x65B9;&#x6CD5;&#x662F;&#xFF1A;$this-&gt;connection()-&gt;$method(...$parameters);
+1. $this-&gt;connection()&#x662F;$this-&gt;resolve()&#xFF0C;&#x6700;&#x7EC8;&#x662F;$this-&gt;connector()
+1. config/database.php&#x7684;redis.client&#x51B3;&#x5B9A;&#x4E86;&#x662F;&#x4F7F;&#x7528;pgpredis&#x8FD8;&#x662F;predis
 </code></pre>
                                 
                                 </section>
@@ -332,7 +339,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"10.核心组件分析","level":"1.11","depth":1,"previous":{"title":"9.CSRF和XSRF","level":"1.10","depth":1,"path":"docs/9.md","ref":"docs/9.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/10.md","mtime":"2021-07-29T08:32:17.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T08:32:41.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.核心组件分析","level":"1.11","depth":1,"previous":{"title":"9.CSRF和XSRF","level":"1.10","depth":1,"path":"docs/9.md","ref":"docs/9.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/10.md","mtime":"2021-08-13T03:57:21.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T03:57:43.916Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
