@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>9.CSRF和XSRF · GitBook</title>
+        <title>9.核心组件分析 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -109,7 +109,7 @@
                 <a href="1.html">
             
                     
-                    1.入口文件public/index.php分析
+                    1.入口文件分析
             
                 </a>
             
@@ -135,7 +135,7 @@
                 <a href="3.html">
             
                     
-                    3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy
+                    3.Model操作
             
                 </a>
             
@@ -148,7 +148,7 @@
                 <a href="4.html">
             
                     
-                    4.Model操作
+                    4.辅助函数
             
                 </a>
             
@@ -161,7 +161,7 @@
                 <a href="5.html">
             
                     
-                    5.Composer自动加载源码分析
+                    5.单元测试
             
                 </a>
             
@@ -174,7 +174,7 @@
                 <a href="6.html">
             
                     
-                    6.辅助函数
+                    6.Composer自动加载
             
                 </a>
             
@@ -187,7 +187,7 @@
                 <a href="7.html">
             
                     
-                    7.单元测试
+                    7.核心容器类的使用
             
                 </a>
             
@@ -200,7 +200,7 @@
                 <a href="8.html">
             
                     
-                    8.核心容器类的使用
+                    8.CSRF和XSRF
             
                 </a>
             
@@ -213,7 +213,7 @@
                 <a href="9.html">
             
                     
-                    9.CSRF和XSRF
+                    9.核心组件分析
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="10.html">
             
                     
-                    10.核心组件分析
+                    10.事件/队列/模型Observer/模型Notifications/模型Policy
             
                 </a>
             
@@ -264,7 +264,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >9.CSRF和XSRF</a>
+        <a href=".." >9.核心组件分析</a>
     </h1>
 </div>
 
@@ -279,29 +279,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="csrf&#x548C;xsrf">CSRF&#x548C;XSRF</h3>
-<h4 id="&#x8DE8;&#x7AD9;&#x811A;&#x672C;&#x653B;&#x51FB;">&#x8DE8;&#x7AD9;&#x811A;&#x672C;&#x653B;&#x51FB;</h4>
-<ol>
-<li>&#x5F53;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x9ED1;&#x5BA2;&#x7684;&#x7AD9;&#x70B9;&#x65F6;&#xFF0C;&#x8BF1;&#x5BFC;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x6216;&#x8005;&#x63D0;&#x4EA4;a.com/transferMoney?to=hacker&amp;money=900</li>
-<li>&#x8BF1;&#x5BFC;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;post&#xFF0C;&#x6240;&#x4EE5;a.com&#x9700;&#x8981;&#x68C0;&#x67E5;origin&#x548C;referer&#xFF0C;&#x6700;&#x597D;&#x8FD8;&#x52A0;&#x4E0A;CSRF&#x5B57;&#x6BB5;&#x5728;header&#x5934;&#x6216;&#x8005;post&#x57DF;</li>
-</ol>
-<h4 id="laravel&#x7684;csrf&#x3001;xsrf">laravel&#x7684;CSRF&#x3001;XSRF</h4>
-<ol>
-<li><a href="https://www.cnblogs.com/zhuchenglin/p/7723997.html" target="_blank">laravel&#x7684;csrf token &#x7684;&#x4E86;&#x89E3;&#x53CA;&#x4F7F;&#x7528;</a></li>
-<li><a href="https://stackoverflow.com/questions/42408177" target="_blank">what is the difference between X-XSRF-TOKEN and X-CSRF-TOKEN</a></li>
-<li>laravel&#x7684;web&#x9879;&#x76EE;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;CSRF&#xFF0C;api&#x9879;&#x76EE;&#x4F7F;&#x7528;XSRF</li>
-<li>web&#x9879;&#x76EE;&#xFF1A;<ul>
-<li>CSRF&#x76F4;&#x63A5;&#x5B58;input&#x57DF;&#x6216;&#x8005;&#x9875;&#x9762;meta&#x4E2D;</li>
-<li>&#x6821;&#x9A8C;&#x7684;&#x65F6;&#x5019;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;ajax&#x63D0;&#x4EA4;&#xFF0C;&#x662F;&#x5219;&#x68C0;&#x67E5;header&#x5934;X-CSRF-TOKEN&#xFF0C;&#x5426;&#x5219;&#x68C0;&#x67E5;post&#x5B57;&#x6BB5;_token</li>
-</ul>
-</li>
-<li>api&#x9879;&#x76EE;&#xFF1A;<ul>
-<li>laravel&#x9ED8;&#x8BA4;&#x5728;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x52A0;&#x4E0A;&#x4E86;&#x540D;&#x4E3A;x-csrf-token&#x7684;cookie&#xFF08;x-csrf-token&#x5176;&#x5B9E;&#x5C31;&#x662F;CSRF&#x7684;&#x52A0;&#x5BC6;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;laravel&#x7684;cookie&#x9ED8;&#x8BA4;&#x662F;&#x52A0;&#x5BC6;&#x7684;&#xFF09;</li>
-<li>&#x6821;&#x9A8C;&#x7684;&#x65F6;&#x5019;&#x6821;&#x9A8C;header&#x5934;X-XSRF-TOKEN</li>
-</ul>
-</li>
-</ol>
+                                <h3 id="&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;">&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;</h3>
+<pre><code>\Cache::rememberForever(&quot;key&quot;, null);
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Cache&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Cache::class
+1. &#x627E;&#x5230;cache&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Cache\CacheManager::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;CacheServiceProvider&#xFF09;
+1. &#x5B83;&#x7684;__call&#x65B9;&#x6CD5;&#x662F;&#xFF1A;$this-&gt;store()-&gt;$method(...$parameters);
+1. $this-&gt;store()&#x662F;$this-&gt;createFileDriver()&#xFF0C;&#x6700;&#x7EC8;&#x662F;$this-&gt;repository(new FileStore())
 
+\Mail::to($user)-&gt;send(null);
+1. config/app.php&#x7684;MailServiceProvider&#x91CC;&#x9762;&#x7ED1;&#x5B9A;&#x4E86;mailer&#x7684;&#x5B9E;&#x73B0;&#xFF1A;
+  * mailer&#x5BF9;&#x5E94;\Illuminate\Mail\Mailer::class
+  * swift.mailer&#x5BF9;&#x5E94;\Swift_Mailer::class
+  * swift.transport&#x5BF9;&#x5E94;\Illuminate\Mail\TransportManager::class&#x3002;&#x901A;&#x8FC7;$this[&apos;app&apos;][&apos;config&apos;][&apos;mail&apos;][&apos;driver&apos;]&#x9009;&#x53D6;&#x5F15;&#x64CE;
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Mail&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Mail::class
+1. &#x627E;&#x5230;mailer&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Mail\Mailer::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;MailServiceProvider&#xFF09;
+1. &#x5B83;&#x7684;to&#x65B9;&#x6CD5;&#x662F;&#xFF1A;new PendingMail($this)
+1. send&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x5BF9;&#x5E94;Illuminate\Mail\Mailable-&gt;send()
+
+\Redis::set(&quot;key&quot;, null)
+1. &#x901A;&#x8FC7;config/app.php&#x627E;&#x5230;Redis&#x7684;alias&#xFF1A;Illuminate\Support\Facades\Redis::class
+1. &#x627E;&#x5230;redis&#x7ED1;&#x5B9A;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;\Illuminate\Redis\RedisManager::class&#xFF08;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x662F;RedisServiceProvider&#xFF09;
+1. &#x5B83;&#x7684;__call&#x65B9;&#x6CD5;&#x662F;&#xFF1A;$this-&gt;connection()-&gt;$method(...$parameters);
+1. $this-&gt;connection()&#x662F;$this-&gt;resolve()&#xFF0C;&#x6700;&#x7EC8;&#x662F;$this-&gt;connector()
+1. config/database.php&#x7684;redis.client&#x51B3;&#x5B9A;&#x4E86;&#x662F;&#x4F7F;&#x7528;pgpredis&#x8FD8;&#x662F;predis
+</code></pre>
                                 
                                 </section>
                             
@@ -328,12 +329,12 @@
 
             
                 
-                <a href="8.html" class="navigation navigation-prev " aria-label="Previous page: 8.核心容器类的使用">
+                <a href="8.html" class="navigation navigation-prev " aria-label="Previous page: 8.CSRF和XSRF">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="10.html" class="navigation navigation-next " aria-label="Next page: 10.核心组件分析">
+                <a href="10.html" class="navigation navigation-next " aria-label="Next page: 10.事件/队列/模型Observer/模型Notifications/模型Policy">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -344,7 +345,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.CSRF和XSRF","level":"1.10","depth":1,"next":{"title":"10.核心组件分析","level":"1.11","depth":1,"path":"docs/10.md","ref":"docs/10.md","articles":[]},"previous":{"title":"8.核心容器类的使用","level":"1.9","depth":1,"path":"docs/8.md","ref":"docs/8.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/9.md","mtime":"2021-08-13T03:59:14.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T03:59:38.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.核心组件分析","level":"1.10","depth":1,"next":{"title":"10.事件/队列/模型Observer/模型Notifications/模型Policy","level":"1.11","depth":1,"path":"docs/10.md","ref":"docs/10.md","articles":[]},"previous":{"title":"8.CSRF和XSRF","level":"1.9","depth":1,"path":"docs/8.md","ref":"docs/8.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/9.md","mtime":"2021-12-19T02:50:11.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-19T02:50:43.558Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

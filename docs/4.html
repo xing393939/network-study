@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>4.Model操作 · GitBook</title>
+        <title>4.辅助函数 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -109,7 +109,7 @@
                 <a href="1.html">
             
                     
-                    1.入口文件public/index.php分析
+                    1.入口文件分析
             
                 </a>
             
@@ -135,7 +135,7 @@
                 <a href="3.html">
             
                     
-                    3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy
+                    3.Model操作
             
                 </a>
             
@@ -148,7 +148,7 @@
                 <a href="4.html">
             
                     
-                    4.Model操作
+                    4.辅助函数
             
                 </a>
             
@@ -161,7 +161,7 @@
                 <a href="5.html">
             
                     
-                    5.Composer自动加载源码分析
+                    5.单元测试
             
                 </a>
             
@@ -174,7 +174,7 @@
                 <a href="6.html">
             
                     
-                    6.辅助函数
+                    6.Composer自动加载
             
                 </a>
             
@@ -187,7 +187,7 @@
                 <a href="7.html">
             
                     
-                    7.单元测试
+                    7.核心容器类的使用
             
                 </a>
             
@@ -200,7 +200,7 @@
                 <a href="8.html">
             
                     
-                    8.核心容器类的使用
+                    8.CSRF和XSRF
             
                 </a>
             
@@ -213,7 +213,7 @@
                 <a href="9.html">
             
                     
-                    9.CSRF和XSRF
+                    9.核心组件分析
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="10.html">
             
                     
-                    10.核心组件分析
+                    10.事件/队列/模型Observer/模型Notifications/模型Policy
             
                 </a>
             
@@ -264,7 +264,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >4.Model操作</a>
+        <a href=".." >4.辅助函数</a>
     </h1>
 </div>
 
@@ -279,60 +279,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="model&#x64CD;&#x4F5C;">Model&#x64CD;&#x4F5C;</h3>
-<h4 id="&#x589E;">&#x589E;</h4>
+                                <h3 id="&#x8F85;&#x52A9;&#x51FD;&#x6570;">&#x8F85;&#x52A9;&#x51FD;&#x6570;</h3>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ol>
-<li>&#x7528;::create/::firstOrNew/::firstOrCreate/::updateOrCreate&#xFF0C;&#x4E0D;&#x8981;&#x7528;insert&#x548C;insertGetId&#xFF08;&#x6CA1;&#x6709;&#x8D70;&#x6A21;&#x578B;&#x4FDD;&#x5B58;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E0D;&#x80FD;&#x7528;timestamps&#x7279;&#x6027;&#xFF1A;<a href="https://learnku.com/laravel/t/37526" target="_blank">https://learnku.com/laravel/t/37526</a></li>
-<li>updateOrCreate&#x60F3;&#x8981;incr&#xFF0C;&#x5C31;&#x7528;firstOrNew&#xFF1A;<a href="https://stackoverflow.com/questions/33182090" target="_blank">https://stackoverflow.com/questions/33182090</a></li>
+<li><a href="https://learnku.com/docs/laravel/7.x/helpers/7486" target="_blank">&#x8F85;&#x52A9;&#x51FD;&#x6570;</a></li>
 </ol>
-<h4 id="&#x67E5;">&#x67E5;</h4>
+<h4 id="arr&#x7C7B;">Arr&#x7C7B;</h4>
 <ol>
-<li>Model::select() &#x548C; Model::where&#xFF0C;&#x6A21;&#x578B;&#x5355;&#x4F8B;&#x83B7;&#x53D6;</li>
-<li>-&gt;get()&#x3001;-&gt;get([&apos;column1&apos;, &apos;column2&apos;])&#xFF0C;&#x83B7;&#x53D6;&#x591A;&#x6761;/&#x6307;&#x5B9A;&#x5B57;&#x6BB5;</li>
-<li>-&gt;first()&#x3001;-&gt;first([&apos;column1&apos;, &apos;column2&apos;])&#xFF0C;&#x83B7;&#x53D6;&#x5355;&#x6761;/&#x6307;&#x5B9A;&#x5B57;&#x6BB5;</li>
-<li>-&gt;value(&apos;column1&apos;)&#xFF0C;&#x83B7;&#x53D6;&#x5355;&#x503C;</li>
-<li>-&gt;pluck(&apos;name&apos;, &apos;id&apos;)&#xFF0C;&#x8868;&#x793A;&#x4EE5;id&#x4E3A;&#x952E;&#xFF0C;name&#x4E3A;&#x503C;&#x7684;&#x4E8C;&#x7EF4;&#x7ED3;&#x679C;</li>
-<li>-&gt;where([&apos;id&apos; =&gt; 1])</li>
-<li>-&gt;where(&apos;id&apos;, 1)</li>
-<li>-&gt;where(&apos;id&apos;, &apos;&gt;&apos;, 1)</li>
-<li>-&gt;wherein(&apos;id&apos;, [1, 2])</li>
-<li>-&gt;all()&#xFF0C;&#x67E5;&#x8BE2;&#x6240;&#x6709;</li>
-<li>-&gt;find(1)&#xFF0C;&#x4E3B;&#x952E;&#x67E5;&#x8BE2;&#x5355;&#x6761;&#x8BB0;&#x5F55;</li>
-<li>&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF1A;-&gt;count()&#x3001;-&gt;avg()</li>
-<li>N+1&#x8F6C;&#x5316;&#x6210;2&#x6B21;&#x67E5;&#x8BE2;&#xFF1A;<a href="https://learnku.com/laravel/t/1220/laravel-queries-only-individual-fields-in-with-queries" target="_blank">https://learnku.com/laravel/t/1220/laravel-queries-only-individual-fields-in-with-queries</a></li>
-<li>&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;key<ul>
-<li><a href="https://blog.csdn.net/qq_19557947/article/details/80597460" target="_blank">Laravel SQL&#x7528;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;key</a></li>
-<li>&#x7528;Eloquent&#xFF1A;Role::all()-&gt;keyBy(&apos;name&apos;)-&gt;toArray();</li>
-<li>&#x975E;Eloquent&#xFF1A;collect(DB::table(&apos;role&apos;)-&gt;get())-&gt;keyBy(&apos;name&apos;)-&gt;toArray();</li>
-</ul>
-</li>
-<li>&#x96C6;&#x5408;&#x5904;&#x7406;<ul>
-<li><a href="https://www.jianshu.com/p/28b9cc2b810c" target="_blank">&#x5341;&#x4E94;&#x4E2A;&#x5E38;&#x7528;&#x7684; Laravel &#x96C6;&#x5408;</a></li>
-<li>-&gt;filter(function($value, $key) { return $key &gt; 5; });</li>
-<li>-&gt;map(function($value, $key) { return $value; });</li>
-</ul>
-</li>
-</ol>
-<h4 id="&#x6539;">&#x6539;</h4>
-<ol>
-<li>-&gt;increment(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;+1</li>
-<li>-&gt;decrement(&apos;num&apos;, 1)&#xFF0C;&#x81EA;&#x589E;-1</li>
-</ol>
-<h4 id="&#x5220;">&#x5220;</h4>
-<ol>
-<li>-&gt;delete()</li>
-</ol>
-<h4 id="&#x590D;&#x6742;&#x67E5;&#x8BE2;">&#x590D;&#x6742;&#x67E5;&#x8BE2;</h4>
-<ol>
-<li><a href="https://xueyuanjun.com/post/9698" target="_blank">&#x901A;&#x8FC7;&#x67E5;&#x8BE2;&#x6784;&#x5EFA;&#x5668;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</a><pre><code class="lang-php">LiveComment::select(<span class="hljs-string">&apos;*&apos;</span>)-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">1</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;&apos;</span>)-&gt;where(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
- $query-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-number">0</span>)-&gt;orWhere(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
-     $query-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">21</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;21&apos;</span>);
- })-&gt;orWhere(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query)</span> </span>{
-     $query-&gt;where(<span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-number">22</span>)-&gt;where(<span class="hljs-string">&apos;content&apos;</span>, <span class="hljs-string">&apos;22&apos;</span>);
- });
-})-&gt;get();
-</code></pre>
-</li>
+<li>Arr::except([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
+<li>Arr::only([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100], [&apos;price&apos;]);</li>
+<li>Arr::query([&apos;name&apos; =&gt; &apos;Desk&apos;, &apos;price&apos; =&gt; 100]);</li>
 </ol>
 
                                 
@@ -361,12 +317,12 @@
 
             
                 
-                <a href="3.html" class="navigation navigation-prev " aria-label="Previous page: 3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy">
+                <a href="3.html" class="navigation navigation-prev " aria-label="Previous page: 3.Model操作">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="5.html" class="navigation navigation-next " aria-label="Next page: 5.Composer自动加载源码分析">
+                <a href="5.html" class="navigation navigation-next " aria-label="Next page: 5.单元测试">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -377,7 +333,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.Model操作","level":"1.5","depth":1,"next":{"title":"5.Composer自动加载源码分析","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.业务层的事件、队列、模型Observer、模型Notifications、模型Policy","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2021-08-13T03:59:14.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T03:59:38.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.辅助函数","level":"1.5","depth":1,"next":{"title":"5.单元测试","level":"1.6","depth":1,"path":"docs/5.md","ref":"docs/5.md","articles":[]},"previous":{"title":"3.Model操作","level":"1.4","depth":1,"path":"docs/3.md","ref":"docs/3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4.md","mtime":"2021-12-19T02:50:11.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-19T02:50:43.558Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
