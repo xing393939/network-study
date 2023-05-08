@@ -115,9 +115,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="docs/2.html">
+        <li class="chapter " data-level="1.3" data-path="docs/2.md">
             
-                <a href="docs/2.html">
+                <span>
             
                     
                     2.事件驱动编程
@@ -128,9 +128,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="docs/3.html">
+        <li class="chapter " data-level="1.4" data-path="docs/3.md">
             
-                <a href="docs/3.html">
+                <span>
             
                     
                     3.Model操作
@@ -141,9 +141,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="docs/4.html">
+        <li class="chapter " data-level="1.5" data-path="docs/4.md">
             
-                <a href="docs/4.html">
+                <span>
             
                     
                     4.辅助函数
@@ -154,9 +154,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="docs/5.html">
+        <li class="chapter " data-level="1.6" data-path="docs/5.md">
             
-                <a href="docs/5.html">
+                <span>
             
                     
                     5.单元测试
@@ -167,9 +167,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="docs/6.html">
+        <li class="chapter " data-level="1.7" data-path="docs/6.md">
             
-                <a href="docs/6.html">
+                <span>
             
                     
                     6.Composer自动加载
@@ -180,9 +180,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="docs/7.html">
+        <li class="chapter " data-level="1.8" data-path="docs/7.md">
             
-                <a href="docs/7.html">
+                <span>
             
                     
                     7.核心容器类的使用
@@ -193,9 +193,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="docs/8.html">
+        <li class="chapter " data-level="1.9" data-path="docs/8.md">
             
-                <a href="docs/8.html">
+                <span>
             
                     
                     8.CSRF和XSRF
@@ -206,9 +206,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="docs/9.html">
+        <li class="chapter " data-level="1.10" data-path="docs/9.md">
             
-                <a href="docs/9.html">
+                <span>
             
                     
                     9.核心组件分析
@@ -219,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="docs/10.html">
+        <li class="chapter " data-level="1.11" data-path="docs/10.md">
             
-                <a href="docs/10.html">
+                <span>
             
                     
                     10.事件/队列/模型Observer/模型Notifications/模型Policy
@@ -277,14 +277,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
-<ol>
-<li>&#x672C;&#x7CFB;&#x5217;&#x57FA;&#x4E8E;laravel 7.30.3</li>
-<li><a href="https://sunnyingit.github.io/book" target="_blank">laravel &#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x5206;&#x6790;</a></li>
-<li><a href="https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html" target="_blank">&#x770B;&#x61C2;UML&#x7C7B;&#x56FE;&#x548C;&#x65F6;&#x5E8F;&#x56FE;</a></li>
-<li><a href="https://learnku.com/docs/laravel-kernel" target="_blank">Laravel&#x5185;&#x6838;&#x5206;&#x6790;</a></li>
-<li><a href="https://juejin.cn/book/6844733703516585997" target="_blank">&#x8BE6;&#x89E3; Laravel &#x6E90;&#x7801;&#x4E2D;&#x4F18;&#x79C0;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F; - &#x6398;&#x91D1;&#x5C0F;&#x518C;</a></li>
-</ol>
+                                <h3 id="&#x5B66;&#x4E60;&#x7F51;&#x7EDC;">&#x5B66;&#x4E60;&#x7F51;&#x7EDC;</h3>
+<h4 id="tcpip&#x4E94;&#x5C42;&#x6A21;&#x578B;">TCP/IP&#x4E94;&#x5C42;&#x6A21;&#x578B;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x5C42;&#x7EA7;</th>
+<th>&#x4E66;&#x7C4D;&#x7ED3;&#x6784;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5E94;&#x7528;&#x5C42;</td>
+<td>HTTP&#x5934;&#x90E8;+HTTP&#x5185;&#x5BB9;</td>
+</tr>
+<tr>
+<td>&#x4F20;&#x8F93;&#x5C42;</td>
+<td>TCP&#x9996;&#x90E8;+&#x5E94;&#x7528;&#x5C42;&#x5305;</td>
+</tr>
+<tr>
+<td>&#x7F51;&#x7EDC;&#x5C42;</td>
+<td>IP&#x9996;&#x90E8;+&#x4F20;&#x8F93;&#x5C42;&#x5305;</td>
+</tr>
+<tr>
+<td>&#x94FE;&#x8DEF;&#x5C42;</td>
+<td>&#x4EE5;&#x592A;&#x7F51;&#x5934;&#x90E8;+IP&#x5305;+&#x4EE5;&#x592A;&#x7F51;&#x5C3E;&#x90E8;</td>
+</tr>
+<tr>
+<td>&#x7269;&#x7406;&#x5C42;</td>
+<td>&#x6682;&#x7565;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -324,7 +348,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"1.入口文件分析","level":"1.2","depth":1,"path":"docs/1.md","ref":"docs/1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2022-03-31T09:22:45.641Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T09:23:09.887Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"1.入口文件分析","level":"1.2","depth":1,"path":"docs/1.md","ref":"docs/1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-05-08T09:51:59.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-08T09:52:27.860Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
