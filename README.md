@@ -1,6 +1,11 @@
-### 参考资料
-1. 本系列基于laravel 7.30.3
-1. [laravel 核心组件分析](https://sunnyingit.github.io/book)
-1. [看懂UML类图和时序图](https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html)
-1. [Laravel内核分析](https://learnku.com/docs/laravel-kernel)
-1. [详解 Laravel 源码中优秀的设计模式 - 掘金小册](https://juejin.cn/book/6844733703516585997)
+### 学习网络
+
+#### TCP/IP五层模型
+
+|层级|书籍结构|
+|---|---|
+|应用层| HTTP头部+HTTP内容 |
+|传输层| TCP首部+应用层包 |
+|网络层| IP首部+传输层包 |
+|链路层| 以太网头部+IP包+以太网尾部 |
+|物理层| 暂略 |
