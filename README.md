@@ -1,11 +1,10 @@
 ### 学习网络
 
-#### TCP/IP五层模型
+#### TCP/IP四层模型
 
-|层级|数据结构|
-|---|---|
-|应用层| HTTP头部+HTTP内容 |
-|传输层| TCP首部+应用层包 |
-|网络层| IP首部+传输层包 |
-|链路层| 以太网头部+IP包+以太网尾部 |
-|物理层| 暂略 |
+![img](images/tcpip4layers.jpg)
+
+#### 三次握手四次挥手
+
+![img](images/tcp_connect.png)
+![img](images/tcp_close.png)
