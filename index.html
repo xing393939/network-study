@@ -165,6 +165,43 @@
 <p><img src="images/tcp_connect.png" alt="img">
 <img src="images/tcp_close.png" alt="img">
 2MSL&#x5373;&#x4E24;&#x500D;&#x7684;Maximum Segment Lifetime&#xFF0C;&#x53EF;&#x901A;&#x8FC7;net.ipv4.tcp_fin_timeout&#x4FEE;&#x6539;</p>
+<h4 id="tcp-keepalive">TCP keepalive</h4>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th>socket&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;</th>
+<th>&#x5185;&#x6838;&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tcp_keepalive</td>
+<td>SO_KEEPALIVE</td>
+<td>&#x53EA;&#x80FD;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x8BBE;&#x7F6E;</td>
+<td>&#x5F00;&#x542F;&#x5FC3;&#x8DF3;&#x68C0;&#x67E5;</td>
+</tr>
+<tr>
+<td>tcp_keepalive_time</td>
+<td>TCP_KEEPIDLE</td>
+<td>net.ipv4.tcp_keepalive_time</td>
+<td>idle&#x65F6;&#x591A;&#x4E45;&#x53D1;&#x4E00;&#x6B21;&#x63A2;&#x6D4B;</td>
+</tr>
+<tr>
+<td>tcp_keepalive_intvl</td>
+<td>TCP_KEEPINTVL</td>
+<td>net.ipv4.tcp_keepalive_intvl</td>
+<td>&#x65E0;ack&#x65F6;&#x591A;&#x4E45;&#x53D1;&#x4E00;&#x6B21;&#x63A2;&#x6D4B;</td>
+</tr>
+<tr>
+<td>tcp_keepalive_probes</td>
+<td>TCP_KEEPCNT</td>
+<td>net.ipv4.tcp_keepalive_probes</td>
+<td>&#x65E0;ack&#x65F6;&#x53D1;&#x51E0;&#x6B21;&#x63A2;&#x6D4B;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -200,7 +237,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"暂无","level":"1.2","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-05-14T01:33:51.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-14T01:34:15.670Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"暂无","level":"1.2","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-05-14T01:53:14.994Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-14T01:53:49.020Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
