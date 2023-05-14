@@ -8,7 +8,7 @@
 
 ![img](images/tcp_connect.png)
 ![img](images/tcp_close.png)
-2MSL即两倍的Maximum Segment Lifetime，可通过net.ipv4.tcp_fin_timeout修改
+2MSL即两倍的Maximum Segment Lifetime，linux中硬编码是60s
 
 #### TCP keepalive
 |参数|socket级别设置|内核级别设置|说明|
