@@ -1,4 +1,70 @@
 #!/bin/bash
+#
+# funcgraph - trace kernel function graph, showing child function calls.
+#             Uses Linux ftrace.
+#
+# This is an exploratory tool that shows the graph of child function calls
+# for a given kernel function. This can cost moderate overhead to execute, and
+# should only be used to understand kernel behavior for a given function before
+# using other, lower overhead tools. This is a proof of concept using Linux
+# ftrace capabilities on older kernels.
+#
+# USAGE: funcgraph [-aCDhHPtT] [-m maxdepth] [-p PID] [-L TID] [-d secs] funcstring
+#
+# Run "funcgraph -h" for full usage.
+#
+# The output format is the same as the ftrace function graph trace format,
+# described in the kernel source under Documentation/trace/ftrace.txt.
+# Note that the output may be shuffled when different CPU buffers are read;
+# check the CPU column for changes, or include timestamps (-t) and post sort.
+#
+# The "-d duration" mode leaves the trace data in the kernel buffer, and
+# only reads it at the end. If the trace data is large, beware of exhausting
+# buffer space (/sys/kernel/debug/tracing/buffer_size_kb) and losing data.
+#
+# Also beware of feedback loops: tracing tcp* functions over an ssh session,
+# or writing ext4* functions to an ext4 file system. For the former, tcp
+# trace data could be redirected to a file (as in the usage message). For
+# the latter, trace to the screen or a different file system.
+#
+# WARNING: This uses dynamic tracing of kernel functions, and could cause
+# kernel panics or freezes. Test, and know what you are doing, before use.
+#
+# OVERHEADS: This tool causes moderate to high overheads. Use with caution for
+# exploratory purposes, then switch to lower overhead techniques based on
+# findings. It's expected that the kernel will run at least 50% slower while
+# this tool is running -- even while no output is being generated. This is
+# because ALL kernel functions are traced, and filtered based on the function
+# of interest. When output is generated, it can generate many lines quickly
+# depending on the traced event. Such data will cause performance overheads.
+# This also works without buffering by default, printing function events
+# as they happen (uses trace_pipe), context switching and consuming CPU to do
+# so. If needed, you can try the "-d secs" option, which buffers events
+# instead, reducing overhead. If you think the buffer option is losing events,
+# try increasing the buffer size (buffer_size_kb).
+#
+# From perf-tools: https://github.com/brendangregg/perf-tools
+#
+# COPYRIGHT: Copyright (c) 2014 Brendan Gregg.
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software Foundation,
+#  Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#  (http://www.gnu.org/copyleft/gpl.html)
+#
+# 12-Jul-2014	Brendan Gregg	Created this.
+
 ### default variables
 tracing=/sys/kernel/debug/tracing
 flock=/var/tmp/.ftrace-lock
@@ -146,6 +212,9 @@ if ! echo "$funcs" > set_graph_function; then
 fi
 if ! echo function_graph > current_tracer; then
 	edie "ERROR: setting current_tracer to \"function\". Exiting."
+fi
+if ! echo -e "kprobe_ftrace_handler\nvprintk" > set_graph_notrace; then
+	        edie "ERROR: kprobe_ftrace_handler > set_graph_notrace. Exiting."
 fi
 if (( opt_cpu )); then
 	if ! echo nosleep-time > trace_options; then
