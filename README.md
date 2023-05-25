@@ -10,11 +10,12 @@
 |STD|协议|RFC编号|
 |---|---|---|
 |STD 5       | IP   | [791](http://www.rfc-editor.org/rfc/rfc791.html)|
-|STD 5       | TCMP | [792](http://www.rfc-editor.org/rfc/rfc792.html)|
+|STD 5       | ICMP | [792](http://www.rfc-editor.org/rfc/rfc792.html)|
 |STD 7       | TCP  | [9293](http://www.rfc-editor.org/rfc/rfc9293.html)|
 |STD 37      | ARP  | [826](http://www.rfc-editor.org/rfc/rfc826.html) [详解](https://zhuanlan.zhihu.com/p/427573801)|
 |STD 86      | IPv6 | [8200](http://www.rfc-editor.org/rfc/rfc8200.html)|
 |STD 89      | ICMPv6 | [4443](http://www.rfc-editor.org/rfc/rfc4443.html)|
+|            | NDPv6 | [4861](http://www.rfc-editor.org/rfc/rfc4861.html)，取代ARP|
 
 #### 三次握手四次挥手
 

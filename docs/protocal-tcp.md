@@ -2,45 +2,48 @@
 
 #### 参考文章
 * [rfc 791](https://www.rfc-editor.org/rfc/rfc9293)
+* [既然IP层会分片，为什么TCP层也还要分段？](https://mp.weixin.qq.com/s/YpQGsRyyrGNDu1cOuMy83w)
 
 ```
-    0                   1                   2                   3   
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |Version|  IHL  |Type of Service|          Total Length         |
+   |          Source Port          |       Destination Port        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |         Identification        |Flags|      Fragment Offset    |
+   |                        Sequence Number                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  Time to Live |    Protocol   |         Header Checksum       |
+   |                    Acknowledgment Number                      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                       Source Address                          |
+   |  Data |       |C|E|U|A|P|R|S|F|                               |
+   | Offset| Rsrvd |W|C|R|C|S|S|Y|I|            Window             |
+   |       |       |R|E|G|K|H|T|N|N|                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                    Destination Address                        |
+   |           Checksum            |         Urgent Pointer        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                    Options                    |    Padding    |
+   |                           [Options]                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               :
+   :                             Data                              :
+   :                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-Version:         ipv4固定是4.
-IHL:             Internet Header Length，若值为5表示ip头是5*4字节
-Type of Service:  
-                 Bits 0-2:  Precedence.
-                 Bit    3:  0 = Normal Delay,      1 = Low Delay.
-                 Bit    4:  0 = Normal Throughput, 1 = High Throughput.
-                 Bit    5:  0 = Normal Relibility, 1 = High Relibility.
-                 Bits 6-7:  Reserved for Future Use.
-Total Length:    ip头+网络包的大小
-Identification:  ip包的唯一标识
-Flags:
-                 Bit 0: reserved, must be zero
-                 Bit 1: (DF) 0 = May Fragment,  1 = Don't Fragment.
-                 Bit 2: (MF) 0 = Last Fragment, 1 = More Fragments.
-Fragment Offset: This field indicates where in the datagram this fragment belongs.
-                 第1个Fragment，Offset=0，第2个Fragment，Offset=第1个Fragment网络包长度 / 8
-Time to Live:    每经过一个设备就减1，=0则设备直接丢弃它
-Protocol:        指出上一层的协议
-Header Checksum: 只校验ip头，不校验网络包
-Src Address:     源始ip
-Dst Address:     目标ip
+Src Port:              源始port
+Dst Port:              目标port
+Sequence Number:       Seq ID
+Acknowledgment Number: Ack ID
+Data Offset:           tcp头的长度，若值为8表示tcp头是8*4字节
+Rsrvd:                 保留字段
+CWR:                   Congestion Window Reduced
+ECE:                   ECN-Echo
+URG:                   Urgent pointer field is significant.
+ACK:                   Acknowledgment field is significant.
+PSH:                   Push function 
+RST:                   Reset the connection.
+SYN:                   Synchronize sequence numbers.
+FIN:                   No more data from sender.
+Window:                窗口大小
+Checksum:              校验tcp头+应用数据
+Urgent Pointer:        紧急指针，仅当URG=1时使用
 ```
 
 

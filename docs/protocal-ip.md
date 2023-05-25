@@ -44,6 +44,7 @@ Src Address:     源始ip
 Dst Address:     目标ip
 ```
 
+![img](../images/ipv4-and-ipv6.png)
 
 
 
