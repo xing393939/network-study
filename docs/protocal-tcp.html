@@ -190,44 +190,47 @@
 <h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
 <li><a href="https://www.rfc-editor.org/rfc/rfc9293" target="_blank">rfc 791</a></li>
+<li><a href="https://mp.weixin.qq.com/s/YpQGsRyyrGNDu1cOuMy83w" target="_blank">&#x65E2;&#x7136;IP&#x5C42;&#x4F1A;&#x5206;&#x7247;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;TCP&#x5C42;&#x4E5F;&#x8FD8;&#x8981;&#x5206;&#x6BB5;&#xFF1F;</a></li>
 </ul>
-<pre><code>    0                   1                   2                   3   
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+<pre><code>    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |Version|  IHL  |Type of Service|          Total Length         |
+   |          Source Port          |       Destination Port        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |         Identification        |Flags|      Fragment Offset    |
+   |                        Sequence Number                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  Time to Live |    Protocol   |         Header Checksum       |
+   |                    Acknowledgment Number                      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                       Source Address                          |
+   |  Data |       |C|E|U|A|P|R|S|F|                               |
+   | Offset| Rsrvd |W|C|R|C|S|S|Y|I|            Window             |
+   |       |       |R|E|G|K|H|T|N|N|                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                    Destination Address                        |
+   |           Checksum            |         Urgent Pointer        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                    Options                    |    Padding    |
+   |                           [Options]                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               :
+   :                             Data                              :
+   :                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-Version:         ipv4&#x56FA;&#x5B9A;&#x662F;4.
-IHL:             Internet Header Length&#xFF0C;&#x82E5;&#x503C;&#x4E3A;5&#x8868;&#x793A;ip&#x5934;&#x662F;5*4&#x5B57;&#x8282;
-Type of Service:  
-                 Bits 0-2:  Precedence.
-                 Bit    3:  0 = Normal Delay,      1 = Low Delay.
-                 Bit    4:  0 = Normal Throughput, 1 = High Throughput.
-                 Bit    5:  0 = Normal Relibility, 1 = High Relibility.
-                 Bits 6-7:  Reserved for Future Use.
-Total Length:    ip&#x5934;+&#x7F51;&#x7EDC;&#x5305;&#x7684;&#x5927;&#x5C0F;
-Identification:  ip&#x5305;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;
-Flags:
-                 Bit 0: reserved, must be zero
-                 Bit 1: (DF) 0 = May Fragment,  1 = Don&apos;t Fragment.
-                 Bit 2: (MF) 0 = Last Fragment, 1 = More Fragments.
-Fragment Offset: This field indicates where in the datagram this fragment belongs.
-                 &#x7B2C;1&#x4E2A;Fragment&#xFF0C;Offset=0&#xFF0C;&#x7B2C;2&#x4E2A;Fragment&#xFF0C;Offset=&#x7B2C;1&#x4E2A;Fragment&#x7F51;&#x7EDC;&#x5305;&#x957F;&#x5EA6; / 8
-Time to Live:    &#x6BCF;&#x7ECF;&#x8FC7;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x5C31;&#x51CF;1&#xFF0C;=0&#x5219;&#x8BBE;&#x5907;&#x76F4;&#x63A5;&#x4E22;&#x5F03;&#x5B83;
-Protocol:        &#x6307;&#x51FA;&#x4E0A;&#x4E00;&#x5C42;&#x7684;&#x534F;&#x8BAE;
-Header Checksum: &#x53EA;&#x6821;&#x9A8C;ip&#x5934;&#xFF0C;&#x4E0D;&#x6821;&#x9A8C;&#x7F51;&#x7EDC;&#x5305;
-Src Address:     &#x6E90;&#x59CB;ip
-Dst Address:     &#x76EE;&#x6807;ip
+Src Port:              &#x6E90;&#x59CB;port
+Dst Port:              &#x76EE;&#x6807;port
+Sequence Number:       Seq ID
+Acknowledgment Number: Ack ID
+Data Offset:           tcp&#x5934;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x82E5;&#x503C;&#x4E3A;8&#x8868;&#x793A;tcp&#x5934;&#x662F;8*4&#x5B57;&#x8282;
+Rsrvd:                 &#x4FDD;&#x7559;&#x5B57;&#x6BB5;
+CWR:                   Congestion Window Reduced
+ECE:                   ECN-Echo
+URG:                   Urgent pointer field is significant.
+ACK:                   Acknowledgment field is significant.
+PSH:                   Push function 
+RST:                   Reset the connection.
+SYN:                   Synchronize sequence numbers.
+FIN:                   No more data from sender.
+Window:                &#x7A97;&#x53E3;&#x5927;&#x5C0F;
+Checksum:              &#x6821;&#x9A8C;tcp&#x5934;+&#x5E94;&#x7528;&#x6570;&#x636E;
+Urgent Pointer:        &#x7D27;&#x6025;&#x6307;&#x9488;&#xFF0C;&#x4EC5;&#x5F53;URG=1&#x65F6;&#x4F7F;&#x7528;
 </code></pre>
                                 
                                 </section>
@@ -267,7 +270,7 @@ Dst Address:     &#x76EE;&#x6807;ip
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tcp协议","level":"1.4","depth":1,"previous":{"title":"ip协议","level":"1.3","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tcp.md","mtime":"2023-05-25T07:26:46.068Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-25T07:27:20.483Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tcp协议","level":"1.4","depth":1,"previous":{"title":"ip协议","level":"1.3","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tcp.md","mtime":"2023-05-25T08:18:18.281Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-25T08:18:42.556Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
