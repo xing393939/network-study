@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>图解网络 · GitBook</title>
+        <title>mac协议 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-mac.html" />
+    <link rel="next" href="protocal-ip.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="graphical-network.html" />
     
 
     </head>
@@ -104,7 +104,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="graphical-network.html">
+        <li class="chapter " data-level="1.2" data-path="graphical-network.html">
             
                 <a href="graphical-network.html">
             
@@ -117,7 +117,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="protocal-mac.html">
+        <li class="chapter active" data-level="1.3" data-path="protocal-mac.html">
             
                 <a href="protocal-mac.html">
             
@@ -186,7 +186,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >图解网络</a>
+        <a href=".." >mac协议</a>
     </h1>
 </div>
 
@@ -201,8 +201,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x56FE;&#x89E3;&#x7F51;&#x7EDC;">&#x56FE;&#x89E3;&#x7F51;&#x7EDC;</h3>
+                                <h3 id="mac&#x534F;&#x8BAE;">mac&#x534F;&#x8BAE;</h3>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ethernet_frame" target="_blank">Ethernet frame</a></li>
+<li><a href="https://en.wikipedia.org/wiki/EtherType#Values" target="_blank">Ethernet frame - EtherType</a></li>
+<li><a href="https://www.ibm.com/support/pages/ethernet-version-2-versus-ieee-8023-ethernet" target="_blank">Ethernet Version 2 Versus IEEE 802.3 Ethernet</a></li>
+</ul>
+<pre><code>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  MAC dst  |  MAC src  | E |                           |  FCS  |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                          Ethernet II &#x5728;&#x4E8C;&#x5C42;&#x534F;&#x8BAE;&#x7684;&#x5B9A;&#x4E49;
 
+MAC dst: &#x76EE;&#x6807;mac
+MAC src: &#x539F;&#x59CB;mac
+E:       EtherType
+         0x0800 - IPv4
+         0x0806 - ARP
+         0x86DD - IPv6
+FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#x5C55;&#x793A;&#x5B83;
+</code></pre>
                                 
                                 </section>
                             
@@ -229,12 +247,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="graphical-network.html" class="navigation navigation-prev " aria-label="Previous page: 图解网络">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="protocal-mac.html" class="navigation navigation-next " aria-label="Next page: mac协议">
+                <a href="protocal-ip.html" class="navigation navigation-next " aria-label="Next page: ip协议">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -245,7 +263,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-05-26T01:03:55.605Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-26T01:04:23.952Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mac协议","level":"1.3","depth":1,"next":{"title":"ip协议","level":"1.4","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"previous":{"title":"图解网络","level":"1.2","depth":1,"path":"docs/graphical-network.md","ref":"docs/graphical-network.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-mac.md","mtime":"2023-05-26T01:03:55.605Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-26T01:04:23.952Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
