@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>mac协议 · GitBook</title>
+        <title>nf五链四表 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-ip.html" />
     
-    
-    <link rel="prev" href="graphical-network.html" />
+    <link rel="prev" href="network-recv.html" />
     
 
     </head>
@@ -117,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="protocal-mac.html">
+        <li class="chapter " data-level="1.3" data-path="protocal-mac.html">
             
                 <a href="protocal-mac.html">
             
@@ -182,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="netfilter.html">
+        <li class="chapter active" data-level="1.8" data-path="netfilter.html">
             
                 <a href="netfilter.html">
             
@@ -225,7 +223,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >mac协议</a>
+        <a href=".." >nf五链四表</a>
     </h1>
 </div>
 
@@ -240,26 +238,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="mac&#x534F;&#x8BAE;">mac&#x534F;&#x8BAE;</h3>
-<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
+                                <h3 id="nf&#x4E94;&#x94FE;&#x56DB;&#x8868;">nf&#x4E94;&#x94FE;&#x56DB;&#x8868;</h3>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Ethernet_frame" target="_blank">Ethernet frame</a></li>
-<li><a href="https://en.wikipedia.org/wiki/EtherType#Values" target="_blank">Ethernet frame - EtherType</a></li>
-<li><a href="https://www.ibm.com/support/pages/ethernet-version-2-versus-ieee-8023-ethernet" target="_blank">Ethernet Version 2 Versus IEEE 802.3 Ethernet</a></li>
+<li><a href="https://blog.csdn.net/angelqucheng/article/details/90032897" target="_blank">netfilter&#x7684;&#x56DB;&#x8868;&#x4E94;&#x94FE;&#x6982;&#x8FF0;</a></li>
+<li>&#x4E94;&#x94FE;&#xFF1A;&#x4E94;&#x4E2A;&#x94FE;&#x4E5F;&#x5206;&#x522B;&#x88AB;&#x5F62;&#x8C61;&#x7684;&#x79F0;&#x4E3A;&#x4E94;&#x4E2A;&#x94A9;&#x5B50;&#xFF08;hook&#xFF09;&#x51FD;&#x6570;<ul>
+<li>INPUT&#x94FE;&#x2014;&#x2014;&#x8FDB;&#x5165;&#x672C;&#x5730;&#x7684;&#x6570;&#x636E;&#x5305;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#xFF1B;</li>
+<li>OUTPUT&#x94FE;&#x2014;&#x2014;&#x6D41;&#x51FA;&#x672C;&#x5730;&#x7684;&#x6570;&#x636E;&#x5305;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#xFF1B;</li>
+<li>FORWARD&#x94FE;&#x2014;&#x2014;&#x8F6C;&#x53D1;&#x6570;&#x636E;&#x5305;&#x65F6;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#xFF1B;</li>
+<li>PREROUTING&#x94FE;&#x2014;&#x2014;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x4F5C;&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x524D;&#x5E94;&#x7528;&#x6B64;&#x94FE;&#x4E2D;&#x7684;&#x89C4;&#x5219;&#xFF1B;</li>
+<li>POSTROUTING&#x94FE;&#x2014;&#x2014;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x4F5C;&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x540E;&#xFF08;&#x5305;&#x542B;&#x6D41;&#x51FA;&#x672C;&#x5730;&#x7684;&#x4E8C;&#x6B21;&#x8DEF;&#x7531;&#xFF09;&#x5E94;&#x7528;&#x6B64;&#x94FE;&#x4E2D;&#x7684;&#x89C4;&#x5219;&#xFF1B;</li>
 </ul>
-<pre><code>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  MAC dst  |  MAC src  | E |                           |  FCS  |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                          Ethernet II &#x5728;&#x4E8C;&#x5C42;&#x534F;&#x8BAE;&#x7684;&#x5B9A;&#x4E49;
+</li>
+<li>&#x56DB;&#x8868;&#xFF1A;<ul>
+<li>Filter&#x8868;&#x2014;&#x2014;&#x6D89;&#x53CA;FORWARD&#x3001;INPUT&#x3001;OUTPUT&#x4E09;&#x6761;&#x94FE;&#xFF0C;&#x591A;&#x7528;&#x4E8E;&#x672C;&#x5730;&#x548C;&#x8F6C;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x6570;&#x636E;&#x8FC7;&#x6EE4;&#xFF1B;</li>
+<li>Nat&#x8868;&#x2014;&#x2014;&#x6D89;&#x53CA;PREROUTING&#x3001;OUTPUT&#x3001;POSTROUT&#x4E09;&#x6761;&#x94FE;&#xFF0C;&#x591A;&#x7528;&#x4E8E;&#x6E90;&#x5730;&#x5740;/&#x7AEF;&#x53E3;&#x8F6C;&#x6362;&#x548C;&#x76EE;&#x6807;&#x5730;&#x5740;/&#x7AEF;&#x53E3;&#x7684;&#x8F6C;&#x6362;&#xFF1B;</li>
+<li>Mangle&#x8868;&#x2014;&#x2014;&#x6D89;&#x53CA;&#x6574;&#x6761;&#x94FE;&#xFF0C;&#x53EF;&#x5B9E;&#x73B0;&#x62C6;&#x89E3;&#x62A5;&#x6587;&#x3001;&#x4FEE;&#x6539;&#x62A5;&#x6587;&#x3001;&#x91CD;&#x65B0;&#x5C01;&#x88C5;&#xFF0C;&#x53EF;&#x5E38;&#x89C1;&#x4E8E;IPVS&#x7684;PPC&#x4E0B;&#x591A;&#x7AEF;&#x53E3;&#x4F1A;&#x8BDD;&#x4FDD;&#x6301;&#x3002;</li>
+<li>Raw&#x8868;&#x2014;&#x2014;&#x6D89;&#x53CA;PREROUTING&#x548C;OUTPUT&#x94FE;&#xFF0C;&#x51B3;&#x5B9A;&#x6570;&#x636E;&#x5305;&#x662F;&#x5426;&#x88AB;&#x72B6;&#x6001;&#x8DDF;&#x8E2A;&#x673A;&#x5236;&#x5904;&#x7406;&#xFF0C;&#x9700;&#x5173;&#x95ED;nat&#x8868;&#x4E0A;&#x7684;&#x8FDE;&#x63A5;&#x8FFD;&#x8E2A;&#x673A;&#x5236;&#x3002;</li>
+</ul>
+</li>
+</ul>
 
-MAC dst: &#x76EE;&#x6807;mac
-MAC src: &#x539F;&#x59CB;mac
-E:       EtherType
-         0x0800 - IPv4
-         0x0806 - ARP
-         0x86DD - IPv6
-FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#x5C55;&#x793A;&#x5B83;
-</code></pre>
                                 
                                 </section>
                             
@@ -286,14 +285,10 @@ FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#
 
             
                 
-                <a href="graphical-network.html" class="navigation navigation-prev " aria-label="Previous page: 图解网络">
+                <a href="network-recv.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 网络包接收">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="protocal-ip.html" class="navigation navigation-next " aria-label="Next page: ip协议">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -302,7 +297,7 @@ FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mac协议","level":"1.3","depth":1,"next":{"title":"ip协议","level":"1.4","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"previous":{"title":"图解网络","level":"1.2","depth":1,"path":"docs/graphical-network.md","ref":"docs/graphical-network.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-mac.md","mtime":"2023-05-31T02:07:04.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-31T02:07:39.502Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"nf五链四表","level":"1.8","depth":1,"previous":{"title":"网络包接收","level":"1.7","depth":1,"path":"docs/network-recv.md","ref":"docs/network-recv.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/netfilter.md","mtime":"2023-05-31T02:07:04.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-31T02:07:39.502Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
