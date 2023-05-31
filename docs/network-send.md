@@ -8,8 +8,8 @@
 传输层入口：sk->sk_prot->sendmsg，tcp即是tcp_sendmsg
 网络层入口：icsk->icsk_af_ops->queue_xmit，即是ip_queue_xmit
 邻居系统入口：neigh_output
-网络设备入口：dev_queue_xmit
-驱动程序入口：dev_hard_start_xmit
+网络设备入口：dev_queue_xmit、dev_hard_start_xmit
+驱动程序入口：
 ```
 
 #### 执行netfilter：OUTPUT、POSTOUTPUT链
