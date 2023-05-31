@@ -3,15 +3,12 @@
 ![img](../images/network-recv.png)
 
 ```
-系统调用入口: sys_sendto
-协议栈入口: sock->ops->sendmsg，AF_INET协议族是inet_sendmsg
-传输层入口: sk->sk_prot->sendmsg，tcp是tcp_sendmsg
-网络层入口: icsk->icsk_af_ops->queue_xmit，即是ip_queue_xmit
-邻居系统入口: neigh_output
-网络设备入口: dev_queue_xmit
-驱动程序入口: dev->netdev_opsndo_start_xmit，可能是：
-            e1000_xmit_frame
-            igb_xmit_frame
+硬中断入口: e1000_intr或igb_msix_ring
+软中断入口: ksoftirqd_should_run
+驱动程序入口: n->poll，即是e1000e_poll或igb_poll
+网络设备入口: netif_receive_skb_list_internal
+网络层入口: pt_prev->func，即是ip_list_rcv
+传输层入口: ipprot->handle，即是tcp_v4_rcv
 ```
 
 
