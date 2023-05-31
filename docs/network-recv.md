@@ -11,7 +11,7 @@
 传输层入口: ipprot->handle，即是tcp_v4_rcv
 ```
 
-#### 执行netfilter：PRE_ROUTING、INPUT链
+#### 执行netfilter：PREROUTING、INPUT链
 ```
 // 网络层入口
 ip_list_rcv() {
