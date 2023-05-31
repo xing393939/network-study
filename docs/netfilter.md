@@ -2,6 +2,7 @@
 
 #### 参考资料
 * [netfilter的四表五链概述](https://blog.csdn.net/angelqucheng/article/details/90032897)
+* [深入理解 iptables 和 netfilter 架构](https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/)
 * 五链：五个链也分别被形象的称为五个钩子（hook）函数
   * INPUT链——进来的数据包应用此规则链中的策略
   * OUTPUT链——外出的数据包应用此规则链中的策略
