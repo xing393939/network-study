@@ -15,6 +15,7 @@
   * Mangle表：可修改数据包的服务类型、TTL、并且可以配置路由实现QOS
   * Raw表：唯一的用处就是控制数据包绕过连接跟踪
   * （其实还有security表：作用是给包打上SELinux标记）
+* （conntrack是netfilter实现的连接跟踪机制，是NAT和iptables状态匹配的基础）
 
 #### 处理过程将沿着列从上向下执行
 |Tables\Chains	|PREROUTING	|INPUT	|FORWARD	|OUTPUT	|POSTROUTING|
