@@ -14,6 +14,7 @@
   * Mangle表——涉及整条链，可实现拆解报文、修改报文、重新封装，可常见于IPVS的PPC下多端口会话保持。
   * Raw表——涉及PREROUTING和OUTPUT链，决定数据包是否被状态跟踪机制处理，需关闭nat表上的连接追踪机制。
 
+![img](../images/nfk-tracersal.jpg)
 
 
 
