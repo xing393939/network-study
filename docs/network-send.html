@@ -242,13 +242,15 @@
                                 
                                 <h3 id="&#x7F51;&#x7EDC;&#x5305;&#x53D1;&#x9001;">&#x7F51;&#x7EDC;&#x5305;&#x53D1;&#x9001;</h3>
 <p><img src="../images/network-send.png" alt="img"></p>
-<pre><code>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5165;&#x53E3;&#xFF1A;sys_sendto
-&#x534F;&#x8BAE;&#x6808;&#x5165;&#x53E3;&#xFF1A;sock-&gt;ops-&gt;sendmsg&#xFF0C;&#x5373;&#x662F;AF_INET&#x534F;&#x8BAE;&#x65CF;&#x7684;inet_sendmsg
-&#x4F20;&#x8F93;&#x5C42;&#x5165;&#x53E3;&#xFF1A;sk-&gt;sk_prot-&gt;sendmsg&#xFF0C;tcp&#x5373;&#x662F;tcp_sendmsg
-&#x7F51;&#x7EDC;&#x5C42;&#x5165;&#x53E3;&#xFF1A;icsk-&gt;icsk_af_ops-&gt;queue_xmit&#xFF0C;&#x5373;&#x662F;ip_queue_xmit
-&#x90BB;&#x5C45;&#x7CFB;&#x7EDF;&#x5165;&#x53E3;&#xFF1A;neigh_output
-&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x5165;&#x53E3;&#xFF1A;dev_queue_xmit&#x3001;dev_hard_start_xmit
-&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#xFF1A;
+<pre><code>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5165;&#x53E3;: sys_sendto
+&#x534F;&#x8BAE;&#x6808;&#x5165;&#x53E3;: sock-&gt;ops-&gt;sendmsg&#xFF0C;AF_INET&#x534F;&#x8BAE;&#x65CF;&#x662F;inet_sendmsg
+&#x4F20;&#x8F93;&#x5C42;&#x5165;&#x53E3;: sk-&gt;sk_prot-&gt;sendmsg&#xFF0C;tcp&#x662F;tcp_sendmsg
+&#x7F51;&#x7EDC;&#x5C42;&#x5165;&#x53E3;: icsk-&gt;icsk_af_ops-&gt;queue_xmit&#xFF0C;&#x5373;&#x662F;ip_queue_xmit
+&#x90BB;&#x5C45;&#x7CFB;&#x7EDF;&#x5165;&#x53E3;: neigh_output
+&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x5165;&#x53E3;: dev_queue_xmit
+&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;: dev-&gt;netdev_opsndo_start_xmit&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#xFF1A;
+            e1000_xmit_frame
+            igb_xmit_frame
 </code></pre><h4 id="&#x6267;&#x884C;netfilter&#xFF1A;output&#x3001;postoutput&#x94FE;">&#x6267;&#x884C;netfilter&#xFF1A;OUTPUT&#x3001;POSTOUTPUT&#x94FE;</h4>
 <pre><code>// &#x5728;&#x7F51;&#x7EDC;&#x5C42;
 ip_queue_xmit() {
@@ -269,12 +271,28 @@ dev_hard_start_xmit() {
   xmit_one(skb, dev, ...) {
     dev_queue_xmit_nit(skb, dev) {
       list_for_each_entry_rcu(ptype, ptype_list, list) {
-        deliver_skb(skb2, pt_prev, skb-&gt;dev); // &#x6267;&#x884C; tcpdump &#x6302;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x865A;&#x62DF;&#x534F;&#x8BAE;
+        deliver_skb(skb2, pt_prev, skb-&gt;dev); // &#x6267;&#x884C; tcpdump &#x6302;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x865A;&#x62DF;&#x534F;&#x8BAE;packet_rcv
       }
     }
   }
 }
-</code></pre>
+
+// tcpdump&#x5728;&#x542F;&#x52A8;&#x65F6;&#x4F1A;&#x6267;&#x884C;socket(AF_PACKET, SOCK_RAW, ETH_P_ALL)
+SYSCALL_DEFINE3(socket, int, family, int, type, int, protocol)
+|-sock_create(family, type, protocol, &amp;sock);
+  |-pf = rcu_dereference(net_families[family]);
+  |-pf-&gt;create(net, sock, protocol, kern);   // &#x5373;&#x662F;packet_create
+    |-packet_create(net, sock, protocol, kern)
+      |-po = pkt_sk(sk);
+      |-po-&gt;prot_hook.func = packet_rcv;     // &#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E3A;packet_rcv
+      |-register_prot_hook(sk);
+        |-po = pkt_sk(sk);
+        |-dev_add_pack(&amp;po-&gt;prot_hook);
+          |-head = ptype_head(pt)            // ptype_head&#x51FD;&#x6570;&#x68C0;&#x67E5;pt-&gt;type == ETH_P_ALL&#x5219;&#x8FD4;&#x56DE;ptype_all
+          |-list_add_rcu(&amp;pt-&gt;list, head)
+</code></pre><h4 id="&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x7684;&#x65F6;&#x5E8F;&#x56FE;">&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x7684;&#x65F6;&#x5E8F;&#x56FE;</h4>
+<p><img src="../images/tcp-send-and-recv.png" alt="img"></p>
+
                                 
                                 </section>
                             
@@ -317,7 +335,7 @@ dev_hard_start_xmit() {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"网络包发送","level":"1.6","depth":1,"next":{"title":"网络包接收","level":"1.7","depth":1,"path":"docs/network-recv.md","ref":"docs/network-recv.md","articles":[]},"previous":{"title":"tcp协议","level":"1.5","depth":1,"path":"docs/protocal-tcp.md","ref":"docs/protocal-tcp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/network-send.md","mtime":"2023-05-31T04:01:55.403Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-31T04:02:20.113Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"网络包发送","level":"1.6","depth":1,"next":{"title":"网络包接收","level":"1.7","depth":1,"path":"docs/network-recv.md","ref":"docs/network-recv.md","articles":[]},"previous":{"title":"tcp协议","level":"1.5","depth":1,"path":"docs/protocal-tcp.md","ref":"docs/protocal-tcp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/network-send.md","mtime":"2023-05-31T08:13:54.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-31T08:14:20.128Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
