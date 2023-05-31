@@ -13,8 +13,24 @@
   * Nat表：用于网络地址转换（IP、端口）
   * Mangle表：可修改数据包的服务类型、TTL、并且可以配置路由实现QOS
   * Raw表：唯一的用处就是控制数据包绕过连接跟踪
+  * （其实还有security表：作用是给包打上SELinux标记）
 
+#### 处理过程将沿着列从上向下执行
+|Tables\Chains	|PREROUTING	|INPUT	|FORWARD	|OUTPUT	|POSTROUTING|
+|---|---|---|---|---|---|
+|(路由判断)	| 	| 	| 	|Y	|| 
+|raw	    |Y	| 	| 	|Y	||
+|(连接跟踪）	|Y	| 	| 	|Y	|| 
+|mangle	Y	|Y	|Y	|Y	|Y  |Y|
+|nat (DNAT)	|Y	| 	| 	|Y	||
+|(路由判断)	|Y	| 	| 	|Y	||
+|filter	 	|   |Y	|Y	|Y	||
+|security	| 	|Y	|Y	|Y	||
+|nat (SNAT)	| 	|Y	| 	|Y	|Y|
+
+#### 简化版流程
 ![img](../images/nfk-tracersal.jpg)
 
-
+#### 完整版流程
+![img](../images/netfilter-packet-flow.svg)
 
