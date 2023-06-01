@@ -279,7 +279,21 @@
 <li>&#x6536;&#x5305;&#x540E;dmac&#x5728;mac&#x8868;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x628A;&#x5305;&#x53D1;&#x7ED9;&#x6240;&#x6709;&#x8BBE;&#x5907;&#xFF0C;&#x5F85;&#x8BBE;&#x5907;&#x56DE;&#x5E94;&#x540E;&#x66F4;&#x65B0;mac&#x8868;</li>
 </ul>
 </li>
-<li>&#x8DEF;&#x7531;&#x5668;&#x6D41;&#x7A0B;&#xFF1A;</li>
+<li>&#x8DEF;&#x7531;&#x5668;-&#x8F6C;&#x53D1;&#x7F51;&#x5173;&#xFF1A;A&#x673A;&#x5668;&#x2014;&#x2014;X&#x7F51;&#x5173;&#x5DE6;&#x624B;&#x2014;&#x2014;X&#x7F51;&#x5173;&#x53F3;&#x624B;&#x2014;&#x2014;B&#x673A;&#x5668;<ul>
+<li>A&#x673A;-&gt;X&#x5DE6;&#xFF1A;macA&#x673A;&#xFF0C;ipA -&gt; macX&#x5DE6;&#xFF0C;ipB</li>
+<li>X&#x5DE6;-&gt;X&#x53F3;&#xFF1A;macX&#x5DE6;&#xFF0C;ipA -&gt; macX&#x53F3;&#xFF0C;ipB</li>
+<li>X&#x53F3;-&gt;B&#x673A;&#xFF1A;macX&#x53F3;&#xFF0C;ipA -&gt; macB&#x673A;&#xFF0C;ipB</li>
+</ul>
+</li>
+<li>&#x8DEF;&#x7531;&#x5668;-NAT&#x7F51;&#x5173;&#xFF1A;A&#x673A;&#x5668;&#x2014;&#x2014;X&#x7F51;&#x5173;&#x2014;&#x2014;Y&#x7F51;&#x5173;&#x2014;&#x2014;B&#x673A;&#x5668;<ul>
+<li>A&#x673A;-&gt;X&#x5173;&#xFF1A;macA&#x673A;&#xFF0C;ipA -&gt; macX&#x5173;&#xFF0C;ipY</li>
+<li>X&#x5173;-&gt;Y&#x5173;&#xFF1A;macX&#x5173;&#xFF0C;ipX -&gt; macY&#x5173;&#xFF0C;ipY</li>
+<li>Y&#x5173;-&gt;B&#x673A;&#xFF1A;macY&#x5173;&#xFF0C;ipY -&gt; macB&#x673A;&#xFF0C;ipB</li>
+<li>&#x5176;&#x4E2D;A&#x673A;&#x5668;&#xFF0C;ipA&#x662F;&#x5B83;&#x7684;&#x5185;&#x7F51;ip&#xFF0C;ipX&#x662F;&#x5B83;&#x7684;&#x5916;&#x7F51;ip&#xFF0C;B&#x673A;&#x5668;&#x540C;&#x7406;</li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#x4E2D;X&#x7F51;&#x5173;&#x628A;&#x6E90;ipA&#x53D8;&#x6210;ipX&#x7684;&#x8FC7;&#x7A0B;&#x662F;SNAT&#xFF1A;&#x6E90;&#x5730;&#x5740;&#x8F6C;&#x6362;</li>
+<li>&#x7B2C;&#x4E09;&#x6B65;&#x4E2D;Y&#x7F51;&#x5173;&#x628A;&#x76EE;&#x6807;ipY&#x53D8;&#x6210;ipB&#x7684;&#x8FC7;&#x7A0B;&#x662F;DNAT&#xFF1A;&#x76EE;&#x6807;&#x5730;&#x5740;&#x8F6C;&#x6362;</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -324,7 +338,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-01T03:10:30.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-01T03:11:04.763Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-01T03:38:57.286Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-01T03:39:20.705Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
