@@ -17,6 +17,16 @@
 * 交换机流程：
   * 收包后dmac在mac表已存在，根据mac表把包发给对应的设备
   * 收包后dmac在mac表不存在，把包发给所有设备，待设备回应后更新mac表
-* 路由器流程：
-  
+* 路由器-转发网关：A机器——X网关左手——X网关右手——B机器
+  * A机->X左：macA机，ipA -> macX左，ipB
+  * X左->X右：macX左，ipA -> macX右，ipB
+  * X右->B机：macX右，ipA -> macB机，ipB
+* 路由器-NAT网关：A机器——X网关——Y网关——B机器
+  * A机->X关：macA机，ipA -> macX关，ipY
+  * X关->Y关：macX关，ipX -> macY关，ipY
+  * Y关->B机：macY关，ipY -> macB机，ipB
+  * 其中A机器，ipA是它的内网ip，ipX是它的外网ip，B机器同理
+  * 第二步中X网关把源ipA变成ipX的过程是SNAT：源地址转换
+  * 第三步中Y网关把目标ipY变成ipB的过程是DNAT：目标地址转换
+
 
