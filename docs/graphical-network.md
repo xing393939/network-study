@@ -36,7 +36,20 @@
   * 传输层到网络层时，当收到ACK响应后，释放原始的 sk_buff
   * 当网络层发现 sk_buff 大于MTU时，还需要分片
 
-
+#### HTTP常见面试题
+* 浏览器缓存
+  * 根据Cache-Control，决定是否读本地缓存
+  * 根据Etag发起请求（header头设置If-None-Match），如果是304则读本地缓存
+* HTTP/1.1：有http-keepalive
+* HTTP/2.0：
+  * 头部压缩：相同header头只发一次
+  * 二进制格式：header头和数据都是pb格式
+  * 并发传输：每个请求分成若干个frame，但是有相同的streamId
+  * 服务器主动推送资源
+* HTTP/3.0：
+  * 无队头阻塞：使用udp，避免tcp的队头阻塞问题
+  * 更快的连接建立：tcp+tls是分层的，tcp三次握手+tls四次握手，而quic是一起的
+  * 连接迁移：采用连接id而不是五元组，这样就算客户端ip变了，连接也没有断开
 
 
 
