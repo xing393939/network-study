@@ -51,6 +51,29 @@
   * 更快的连接建立：tcp+tls是分层的，tcp三次握手+tls四次握手，而quic是一起的
   * 连接迁移：采用连接id而不是五元组，这样就算客户端ip变了，连接也没有断开
 
+#### TCP 三次握手与四次挥手面试题
+* UDP头部有data的长度字段，TCP没有，TCP的data的长度计算方式如下：
+  * ip包总长度 - ip头长度 - tcp头长度
+  * （UDP其实也能这样算data的长度）
+* TCP 和 UDP 可以使用同一个端口
+* 第一次握手丢包后：假设net.ipv4.tcp_syn_retries=3
+  * 第1次重传是在1秒后
+  * 第2次重传是在2秒后
+  * 第3次重传是在4秒后
+  * 8秒后仍然没有收到ack则放弃
+* 第二次握手丢包后，假设net.ipv4.tcp_synack_retries=3
+  * 效果同上
+* 第三次握手丢包后，不会重传包，因为客户端已经是ESTABLISH状态了
+  * 此后客户端发送数据时，ack还是丢包的那个ack相同，服务端会自动建立好连接并接收数据
+* 第一次挥手丢包后，假设tcp_orphan_retries=3
+  * 效果同上，最后进入closed状态
+* 第二次挥手丢包后，不会重传包，此时处于CLOSE_WAIT
+  * 内核不会主动关闭连接，除非用户态调用了close
+* 第三次挥手丢包后，假设tcp_orphan_retries=3
+  * 服务端效果同上，最后进入closed状态
+  * 客户端处于FIN_WAIT_2，等待tcp_fin_timeout秒关闭
+* 第四次挥手丢包后，不会重传包，等待2MSL关闭
+  * 2MSL = `#define TCP_TIMEWAIT_LEN`
 
 
 

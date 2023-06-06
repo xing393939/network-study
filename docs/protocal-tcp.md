@@ -44,6 +44,8 @@ FIN:                   No more data from sender.
 Window:                窗口大小
 Checksum:              校验tcp头+应用数据
 Urgent Pointer:        紧急指针，仅当URG=1时使用
+
+（ACK字段除了第一次握手外，其他时刻都必须是1）
 ```
 
 
