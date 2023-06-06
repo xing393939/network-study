@@ -340,6 +340,47 @@
 </ul>
 </li>
 </ul>
+<h4 id="tcp-&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4E0E;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x9762;&#x8BD5;&#x9898;">TCP &#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4E0E;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x9762;&#x8BD5;&#x9898;</h4>
+<ul>
+<li>UDP&#x5934;&#x90E8;&#x6709;data&#x7684;&#x957F;&#x5EA6;&#x5B57;&#x6BB5;&#xFF0C;TCP&#x6CA1;&#x6709;&#xFF0C;TCP&#x7684;data&#x7684;&#x957F;&#x5EA6;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;<ul>
+<li>ip&#x5305;&#x603B;&#x957F;&#x5EA6; - ip&#x5934;&#x957F;&#x5EA6; - tcp&#x5934;&#x957F;&#x5EA6;</li>
+<li>&#xFF08;UDP&#x5176;&#x5B9E;&#x4E5F;&#x80FD;&#x8FD9;&#x6837;&#x7B97;data&#x7684;&#x957F;&#x5EA6;&#xFF09;</li>
+</ul>
+</li>
+<li>TCP &#x548C; UDP &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;</li>
+<li>&#x7B2C;&#x4E00;&#x6B21;&#x63E1;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF1A;&#x5047;&#x8BBE;net.ipv4.tcp_syn_retries=3<ul>
+<li>&#x7B2C;1&#x6B21;&#x91CD;&#x4F20;&#x662F;&#x5728;1&#x79D2;&#x540E;</li>
+<li>&#x7B2C;2&#x6B21;&#x91CD;&#x4F20;&#x662F;&#x5728;2&#x79D2;&#x540E;</li>
+<li>&#x7B2C;3&#x6B21;&#x91CD;&#x4F20;&#x662F;&#x5728;4&#x79D2;&#x540E;</li>
+<li>8&#x79D2;&#x540E;&#x4ECD;&#x7136;&#x6CA1;&#x6709;&#x6536;&#x5230;ack&#x5219;&#x653E;&#x5F03;</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x4E8C;&#x6B21;&#x63E1;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x5047;&#x8BBE;net.ipv4.tcp_synack_retries=3<ul>
+<li>&#x6548;&#x679C;&#x540C;&#x4E0A;</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x4F20;&#x5305;&#xFF0C;&#x56E0;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x662F;ESTABLISH&#x72B6;&#x6001;&#x4E86;<ul>
+<li>&#x6B64;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#x65F6;&#xFF0C;ack&#x8FD8;&#x662F;&#x4E22;&#x5305;&#x7684;&#x90A3;&#x4E2A;ack&#x76F8;&#x540C;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4F1A;&#x81EA;&#x52A8;&#x5EFA;&#x7ACB;&#x597D;&#x8FDE;&#x63A5;&#x5E76;&#x63A5;&#x6536;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x4E00;&#x6B21;&#x6325;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x5047;&#x8BBE;tcp_orphan_retries=3<ul>
+<li>&#x6548;&#x679C;&#x540C;&#x4E0A;&#xFF0C;&#x6700;&#x540E;&#x8FDB;&#x5165;closed&#x72B6;&#x6001;</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x4E8C;&#x6B21;&#x6325;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x4F20;&#x5305;&#xFF0C;&#x6B64;&#x65F6;&#x5904;&#x4E8E;CLOSE_WAIT<ul>
+<li>&#x5185;&#x6838;&#x4E0D;&#x4F1A;&#x4E3B;&#x52A8;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF0C;&#x9664;&#x975E;&#x7528;&#x6237;&#x6001;&#x8C03;&#x7528;&#x4E86;close</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x4E09;&#x6B21;&#x6325;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x5047;&#x8BBE;tcp_orphan_retries=3<ul>
+<li>&#x670D;&#x52A1;&#x7AEF;&#x6548;&#x679C;&#x540C;&#x4E0A;&#xFF0C;&#x6700;&#x540E;&#x8FDB;&#x5165;closed&#x72B6;&#x6001;</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x5904;&#x4E8E;FIN_WAIT_2&#xFF0C;&#x7B49;&#x5F85;tcp_fin_timeout&#x79D2;&#x5173;&#x95ED;</li>
+</ul>
+</li>
+<li>&#x7B2C;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x4E22;&#x5305;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x4F20;&#x5305;&#xFF0C;&#x7B49;&#x5F85;2MSL&#x5173;&#x95ED;<ul>
+<li>2MSL = <code>#define TCP_TIMEWAIT_LEN</code> = 60&#x79D2;</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -383,7 +424,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-05T09:18:27.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-05T09:18:50.384Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-06T03:58:11.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-06T03:58:35.599Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
