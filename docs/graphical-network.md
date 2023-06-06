@@ -73,7 +73,7 @@
   * 服务端效果同上，最后进入closed状态
   * 客户端处于FIN_WAIT_2，等待tcp_fin_timeout秒关闭
 * 第四次挥手丢包后，不会重传包，等待2MSL关闭
-  * 2MSL = `#define TCP_TIMEWAIT_LEN`
+  * 2MSL = `#define TCP_TIMEWAIT_LEN` = 60秒
 
 
 
