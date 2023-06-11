@@ -381,6 +381,48 @@
 </ul>
 </li>
 </ul>
+<h4 id="tcp-&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x3001;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x3001;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x3001;&#x62E5;&#x585E;&#x63A7;&#x5236;">TCP &#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x3001;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x3001;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x3001;&#x62E5;&#x585E;&#x63A7;&#x5236;</h4>
+<ul>
+<li>&#x8D85;&#x65F6;&#x91CD;&#x4F20;-&#x540D;&#x8BCD;&#xFF1A;<ul>
+<li>RTT&#xFF1A;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x5305;&#x5230;&#x6536;&#x5230;ack&#x5305;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;</li>
+<li>RTO&#xFF1A;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x5305;&#x4E22;&#x5305;&#x540E;&#x591A;&#x4E45;&#x91CD;&#x53D1;&#x5305;</li>
+<li><code>&#x65B0;&#x7684;SRTT = (1 - &#x3B1;)&#xB7;&#x65E7;&#x7684;SRTT + &#x3B1;&#xB7;&#x6700;&#x65B0;&#x7684;RTT</code></li>
+<li><code>RTO = SRTT + 4&#xB7;rttvar</code>&#xFF0C;&#x5176;&#x4E2D;rttvar&#x8868;&#x793A;SRTT&#x4E0E;&#x771F;&#x5B9E;&#x503C;&#x7684;&#x5DEE;&#x8DDD;</li>
+</ul>
+</li>
+<li>&#x8D85;&#x65F6;&#x91CD;&#x4F20;-&#x4E09;&#x79CD;&#x65B9;&#x6848;&#xFF1A;&#x5047;&#x8BBE;&#x5E8F;&#x53F7;2&#x3001;3&#x4E22;&#x5305;<ul>
+<li>&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#xFF1A;&#x53D1;&#x9001;&#x65B9;&#x6536;&#x5230;&#x4E09;&#x4E2A;&#x91CD;&#x590D;&#x5E8F;&#x53F7;2&#x7684;ack&#x3002;&#xFF08;&#x95EE;&#x9898;&#x662F;&#x5E8F;&#x53F7;3&#x4E5F;&#x4E22;&#x5305;&#x4E86;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x4E09;&#x6B21;ack&#xFF1F;&#xFF09;</li>
+<li>SACK&#xFF1A;ack&#x5305;&#x4F1A;&#x544A;&#x77E5;&#x54EA;&#x4E2A;&#x8303;&#x56F4;&#x7684;&#x5305;&#x5DF2;&#x7ECF;&#x6536;&#x5230;&#x4E86;</li>
+<li>D-SACK&#xFF1A;ack&#x5305;&#x4F1A;&#x544A;&#x77E5;&#x54EA;&#x4E2A;&#x8303;&#x56F4;&#x7684;&#x5305;&#x88AB;&#x91CD;&#x590D;&#x63A5;&#x6536;&#x4E86;</li>
+</ul>
+</li>
+<li>&#x6D41;&#x91CF;&#x63A7;&#x5236;&#xFF1A;<ul>
+<li>&#x63A5;&#x6536;&#x65B9;&#x901A;&#x8FC7;ack&#x544A;&#x77E5;&#x81EA;&#x5DF1;&#x7684;&#x7A97;&#x53E3;&#x5927;&#x5C0F;</li>
+<li>&#xFF08;&#x63A5;&#x6536;&#x65B9;&#x53EF;&#x80FD;&#x4F1A;ack&#x544A;&#x77E5;&#x81EA;&#x5DF1;&#x7684;&#x7A97;&#x53E3;&#x4E3A;0&#xFF09;</li>
+<li>&#x7A97;&#x53E3;&#x5173;&#x95ED;&#xFF1A;&#x82E5;&#x5DF2;ack&#x81EA;&#x5DF1;&#x7684;&#x7A97;&#x53E3;&#x4E3A;0&#xFF0C;&#x518D;&#x53D1;ack&#x544A;&#x77E5;&#x7A97;&#x53E3;&#x5927;&#x4E8E;0&#x65F6;&#xFF0C;ack&#x5305;&#x4E22;&#x5305;&#x4E86;</li>
+<li>&#xFF08;&#x6B64;&#x65F6;&#x53D1;&#x9001;&#x65B9;&#x9700;&#x8981;&#x5B9A;&#x65F6;&#x53D1;&#x9001;&#x6D4B;&#x63A2;&#x5305;&#xFF09;</li>
+<li>&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x5F81;&#xFF1A;&#x5F53;&#x7A97;&#x53E3;&#x5F88;&#x5C0F;&#x65F6;&#xFF0C;&#x4F1A;&#x53D1;&#x9001;&#x5F88;&#x591A;&#x5C0F;&#x5305;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x7ECF;&#x6D4E;</li>
+<li>&#xFF08;&#x6B64;&#x65F6;&#x63A5;&#x6536;&#x65B9;&#x53EF;&#x4EE5;&#x5728;&#x63A5;&#x6536;&#x7A97;&#x53E3;&#x5F88;&#x5C0F;&#x7684;&#x65F6;&#x5019;&#x76F4;&#x63A5;&#x901A;&#x544A;&#x7A97;&#x53E3;&#x4E3A;0&#xFF09;</li>
+<li>&#xFF08;&#x6B64;&#x65F6;&#x53D1;&#x9001;&#x65B9;&#x53EF;&#x4EE5;&#x5728;&#x53D1;&#x9001;&#x7A97;&#x53E3;&#x5F88;&#x5C0F;&#x7684;&#x65F6;&#x5019;&#x5EF6;&#x8FDF;&#x53D1;&#x5305;&#xFF09;</li>
+</ul>
+</li>
+<li>&#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF1A;<ul>
+<li>&#x6162;&#x542F;&#x52A8;(cwnd &lt; ssthresh)&#xFF1A;cwnd&#x4ECE;1&#x5F00;&#x59CB;&#xFF0C;&#x540E;&#x9762;&#x6307;&#x6570;&#x589E;&#x957F;</li>
+<li>&#x62E5;&#x585E;&#x907F;&#x514D;(cwnd &gt;= ssthresh)&#xFF1A;</li>
+<li>&#x62E5;&#x585E;&#x53D1;&#x751F;&#xFF1A;<ul>
+<li>&#x53D1;&#x751F;&#x4E86;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#xFF1A;ssthresh = cwnd / 2 &amp;&amp; cwnd = 0</li>
+<li>&#x53D1;&#x751F;&#x4E86;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#xFF1A;ssthresh = cwnd / 2 &amp;&amp; cwnd = cwnd / 2</li>
+</ul>
+</li>
+<li>&#x5FEB;&#x901F;&#x6062;&#x590D;&#xFF08;&#x5373;&#x53D1;&#x751F;&#x4E86;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#xFF09;<ul>
+<li>&#x5F00;&#x59CB;&#x65F6;&#xFF1A;ssthresh = cwnd / 2 &amp;&amp; cwnd = cwnd / 2 + 3</li>
+<li>&#x8FC7;&#x7A0B;&#x4E2D;&#xFF1A;&#x6BCF;&#x6536;&#x5230;&#x4E00;&#x4E2A;ack&#xFF0C;cwnd = cwnd + 1</li>
+<li>&#x7ED3;&#x675F;&#x65F6;&#xFF1A;&#x5F53;&#x6536;&#x5230;&#x65B0;&#x6570;&#x636E;&#x7684;ack&#x9000;&#x51FA;&#x5FEB;&#x901F;&#x6062;&#x590D;&#xFF0C;cwnd&#x53D8;&#x6210;&#x539F;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x7684;&#x4E00;&#x534A;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -424,7 +466,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-06T03:58:11.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-06T03:58:35.599Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"1.3","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-11T08:27:04.357Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-11T08:27:29.634Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
