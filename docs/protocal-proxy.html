@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>nf五链四表 · GitBook</title>
+        <title>PROXY Protocol · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="network-proto-init.html" />
+    <link rel="next" href="network-send.html" />
     
     
-    <link rel="prev" href="network-recv.html" />
+    <link rel="prev" href="protocal-ws.html" />
     
 
     </head>
@@ -169,7 +169,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="protocal-proxy.html">
+        <li class="chapter active" data-level="1.7" data-path="protocal-proxy.html">
             
                 <a href="protocal-proxy.html">
             
@@ -208,7 +208,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="netfilter.html">
+        <li class="chapter " data-level="1.10" data-path="netfilter.html">
             
                 <a href="netfilter.html">
             
@@ -264,7 +264,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >nf五链四表</a>
+        <a href=".." >PROXY Protocol</a>
     </h1>
 </div>
 
@@ -279,121 +279,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="nf&#x4E94;&#x94FE;&#x56DB;&#x8868;">nf&#x4E94;&#x94FE;&#x56DB;&#x8868;</h3>
-<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+                                <h3 id="proxy-protocol">PROXY Protocol</h3>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
-<li><a href="https://blog.csdn.net/angelqucheng/article/details/90032897" target="_blank">netfilter&#x7684;&#x56DB;&#x8868;&#x4E94;&#x94FE;&#x6982;&#x8FF0;</a></li>
-<li><a href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3; iptables &#x548C; netfilter &#x67B6;&#x6784;</a></li>
-<li>&#x4E94;&#x94FE;&#xFF1A;&#x4E94;&#x4E2A;&#x94FE;&#x4E5F;&#x5206;&#x522B;&#x88AB;&#x5F62;&#x8C61;&#x7684;&#x79F0;&#x4E3A;&#x4E94;&#x4E2A;&#x94A9;&#x5B50;&#xFF08;hook&#xFF09;&#x51FD;&#x6570;<ul>
-<li>INPUT&#x94FE;&#x2014;&#x2014;&#x8FDB;&#x6765;&#x7684;&#x6570;&#x636E;&#x5305;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;</li>
-<li>OUTPUT&#x94FE;&#x2014;&#x2014;&#x5916;&#x51FA;&#x7684;&#x6570;&#x636E;&#x5305;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;</li>
-<li>FORWARD&#x94FE;&#x2014;&#x2014;&#x8F6C;&#x53D1;&#x6570;&#x636E;&#x5305;&#x65F6;&#x5E94;&#x7528;&#x6B64;&#x89C4;&#x5219;&#x94FE;&#x4E2D;&#x7684;&#x7B56;&#x7565;</li>
-<li>PREROUTING&#x94FE;&#x2014;&#x2014;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x4F5C;&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x524D;&#x5E94;&#x7528;&#x6B64;&#x94FE;&#x4E2D;&#x7684;&#x89C4;&#x5219;&#xFF08;&#x6570;&#x636E;&#x5305;&#x8FDB;&#x6765;&#x7684;&#x65F6;&#x4FAF;&#xFF09;</li>
-<li>POSTROUTING&#x94FE;&#x2014;&#x2014;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x4F5C;&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x540E;&#x5E94;&#x7528;&#x6B64;&#x94FE;&#x4E2D;&#x7684;&#x89C4;&#x5219;&#xFF08;&#x6570;&#x636E;&#x5305;&#x51FA;&#x6765;&#x7684;&#x65F6;&#x4FAF;&#xFF09;</li>
+<li><a href="https://seriousben.com/posts/2020-02-exploring-the-proxy-protocol/" target="_blank">Exploring the PROXY Protocol</a></li>
+<li>&#x4ECB;&#x4E8E;&#x4F20;&#x8F93;&#x5C42;&#x548C;&#x5E94;&#x7528;&#x5C42;&#x4E4B;&#x95F4;&#x7684;&#x4EE3;&#x7406;&#x534F;&#x8BAE;</li>
 </ul>
-</li>
-<li>&#x56DB;&#x8868;&#xFF1A;<ul>
-<li>Filter&#x8868;&#xFF1A;&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#x5305;</li>
-<li>Nat&#x8868;&#xFF1A;&#x7528;&#x4E8E;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x8F6C;&#x6362;&#xFF08;IP&#x3001;&#x7AEF;&#x53E3;&#xFF09;</li>
-<li>Mangle&#x8868;&#xFF1A;&#x53EF;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x5305;&#x7684;&#x670D;&#x52A1;&#x7C7B;&#x578B;&#x3001;TTL&#x3001;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;QOS</li>
-<li>Raw&#x8868;&#xFF1A;&#x552F;&#x4E00;&#x7684;&#x7528;&#x5904;&#x5C31;&#x662F;&#x63A7;&#x5236;&#x6570;&#x636E;&#x5305;&#x7ED5;&#x8FC7;&#x8FDE;&#x63A5;&#x8DDF;&#x8E2A;</li>
-<li>&#xFF08;&#x5176;&#x5B9E;&#x8FD8;&#x6709;security&#x8868;&#xFF1A;&#x4F5C;&#x7528;&#x662F;&#x7ED9;&#x5305;&#x6253;&#x4E0A;SELinux&#x6807;&#x8BB0;&#xFF09;</li>
-</ul>
-</li>
-<li>&#xFF08;conntrack&#x662F;netfilter&#x5B9E;&#x73B0;&#x7684;&#x8FDE;&#x63A5;&#x8DDF;&#x8E2A;&#x673A;&#x5236;&#xFF0C;&#x662F;NAT&#x548C;iptables&#x72B6;&#x6001;&#x5339;&#x914D;&#x7684;&#x57FA;&#x7840;&#xFF09;</li>
-</ul>
-<h4 id="&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5C06;&#x6CBF;&#x7740;&#x5217;&#x4ECE;&#x4E0A;&#x5411;&#x4E0B;&#x6267;&#x884C;">&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5C06;&#x6CBF;&#x7740;&#x5217;&#x4ECE;&#x4E0A;&#x5411;&#x4E0B;&#x6267;&#x884C;</h4>
-<table>
-<thead>
-<tr>
-<th>Tables\Chains</th>
-<th>PREROUTING</th>
-<th>INPUT</th>
-<th>FORWARD</th>
-<th>OUTPUT</th>
-<th>POSTROUTING</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(&#x8DEF;&#x7531;&#x5224;&#x65AD;)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>raw</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>(&#x8FDE;&#x63A5;&#x8DDF;&#x8E2A;&#xFF09;</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>mangle    Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>nat (DNAT)</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>(&#x8DEF;&#x7531;&#x5224;&#x65AD;)</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>filter</td>
-<td></td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>security</td>
-<td></td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>nat (SNAT)</td>
-<td></td>
-<td>Y</td>
-<td></td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-</tbody>
-</table>
-<h4 id="&#x7B80;&#x5316;&#x7248;&#x6D41;&#x7A0B;">&#x7B80;&#x5316;&#x7248;&#x6D41;&#x7A0B;</h4>
-<p><img src="../images/nfk-tracersal.jpg" alt="img"></p>
-<h4 id="&#x5B8C;&#x6574;&#x7248;&#x6D41;&#x7A0B;">&#x5B8C;&#x6574;&#x7248;&#x6D41;&#x7A0B;</h4>
-<p><img src="../images/netfilter-packet-flow.svg" alt="img"></p>
+<pre><code>     0                   1                   2                   3
+Bits 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                                                               |
+    +                                                               +
+    |                  Proxy Protocol v2 Signature                  |
+    +                                                               +
+    |                                                               |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |Version|Command|   AF  | Proto.|         Address Length        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                      IPv4 Source Address                      |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                    IPv4 Destination Address                   |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |          Source Port          |        Destination Port       |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
+Signature:           &#x56FA;&#x5B9A;12&#x5B57;&#x8282;&#xFF1A;0d 0a 0d 0a 00 0d 0a 51 55 49 54 0a
+Version:             4Bits&#xFF0C;&#x76EE;&#x524D;&#x7248;&#x672C;&#x53F7;&#x662F;2
+Command:             4Bits&#xFF0C;0&#x8868;&#x793A;local&#xFF0C;1&#x8868;&#x793A;proxy
+Address Family:      4Bits
+                     \x0 (binary: 0000): AF_UNSET: Used for the LOCAL command.
+                     \x1 (binary: 0001): AF_INET: IPv4
+                     \x2 (binary: 0010): AF_INET6: IPv6
+                     \x3 (binary: 0011): AF_UNIX: UNIX
+Transport Protocol:  4Bits
+                     \x0 (binary: 0000): AF_UNSET: Used for the LOCAL command.
+                     \x1 (binary: 0001): STREAM: TCP
+                     \x2 (binary: 0010): DGRAM: Datagram (UDP or SOCK_DGRAM)
+Address Length:      &#x5730;&#x5740;+&#x7AEF;&#x53E3;&#x5B57;&#x6BB5;&#x6240;&#x5360;&#x5B57;&#x8282;
+Source Address:      4 bytes (IPv4)
+Destination Address: 4 bytes (IPv4)
+Source Port:         2 bytes (IPv4)
+Destination Port:    2 bytes (IPv4)
+</code></pre>
                                 
                                 </section>
                             
@@ -420,12 +347,12 @@
 
             
                 
-                <a href="network-recv.html" class="navigation navigation-prev " aria-label="Previous page: 网络包接收">
+                <a href="protocal-ws.html" class="navigation navigation-prev " aria-label="Previous page: websocket协议">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="network-proto-init.html" class="navigation navigation-next " aria-label="Next page: 网络协议栈初始化">
+                <a href="network-send.html" class="navigation navigation-next " aria-label="Next page: 网络包发送">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -436,7 +363,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"nf五链四表","level":"1.10","depth":1,"next":{"title":"网络协议栈初始化","level":"1.11","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"previous":{"title":"网络包接收","level":"1.9","depth":1,"path":"docs/network-recv.md","ref":"docs/network-recv.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/netfilter.md","mtime":"2023-06-12T06:50:02.184Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-12T06:50:36.238Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PROXY Protocol","level":"1.7","depth":1,"next":{"title":"网络包发送","level":"1.8","depth":1,"path":"docs/network-send.md","ref":"docs/network-send.md","articles":[]},"previous":{"title":"websocket协议","level":"1.6","depth":1,"path":"docs/protocal-ws.md","ref":"docs/protocal-ws.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-proxy.md","mtime":"2023-06-12T06:50:02.184Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-12T06:50:36.238Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
