@@ -25,7 +25,7 @@ Bits 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 
 Signature:           固定12字节：0d 0a 0d 0a 00 0d 0a 51 55 49 54 0a
 Version:             4Bits，目前版本号是2
-Command:             4Bits，0表示local，1表示proxy
+Command:             4Bits，0表示LOCAL，1表示PROXY
 Address Family:      4Bits
                      \x0 (binary: 0000): AF_UNSET: Used for the LOCAL command.
                      \x1 (binary: 0001): AF_INET: IPv4
