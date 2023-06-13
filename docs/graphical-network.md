@@ -81,6 +81,7 @@
   * RTO：发送方发包丢包后多久重发包
   * `新的SRTT = (1 - α)·旧的SRTT + α·最新的RTT`
   * `RTO = SRTT + 4·rttvar`，其中rttvar表示SRTT与真实值的差距
+  * linux的RTO初始值三次握手是1秒(写死在内核)，其他包是0.2秒(可调整)
 * 超时重传-三种方案：假设序号2、3丢包
   * 快速重传：发送方收到三个重复序号2的ack。（问题是序号3也丢包了，也需要三次ack？）
   * SACK：ack包会告知哪个范围的包已经收到了
@@ -104,7 +105,12 @@
     * 过程中：每收到一个ack，cwnd = cwnd + 1
     * 结束时：当收到新数据的ack退出快速恢复，cwnd变成原窗口大小的一半
 
+#### TCP 实战抓包分析
+* [Linux tcp fast open](https://blog.csdn.net/zgy666/article/details/110704368)
+  * 第一次建立tcp连接，客户端将服务端给的cookie存入hash表tcp_metrics_hash，接着该连接断开
+  * 第二次直接发送数据，在第一个sync包里携带data数据+cookie，服务端直接将data数据放入socket的接收队列
 
+![img](../images/fast-open.png)
 
 
 
