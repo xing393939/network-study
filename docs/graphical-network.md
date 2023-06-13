@@ -106,11 +106,30 @@
     * 结束时：当收到新数据的ack退出快速恢复，cwnd变成原窗口大小的一半
 
 #### TCP 实战抓包分析
-* [Linux tcp fast open](https://blog.csdn.net/zgy666/article/details/110704368)
+* [Linux tcp fast open](https://blog.csdn.net/zgy666/article/details/110704368)，参数：net.ipv4.tcp_fastopen
   * 第一次建立tcp连接，客户端将服务端给的cookie存入hash表tcp_metrics_hash，接着该连接断开
   * 第二次直接发送数据，在第一个sync包里携带data数据+cookie，服务端直接将data数据放入socket的接收队列
   * [图示](../images/fast-open.png)
-
+* [糊涂窗口综合症和Nagle算法](https://developer.aliyun.com/article/41930)
+* 糊涂窗口综合征(SWS)：每次数据包只有少量有效载荷
+* 发送端引起的SWS：
+  * 用户态每次只write一个字节
+  * 解决：Nagle算法，延迟发送
+* 接收端引起的SWS：
+  * 用户态每次只read一个字节，导致接收缓冲区只有一字节窗口
+  * 解决1：Clark算法，接收窗口<MSS则直接告知窗口为0
+  * 解决2：延迟确认
+* Nagle算法，[代码](https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_output.c#L1946)
+  * 4.14之前可以设置net.ipv4.tcp_low_latency=1关闭，或者设置TCP_NODELAY
+  * 如果包长度达到 MSS ，则允许发送；
+  * 如果该包含有 FIN ，则允许发送；
+  * 如果设置了 TCP_NODELAY 选项，则允许发送；
+  * 如果所有发出去的小数据包（包长度小于 MSS ）均被确认，则允许发送；
+  * 上述条件都未满足，但发生了超时（一般为 200ms），则立即发送。
+* 延迟确认：通过设置TCP_QUICKACK关闭
+  * 当有响应数据要发送时，ACK 会随着响应数据一起立刻发送给对方
+  * 当对方的第二个数据报文又到达了，这时就会立刻发送 ACK
+  * 上述条件都未满足，但发生了超时（一般为 40ms），则立即发送。
 
 
 
