@@ -109,8 +109,9 @@
 * [Linux tcp fast open](https://blog.csdn.net/zgy666/article/details/110704368)
   * 第一次建立tcp连接，客户端将服务端给的cookie存入hash表tcp_metrics_hash，接着该连接断开
   * 第二次直接发送数据，在第一个sync包里携带data数据+cookie，服务端直接将data数据放入socket的接收队列
+  * [图示](../images/fast-open.png)
 
-![img](../images/fast-open.png)
+
 
 
 
