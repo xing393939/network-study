@@ -305,7 +305,7 @@
 09:43:20.233041 IP 172.26.57.241.52568 &gt; 119.111.132.34.bc.googleusercontent.com.ssh: Flags [S], seq 892811371, win 64240, options [mss 1460,sackOK,TS val 85074024 ecr 0,nop,wscale 7], length 0
 09:43:20.497136 IP 119.111.132.34.bc.googleusercontent.com.ssh &gt; 172.26.57.241.52568: Flags [S.], seq 2070286581, ack 892811372, win 64768, options [mss 1420,sackOK,TS val 1395913942 ecr 85074024,nop,wscale 7], length 0
 09:43:20.497198 IP 172.26.57.241.52568 &gt; 119.111.132.34.bc.googleusercontent.com.ssh: Flags [R], seq 892811372, win 0, length 0
-</code></pre><p>3&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x6536;&#x5230;&#x6570;&#x636E;&#x540E;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x5C31;&#x5173;&#x95ED;&#xFF1A;tcp-reset/socket-linger</p>
+</code></pre><p>3&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x6536;&#x5230;&#x6570;&#x636E;&#x540E;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x5C31;&#x5173;&#x95ED;&#xFF1A;tcp-reset/unfinished-reading</p>
 <pre><code>// &#x670D;&#x52A1;&#x7AEF;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x518D;&#x5173;&#x95ED;&#x662F;&#x6B63;&#x5E38;&#x56DB;&#x6B21;&#x6325;&#x624B;&#xFF1A;
 10:00:58.546545 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [S], seq 3909499080, win 64240, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
 10:00:58.546622 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [S.], seq 1326547430, ack 3909499081, win 64240, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0
@@ -317,13 +317,21 @@
 10:00:59.841894 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [F.], seq 2, ack 2, win 8212, length 0
 10:00:59.841979 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [.], ack 3, win 502, length 0
 
-// &#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x518D;&#x5173;&#x95ED;&#x5219;&#x53D1;&#x9001;reset&#x5305;
+// &#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x5C31;&#x5173;&#x95ED;&#x5219;&#x53D1;&#x9001;reset&#x5305;
 10:02:39.980532 IP 172.26.48.1.5027 &gt; 172.26.57.241.8888: Flags [S], seq 3647281635, win 64240, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
 10:02:39.980590 IP 172.26.57.241.8888 &gt; 172.26.48.1.5027: Flags [S.], seq 3449189153, ack 3647281636, win 64240, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0
 10:02:39.980953 IP 172.26.48.1.5027 &gt; 172.26.57.241.8888: Flags [.], ack 1, win 8212, length 0
 10:02:50.893702 IP 172.26.48.1.5027 &gt; 172.26.57.241.8888: Flags [P.], seq 1:11, ack 1, win 8212, length 10
 10:02:50.893795 IP 172.26.57.241.8888 &gt; 172.26.48.1.5027: Flags [.], ack 11, win 502, length 0
 10:02:50.895067 IP 172.26.57.241.8888 &gt; 172.26.48.1.5027: Flags [R.], seq 1, ack 11, win 502, length 0
+</code></pre><p>4&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x524D;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x540E;&#x6536;&#x5230;&#x6570;&#x636E;&#x53D1;&#x9001;reset&#x5305;&#xFF1A;tcp-reset/send-to-closed</p>
+<pre><code>10:36:49.804130 IP localhost.46682 &gt; localhost.8888: Flags [S], seq 3903810068, win 65495, options [mss 65495,sackOK,TS val 2089772173 ecr 0,nop,wscale 7], length 0
+10:36:49.804145 IP localhost.8888 &gt; localhost.46682: Flags [S.], seq 3222365031, ack 3903810069, win 65483, options [mss 65495,sackOK,TS val 2089772173 ecr 2089772173,nop,wscale 7], length 0
+10:36:49.804155 IP localhost.46682 &gt; localhost.8888: Flags [.], ack 1, win 512, options [nop,nop,TS val 2089772173 ecr 2089772173], length 0
+10:36:49.804500 IP localhost.8888 &gt; localhost.46682: Flags [F.], seq 1, ack 1, win 512, options [nop,nop,TS val 2089772173 ecr 2089772173], length 0
+10:36:49.808128 IP localhost.46682 &gt; localhost.8888: Flags [.], ack 2, win 512, options [nop,nop,TS val 2089772177 ecr 2089772173], length 0
+10:37:01.481115 IP localhost.46682 &gt; localhost.8888: Flags [P.], seq 1:6, ack 2, win 512, options [nop,nop,TS val 2089783850 ecr 2089772173], length 5
+10:37:01.481138 IP localhost.8888 &gt; localhost.46682: Flags [R], seq 3222365033, win 0, length 0
 </code></pre>
                                 
                                 </section>
@@ -367,7 +375,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCP reset的场景","level":"1.11","depth":1,"next":{"title":"网络协议栈初始化","level":"1.12","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"previous":{"title":"nf五链四表","level":"1.10","depth":1,"path":"docs/netfilter.md","ref":"docs/netfilter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/tcp-reset.md","mtime":"2023-06-15T02:04:46.842Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-15T02:05:11.877Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCP reset的场景","level":"1.11","depth":1,"next":{"title":"网络协议栈初始化","level":"1.12","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"previous":{"title":"nf五链四表","level":"1.10","depth":1,"path":"docs/netfilter.md","ref":"docs/netfilter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/tcp-reset.md","mtime":"2023-06-15T02:40:05.623Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-15T02:40:39.428Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
