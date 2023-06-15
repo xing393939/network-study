@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>mac协议 · GitBook</title>
+        <title>TCP reset的场景 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-ip.html" />
+    <link rel="next" href="network-proto-init.html" />
     
     
-    <link rel="prev" href="graphical-network.html" />
+    <link rel="prev" href="netfilter.html" />
     
 
     </head>
@@ -117,7 +117,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="protocal-mac.html">
+        <li class="chapter " data-level="1.3" data-path="protocal-mac.html">
             
                 <a href="protocal-mac.html">
             
@@ -221,7 +221,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="tcp-reset.html">
+        <li class="chapter active" data-level="1.11" data-path="tcp-reset.html">
             
                 <a href="tcp-reset.html">
             
@@ -277,7 +277,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >mac协议</a>
+        <a href=".." >TCP reset的场景</a>
     </h1>
 </div>
 
@@ -292,25 +292,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="mac&#x534F;&#x8BAE;">mac&#x534F;&#x8BAE;</h3>
-<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
+                                <h3 id="tcp-reset&#x7684;&#x573A;&#x666F;">TCP reset&#x7684;&#x573A;&#x666F;</h3>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Ethernet_frame" target="_blank">Ethernet frame</a></li>
-<li><a href="https://en.wikipedia.org/wiki/EtherType#Values" target="_blank">Ethernet frame - EtherType</a></li>
-<li><a href="https://www.ibm.com/support/pages/ethernet-version-2-versus-ieee-8023-ethernet" target="_blank">Ethernet Version 2 Versus IEEE 802.3 Ethernet</a></li>
+<li><a href="https://www.cnblogs.com/muahao/p/9257166.html" target="_blank">&#x5B9E;&#x6218;:tcp&#x94FE;&#x63A5;rst&#x573A;&#x666F;tcpdump&#x5206;&#x6790;</a></li>
 </ul>
-<pre><code>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  MAC dst  |  MAC src  | E |                           |  FCS  |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                          Ethernet II &#x5728;&#x4E8C;&#x5C42;&#x534F;&#x8BAE;&#x7684;&#x5B9A;&#x4E49;
+<p>1&#xFF0C;&#x9488;&#x5BF9;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x7AEF;&#x53E3;&#x7684;&#x8FDE;&#x8BF7;&#x6C42;&#xFF1A;telnet 192.168.2.120 52200</p>
+<pre><code>09:14:25.209695 IP 172.26.57.241.41498 &gt; 192.168.2.120.52200: Flags [S], seq 4126009844, win 64240, options [mss 1460,sackOK,TS val 3116949491 ecr 0,nop,wscale 7], length 0
+09:14:25.210643 IP 192.168.2.120.52200 &gt; 172.26.57.241.41498: Flags [R.], seq 0, ack 4126009845, win 0, length 0
+</code></pre><p>2&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x63E1;&#x624B;&#x540E;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#xFF1A;tcp-reset/connect-timeout</p>
+<pre><code>// &#x8FDE;&#x63A5;&#x56FD;&#x5916;&#x670D;&#x52A1;&#x5668;&#xFF0C;connect&#x8D85;&#x8FC7;100ms&#x5C31;&#x5173;&#x95ED;&#x8FDE;&#x63A5;
+09:43:20.233041 IP 172.26.57.241.52568 &gt; 119.111.132.34.bc.googleusercontent.com.ssh: Flags [S], seq 892811371, win 64240, options [mss 1460,sackOK,TS val 85074024 ecr 0,nop,wscale 7], length 0
+09:43:20.497136 IP 119.111.132.34.bc.googleusercontent.com.ssh &gt; 172.26.57.241.52568: Flags [S.], seq 2070286581, ack 892811372, win 64768, options [mss 1420,sackOK,TS val 1395913942 ecr 85074024,nop,wscale 7], length 0
+09:43:20.497198 IP 172.26.57.241.52568 &gt; 119.111.132.34.bc.googleusercontent.com.ssh: Flags [R], seq 892811372, win 0, length 0
+</code></pre><p>3&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x6536;&#x5230;&#x6570;&#x636E;&#x540E;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x5C31;&#x5173;&#x95ED;&#xFF1A;tcp-reset/socket-linger</p>
+<pre><code>// &#x670D;&#x52A1;&#x7AEF;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x518D;&#x5173;&#x95ED;&#x662F;&#x6B63;&#x5E38;&#x56DB;&#x6B21;&#x6325;&#x624B;&#xFF1A;
+10:00:58.546545 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [S], seq 3909499080, win 64240, options [mss 1460,nop,wscale 8,nop,nop,sackOK], length 0
+10:00:58.546622 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [S.], seq 1326547430, ack 3909499081, win 64240, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0
+10:00:58.546809 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [.], ack 1, win 8212, length 0
+10:00:59.837538 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [P.], seq 1:2, ack 1, win 8212, length 1
+10:00:59.837653 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [.], ack 2, win 502, length 0
+10:00:59.840525 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [F.], seq 1, ack 2, win 502, length 0
+10:00:59.841152 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [.], ack 2, win 8212, length 0
+10:00:59.841894 IP 172.26.48.1.16319 &gt; 172.26.57.241.8888: Flags [F.], seq 2, ack 2, win 8212, length 0
+10:00:59.841979 IP 172.26.57.241.8888 &gt; 172.26.48.1.16319: Flags [.], ack 3, win 502, length 0
 
-MAC dst: &#x76EE;&#x6807;mac
-MAC src: &#x539F;&#x59CB;mac
-E:       EtherType
-         0x0800 - IPv4
-         0x0806 - ARP
-         0x86DD - IPv6
-FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#x5C55;&#x793A;&#x5B83;
+// &#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x518D;&#x5173;&#x95ED;&#x5219;&#x53D1;&#x9001;reset&#x5305;
 </code></pre>
                                 
                                 </section>
@@ -338,12 +345,12 @@ FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#
 
             
                 
-                <a href="graphical-network.html" class="navigation navigation-prev " aria-label="Previous page: 图解网络">
+                <a href="netfilter.html" class="navigation navigation-prev " aria-label="Previous page: nf五链四表">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="protocal-ip.html" class="navigation navigation-next " aria-label="Next page: ip协议">
+                <a href="network-proto-init.html" class="navigation navigation-next " aria-label="Next page: 网络协议栈初始化">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -354,7 +361,7 @@ FCS:     Frame Check Sequence&#xFF0C;wireshark&#x6293;&#x5305;&#x4E0D;&#x4F1A;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mac协议","level":"1.3","depth":1,"next":{"title":"ip协议","level":"1.4","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"previous":{"title":"图解网络","level":"1.2","depth":1,"path":"docs/graphical-network.md","ref":"docs/graphical-network.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-mac.md","mtime":"2023-06-15T02:03:44.787Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-15T02:04:14.919Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCP reset的场景","level":"1.11","depth":1,"next":{"title":"网络协议栈初始化","level":"1.12","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"previous":{"title":"nf五链四表","level":"1.10","depth":1,"path":"docs/netfilter.md","ref":"docs/netfilter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/tcp-reset.md","mtime":"2023-06-15T02:03:44.787Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-15T02:04:14.919Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
