@@ -162,7 +162,6 @@ done
 shift $(( $OPTIND - 1 ))
 
 ### option logic
-(( $# == 0 )) && usage
 (( opt_pid && opt_tid )) && edie "ERROR: You can use -p or -L but not both."
 funcs="$1"
 (( opt_pid )) && pidtext=" for PID $pid"
@@ -209,13 +208,15 @@ fi
 if ! echo > set_ftrace_filter; then
 	edie "ERROR: writing to set_ftrace_filter. Exiting."
 fi
-if ! echo "$funcs" > set_graph_function; then
-	edie "ERROR: enabling \"$funcs\". Exiting."
+if (( funcs )); then
+    if ! echo "$funcs" > set_graph_function; then
+        edie "ERROR: enabling \"$funcs\". Exiting."
+    fi
 fi
 if ! echo function_graph > current_tracer; then
 	edie "ERROR: setting current_tracer to \"function\". Exiting."
 fi
-if ! echo -e "kprobe_ftrace_handler\nvprintk" > set_graph_notrace; then
+if ! echo -e "kretprobe_rethook_handler\nkprobe_ftrace_handler\nvprintk" > set_graph_notrace; then
 	edie "ERROR: kprobe_ftrace_handler > set_graph_notrace. Exiting."
 fi
 if (( opt_cpu )); then
