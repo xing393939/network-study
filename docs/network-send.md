@@ -37,8 +37,8 @@ ip_queue_xmit() {
 dev_hard_start_xmit() {
   xmit_one(skb, dev, ...) {
     dev_queue_xmit_nit(skb, dev) {
-      list_for_each_entry_rcu(ptype, ptype_list, list) {
-        deliver_skb(skb2, pt_prev, skb->dev); // 执行 tcpdump 挂在上面的虚拟协议packet_rcv
+      list_for_each_entry_rcu(ptype, ptype_list, list) { // 这里的ptype_list即全局变量ptype_all
+        deliver_skb(skb2, pt_prev, skb->dev);            // 执行 tcpdump 挂在上面的虚拟协议packet_rcv
       }
     }
   }
