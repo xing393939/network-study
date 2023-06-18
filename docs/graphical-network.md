@@ -138,6 +138,18 @@
   * 若是非LISTEN 状态，Recv-Q/Send-Q表示已接收未被应用层读取的字节/表示已发送未被ack的字节
 * 2.6.30源码、5.0.0源码
 
+#### 4.5 如何优化TCP
+* 使用tcp_tw_reuse和tcp_timestamps，tcp_tw_recycle已经废弃
+  * 服务端如果开启了tcp_tw_recycle+tcp_timestamps，会对客户端ip进行PAWS
+  * （PAWS只检查ip+时间戳，而不是ip+port+时间戳，因此会误伤连接）
+* TIME_WAIT、FIN_WAIT-2、CLOSE-WAIT
+  * TIME-WAIT的超时时间是写死的2MSL，linux是60秒
+  * FIN_WAIT-2的超时时间是net.ipv4.tcp_fin_timeout
+  * CLOSE-WAIT没有超时时间，需要用户态主动关闭
+* 关闭连接：
+  * 主动方close，相当于同时关闭发送端和接收端，后续收到数据返回reset
+  * 主动方shutdown，可以选择是否关闭发送端和接收端
+
 
 
 
