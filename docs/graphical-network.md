@@ -3,7 +3,7 @@
 #### 参考资料
 * [图解网络](https://xiaolincoding.com/network/)
 
-#### 键入网址到网页显示，期间发生了什么
+#### 2.2 键入网址到网页显示，期间发生了什么
 * 域名DNS解析依次是：
   * 根 DNS 服务器（.）
   * 顶级域 DNS 服务器（.com）
@@ -29,14 +29,14 @@
   * 第二步中X网关把源ipA变成ipX的过程是SNAT：源地址转换
   * 第三步中Y网关把目标ipY变成ipB的过程是DNAT：目标地址转换
 
-#### linux网络是如何收发网络包的
+#### 2.3 linux网络是如何收发网络包的
 * 发送TCP网络包，三次数据拷贝：
   * 进入内核态时，先拷贝为内核态的 sk_buff 内存
   * 传输层到网络层时，会拷贝一个副本 sk_buff，此副本在网卡发送成功后会释放掉
   * 传输层到网络层时，当收到ACK响应后，释放原始的 sk_buff
   * 当网络层发现 sk_buff 大于MTU时，还需要分片
 
-#### HTTP常见面试题
+#### 3.1 HTTP常见面试题
 * 浏览器缓存
   * 根据Cache-Control，决定是否读本地缓存
   * 根据Etag发起请求（header头设置If-None-Match），如果是304则读本地缓存
@@ -51,7 +51,7 @@
   * 更快的连接建立：tcp+tls是分层的，tcp三次握手+tls四次握手，而quic是一起的
   * 连接迁移：采用连接id而不是五元组，这样就算客户端ip变了，连接也没有断开
 
-#### TCP 三次握手与四次挥手面试题
+#### 4.1 TCP 三次握手与四次挥手面试题
 * UDP头部有data的长度字段，TCP没有，TCP的data的长度计算方式如下：
   * ip包总长度 - ip头长度 - tcp头长度
   * （UDP其实也能这样算data的长度）
@@ -75,7 +75,7 @@
 * 第四次挥手丢包后，不会重传包，等待2MSL关闭
   * 2MSL = `#define TCP_TIMEWAIT_LEN` = 60秒
 
-#### TCP 超时重传、滑动窗口、流量控制、拥塞控制
+#### 4.2 TCP 超时重传、滑动窗口、流量控制、拥塞控制
 * 超时重传-名词：
   * RTT：发送方发包到收到ack包的时间间隔
   * RTO：发送方发包丢包后多久重发包
@@ -105,7 +105,7 @@
     * 过程中：每收到一个ack，cwnd = cwnd + 1
     * 结束时：当收到新数据的ack退出快速恢复，cwnd变成原窗口大小的一半
 
-#### TCP 实战抓包分析
+#### 4.3 TCP 实战抓包分析
 * [Linux tcp fast open](https://blog.csdn.net/zgy666/article/details/110704368)，参数：net.ipv4.tcp_fastopen
   * 第一次建立tcp连接，客户端将服务端给的cookie存入hash表tcp_metrics_hash，接着该连接断开
   * 第二次直接发送数据，在第一个sync包里携带data数据+cookie，服务端直接将data数据放入socket的接收队列
@@ -131,7 +131,12 @@
   * 当对方的第二个数据报文又到达了，这时就会立刻发送 ACK
   * 上述条件都未满足，但发生了超时（一般为 40ms），则立即发送。
 
-
+#### 4.4 TCP全连接队列和半连接队列
+* [TCP Socket Listen: A Tale of Two Queues](http://arthurchiao.art/blog/tcp-listen-a-tale-of-two-queues/)
+* ss命令查看TCP socket
+  * 若是LISTEN 状态，Recv-Q/Send-Q表示未被accept的个数/全连接的长度
+  * 若是非LISTEN 状态，Recv-Q/Send-Q表示已接收未被应用层读取的字节/表示已发送未被ack的字节
+* 2.6.30源码、5.0.0源码
 
 
 
