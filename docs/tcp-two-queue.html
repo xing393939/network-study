@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>tcp协议 · GitBook</title>
+        <title>建立tcp连接的两个队列 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-ws.html" />
+    <link rel="next" href="tcp-reset.html" />
     
     
-    <link rel="prev" href="protocal-ip.html" />
+    <link rel="prev" href="network-proto-init.html" />
     
 
     </head>
@@ -150,7 +150,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="protocal-tcp.html">
+        <li class="chapter " data-level="2.3" data-path="protocal-tcp.html">
             
                 <a href="protocal-tcp.html">
             
@@ -248,7 +248,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="tcp-two-queue.html">
+        <li class="chapter active" data-level="3.5" data-path="tcp-two-queue.html">
             
                 <a href="tcp-two-queue.html">
             
@@ -311,7 +311,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >tcp协议</a>
+        <a href=".." >建立tcp连接的两个队列</a>
     </h1>
 </div>
 
@@ -326,54 +326,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="tcp&#x534F;&#x8BAE;">tcp&#x534F;&#x8BAE;</h3>
-<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
+                                <h3 id="&#x5EFA;&#x7ACB;tcp&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x4E2A;&#x961F;&#x5217;">&#x5EFA;&#x7ACB;tcp&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x4E2A;&#x961F;&#x5217;</h3>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
-<li><a href="https://www.rfc-editor.org/rfc/rfc9293" target="_blank">rfc 791</a></li>
-<li><a href="https://mp.weixin.qq.com/s/YpQGsRyyrGNDu1cOuMy83w" target="_blank">&#x65E2;&#x7136;IP&#x5C42;&#x4F1A;&#x5206;&#x7247;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;TCP&#x5C42;&#x4E5F;&#x8FD8;&#x8981;&#x5206;&#x6BB5;&#xFF1F;</a></li>
+<li><a href="http://arthurchiao.art/blog/tcp-listen-a-tale-of-two-queues/" target="_blank">TCP Socket Listen: A Tale of Two Queues (2022)</a></li>
 </ul>
-<pre><code>    0                   1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          Source Port          |       Destination Port        |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                        Sequence Number                        |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                    Acknowledgment Number                      |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  Data |       |C|E|U|A|P|R|S|F|                               |
-   | Offset| Rsrvd |W|C|R|C|S|S|Y|I|            Window             |
-   |       |       |R|E|G|K|H|T|N|N|                               |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |           Checksum            |         Urgent Pointer        |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                           [Options]                           |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                                                               :
-   :                             Data                              :
-   :                                                               |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-Src Port:              &#x6E90;&#x59CB;port
-Dst Port:              &#x76EE;&#x6807;port
-Sequence Number:       Seq ID
-Acknowledgment Number: Ack ID
-Data Offset:           tcp&#x5934;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x82E5;&#x503C;&#x4E3A;8&#x8868;&#x793A;tcp&#x5934;&#x662F;8*4&#x5B57;&#x8282;
-Rsrvd:                 &#x4FDD;&#x7559;&#x5B57;&#x6BB5;
-CWR:                   Congestion Window Reduced
-ECE:                   ECN-Echo
-URG:                   Urgent pointer field is significant.
-ACK:                   Acknowledgment field is significant.
-PSH:                   Push function 
-RST:                   Reset the connection.
-SYN:                   Synchronize sequence numbers.
-FIN:                   No more data from sender.
-Window:                &#x7A97;&#x53E3;&#x5927;&#x5C0F;
-Checksum:              &#x6821;&#x9A8C;tcp&#x5934;+&#x5E94;&#x7528;&#x6570;&#x636E;
-Urgent Pointer:        &#x7D27;&#x6025;&#x6307;&#x9488;&#xFF0C;&#x4EC5;&#x5F53;URG=1&#x65F6;&#x4F7F;&#x7528;
-
-&#xFF08;ACK&#x5B57;&#x6BB5;&#x9664;&#x4E86;&#x7B2C;&#x4E00;&#x6B21;&#x63E1;&#x624B;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x65F6;&#x523B;&#x90FD;&#x5FC5;&#x987B;&#x662F;1&#xFF09;
-</code></pre><p><img src="../images/tcp_options.png" alt="img"></p>
 
                                 
                                 </section>
@@ -401,12 +358,12 @@ Urgent Pointer:        &#x7D27;&#x6025;&#x6307;&#x9488;&#xFF0C;&#x4EC5;&#x5F53;U
 
             
                 
-                <a href="protocal-ip.html" class="navigation navigation-prev " aria-label="Previous page: ip协议">
+                <a href="network-proto-init.html" class="navigation navigation-prev " aria-label="Previous page: 网络协议栈初始化">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="protocal-ws.html" class="navigation navigation-next " aria-label="Next page: websocket协议">
+                <a href="tcp-reset.html" class="navigation navigation-next " aria-label="Next page: TCP reset的场景">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -417,7 +374,7 @@ Urgent Pointer:        &#x7D27;&#x6025;&#x6307;&#x9488;&#xFF0C;&#x4EC5;&#x5F53;U
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tcp协议","level":"2.3","depth":1,"next":{"title":"websocket协议","level":"2.4","depth":1,"path":"docs/protocal-ws.md","ref":"docs/protocal-ws.md","articles":[]},"previous":{"title":"ip协议","level":"2.2","depth":1,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tcp.md","mtime":"2023-06-20T09:09:41.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-20T09:10:10.624Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"建立tcp连接的两个队列","level":"3.5","depth":1,"next":{"title":"TCP reset的场景","level":"4.1","depth":1,"path":"docs/tcp-reset.md","ref":"docs/tcp-reset.md","articles":[]},"previous":{"title":"网络协议栈初始化","level":"3.4","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/tcp-two-queue.md","mtime":"2023-06-20T09:09:41.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-20T09:10:10.624Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
