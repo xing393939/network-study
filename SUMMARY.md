@@ -15,6 +15,7 @@
 * [网络包接收](docs/network-recv.md)
 * [nf五链四表](docs/netfilter.md)
 * [网络协议栈初始化](docs/network-proto-init.md)
+* [建立tcp连接的两个队列](docs/tcp-two-queue.md)
 
 ### 实践
 * [TCP reset的场景](docs/tcp-reset.md)
