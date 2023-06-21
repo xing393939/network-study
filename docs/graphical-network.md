@@ -133,10 +133,26 @@
 
 #### 4.4 TCP全连接队列和半连接队列
 * [TCP Socket Listen: A Tale of Two Queues](http://arthurchiao.art/blog/tcp-listen-a-tale-of-two-queues/)
-* ss命令查看TCP socket
+* ss命令查看TCP socket，见[源码](https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_diag.c#L18)
   * 若是LISTEN 状态，Recv-Q/Send-Q表示未被accept的个数/全连接的长度
   * 若是非LISTEN 状态，Recv-Q/Send-Q表示已接收未被应用层读取的字节/表示已发送未被ack的字节
-* 2.6.30源码、5.0.0源码
+```
+# 2.6.30源码
+// 通过sk->sk_max_ack_backlog取得，见源码：https://elixir.bootlin.com/linux/v2.6.32/source/net/socket.c#L1447
+全连接队列长度 = min(backlog, net.core.somaxconn) 
+
+// 通过queue->listen_opt->max_qlen_log取得，见源码：https://elixir.bootlin.com/linux/v2.6.32/source/net/core/request_sock.c#L37
+半连接队列长度 = min(backlog, net.core.somaxconn, net.ipv4.tcp_max_syn_backlog) * 2 
+
+# 5.0.0源码
+// 通过sk->sk_max_ack_backlog取得，见源码：https://elixir.bootlin.com/linux/v5.19/source/net/socket.c#L1806
+全连接队列长度 = min(backlog, net.core.somaxconn)
+
+半连接队列长度 = net.ipv4.tcp_max_syn_backlog，同时有如下控制逻辑：
+1. 若当前半连接的个数>全连接队列长度，drop或者reset
+2. 若全连接队列满了，drop
+3. 若当前半连接的个数>半连接队列长度的3/4，drop
+```  
 
 #### 4.5 如何优化TCP
 * 使用tcp_tw_reuse和tcp_timestamps，tcp_tw_recycle已经废弃
