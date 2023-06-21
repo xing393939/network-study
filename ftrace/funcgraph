@@ -63,7 +63,7 @@
 #
 #  (http://www.gnu.org/copyleft/gpl.html)
 #
-# 12-Jul-2014	Brendan Gregg	Created this.
+# 12-Jul-2014    Brendan Gregg    Created this.
 
 ### default variables
 tracing=/sys/kernel/debug/tracing
@@ -71,91 +71,90 @@ flock=/var/tmp/.ftrace-lock
 opt_duration=0; duration=; opt_pid=0; pid=; pidtext=
 opt_headers=0; opt_proc=0; opt_time=0; opt_tail=0; opt_nodur=0; opt_cpu=0
 opt_max=0; max=0
-trap ':' INT QUIT TERM PIPE HUP	# sends execution to end tracing section
+trap ':' INT QUIT TERM PIPE HUP    # sends execution to end tracing section
 
 function usage {
-	cat <<-END >&2
-	USAGE: funcgraph [-aCDhHPtT] [-m maxdepth] [-p PID] [-d secs] funcstring
-	                 -a              # all info (same as -HPt)
-	                 -C              # measure on-CPU time only
-	                 -d seconds      # trace duration, and use buffers
-	                 -D              # do not show function duration
-	                 -h              # this usage message
-	                 -H              # include column headers
-	                 -m maxdepth     # max stack depth to show
-	                 -p PID          # trace when this pid is on-CPU
-	                 -P              # show process names & PIDs
-	                 -t              # show timestamps
-	                 -T              # comment function tails
-	  eg,
-	       funcgraph do_nanosleep    # trace do_nanosleep() and children
-	       funcgraph -m 3 do_sys_open # trace do_sys_open() to 3 levels only
-	       funcgraph -a do_sys_open    # include timestamps and process name
-	       funcgraph -p 198 do_sys_open # trace vfs_read() for PID 198 only
-	       funcgraph -d 1 do_sys_open >out # trace 1 sec, then write to file
+    cat <<-END >&2
+    USAGE: funcgraph [-aCDhHPtT] [-m maxdepth] [-p PID] [-d secs] funcstring
+                     -a              # all info (same as -HPt)
+                     -C              # measure on-CPU time only
+                     -d seconds      # trace duration, and use buffers
+                     -D              # do not show function duration
+                     -h              # this usage message
+                     -H              # include column headers
+                     -m maxdepth     # max stack depth to show
+                     -p PID          # trace when this pid is on-CPU
+                     -P              # show process names & PIDs
+                     -t              # show timestamps
+                     -T              # comment function tails
+      eg,
+           funcgraph do_nanosleep    # trace do_nanosleep() and children
+           funcgraph -m 3 do_sys_open # trace do_sys_open() to 3 levels only
+           funcgraph -a do_sys_open    # include timestamps and process name
+           funcgraph -p 198 do_sys_open # trace vfs_read() for PID 198 only
+           funcgraph -d 1 do_sys_open >out # trace 1 sec, then write to file
 
-	See the man page and example file for more info.
+    See the man page and example file for more info.
 END
-	exit
+    exit
 }
 
 function warn {
-	if ! eval "$@"; then
-		echo >&2 "WARNING: command failed \"$@\""
-	fi
+    if ! eval "$@"; then
+        echo >&2 "WARNING: command failed \"$@\""
+    fi
 }
 
 function end {
-	# disable tracing
-	echo 2>/dev/null
-	echo "Ending tracing..." 2>/dev/null
-	cd $tracing
+    # disable tracing
+    echo 2>/dev/null
+    echo "Ending tracing..." 2>/dev/null
+    cd $tracing
 
-	(( opt_time )) && warn "echo nofuncgraph-abstime > trace_options"
-	(( opt_proc )) && warn "echo nofuncgraph-proc > trace_options"
-	(( opt_tail )) && warn "echo nofuncgraph-tail > trace_options"
-	(( opt_nodur )) && warn "echo funcgraph-duration > trace_options"
-	(( opt_cpu )) && warn "echo sleep-time > trace_options"
+    (( opt_nodur )) && warn "echo funcgraph-duration > trace_options"
+    (( opt_time )) && warn "echo nofuncgraph-abstime > trace_options"
+    (( opt_proc )) && warn "echo nofuncgraph-proc > trace_options"
+    (( opt_tail )) && warn "echo nofuncgraph-tail > trace_options"
+    (( opt_cpu )) && warn "echo sleep-time > trace_options"
+    (( opt_pid )) && warn "echo > set_ftrace_pid"
+    (( opt_max )) && warn "echo 0 > max_graph_depth"
+    warn "echo > set_graph_function"
+    warn "echo > trace"
+    warn "echo 0 > tracing_on"
+    warn "echo nop > current_tracer"
 
-	warn "echo nop > current_tracer"
-	(( opt_pid )) && warn "echo > set_ftrace_pid"
-	(( opt_max )) && warn "echo 0 > max_graph_depth"
-	warn "echo > set_graph_function"
-	warn "echo > trace"
-	warn "echo 0 > tracing_on"
-
-	(( wroteflock )) && warn "rm $flock"
+    (( wroteflock )) && warn "rm $flock"
 }
 
 function die {
-	echo >&2 "$@"
-	exit 1
+    echo >&2 "$@"
+    exit 1
 }
 
 function edie {
-	# die with a quiet end()
-	echo >&2 "$@"
-	exec >/dev/null 2>&1
-	end
-	exit 1
+    # die with a quiet end()
+    echo >&2 "$@"
+    exec >/dev/null 2>&1
+    end
+    exit 1
 }
 
 ### process options
-while getopts aCd:DhHm:p:L:PtT opt
+while getopts aCd:DhHm:p:PtT opt
 do
-	case $opt in
-	a)	opt_headers=1; opt_proc=1; opt_time=1 ;;
-	C)	opt_cpu=1; ;;
-	d)	opt_duration=1; duration=$OPTARG ;;
-	D)	opt_nodur=1; ;;
-	m)	opt_max=1; max=$OPTARG ;;
-	p)	opt_pid=1; pid=$OPTARG ;;
-	H)	opt_headers=1; ;;
-	P)	opt_proc=1; ;;
-	t)	opt_time=1; ;;
-	T)	opt_tail=1; ;;
-	h|?)	usage ;;
-	esac
+    case $opt in
+    a)    opt_headers=1; opt_proc=1; opt_time=1 ;;
+    C)    opt_cpu=1; ;;
+    d)    opt_duration=1; duration=$OPTARG ;;
+    D)    opt_nodur=1; ;;
+    m)    opt_max=1; max=$OPTARG ;;
+    p)    opt_pid=1; pid=$OPTARG ;;
+    H)    opt_headers=1; ;;
+    P)    opt_proc=1; ;;
+    t)    opt_time=1; ;;
+    T)    opt_tail=1; ;;
+    h|?)    usage ;;
+    esac
 done
 shift $(( $OPTIND - 1 ))
 
@@ -163,9 +162,9 @@ shift $(( $OPTIND - 1 ))
 funcs="$1"
 (( opt_pid )) && pidtext=" for PID $pid"
 if (( opt_duration )); then
-	echo "Tracing \"$funcs\"$pidtext for $duration seconds..."
+    echo "Tracing \"$funcs\"$pidtext for $duration seconds..."
 else
-	echo "Tracing \"$funcs\"$pidtext... Ctrl-C to end."
+    echo "Tracing \"$funcs\"$pidtext... Ctrl-C to end."
 fi
 
 ### check permissions
@@ -178,14 +177,14 @@ echo $$ > $flock || die "ERROR: unable to write $flock."
 wroteflock=1
 
 ### setup and commence tracing
-sysctl -q kernel.ftrace_enabled=1	# doesn't set exit status
+sysctl -q kernel.ftrace_enabled=1
 warn "echo 1 > tracing_on"
 read mode < current_tracer
 [[ "$mode" != "nop" ]] && edie "ERROR: ftrace active (current_tracer=$mode)"
 if (( opt_max )); then
-	if ! echo $max > max_graph_depth; then
-		edie "ERROR: setting -m $max. Older kernel version? Exiting."
-	fi
+    if ! echo $max > max_graph_depth; then
+        edie "ERROR: setting -m $max. Older kernel version? Exiting."
+    fi
 fi
 if (( opt_pid )); then
     echo > set_ftrace_pid
@@ -202,7 +201,7 @@ if (( opt_pid )); then
     done
 fi
 if ! echo > set_ftrace_filter; then
-	edie "ERROR: writing to set_ftrace_filter. Exiting."
+    edie "ERROR: writing to set_ftrace_filter. Exiting."
 fi
 if (( funcs )); then
     if ! echo "$funcs" > set_graph_function; then
@@ -210,51 +209,52 @@ if (( funcs )); then
     fi
 fi
 if ! echo function_graph > current_tracer; then
-	edie "ERROR: setting current_tracer to \"function\". Exiting."
+    edie "ERROR: setting current_tracer to \"function\". Exiting."
 fi
 if ! echo -e "kretprobe_rethook_handler\nkprobe_ftrace_handler\nvprintk" > set_graph_notrace; then
-	edie "ERROR: set_graph_notrace. Exiting."
+    edie "ERROR: set_graph_notrace. Exiting."
 fi
 if (( opt_cpu )); then
-	if ! echo nosleep-time > trace_options; then
-		edie "ERROR: setting -C (nosleep-time). Exiting."
-	fi
+    if ! echo nosleep-time > trace_options; then
+        edie "ERROR: setting -C (nosleep-time). Exiting."
+    fi
 fi
+
 # the following must be done after setting current_tracer
 if (( opt_time )); then
-	if ! echo funcgraph-abstime > trace_options; then
-		edie "ERROR: setting -t (funcgraph-abstime). Exiting."
-	fi
+    if ! echo funcgraph-abstime > trace_options; then
+        edie "ERROR: setting -t (funcgraph-abstime). Exiting."
+    fi
 fi
 if (( opt_proc )); then
-	if ! echo funcgraph-proc > trace_options; then
-		edie "ERROR: setting -P (funcgraph-proc). Exiting."
-	fi
+    if ! echo funcgraph-proc > trace_options; then
+        edie "ERROR: setting -P (funcgraph-proc). Exiting."
+    fi
 fi
 if (( opt_tail )); then
-	if ! echo funcgraph-tail > trace_options; then
-		edie "ERROR: setting -T (funcgraph-tail). Old kernel? Exiting."
-	fi
+    if ! echo funcgraph-tail > trace_options; then
+        edie "ERROR: setting -T (funcgraph-tail). Old kernel? Exiting."
+    fi
 fi
 if (( opt_nodur )); then
-	if ! echo nofuncgraph-duration > trace_options; then
-		edie "ERROR: setting -D (nofuncgraph-duration). Exiting."
-	fi
+    if ! echo nofuncgraph-duration > trace_options; then
+        edie "ERROR: setting -D (nofuncgraph-duration). Exiting."
+    fi
 fi
 
 ### print trace buffer
 warn "echo > trace"
 if (( opt_duration )); then
-	sleep $duration
-	if (( opt_headers )); then
-		cat trace
-	else
-		grep -v '^#' trace
-	fi
+    sleep $duration
+    if (( opt_headers )); then
+        cat trace
+    else
+        grep -v '^#' trace
+    fi
 else
-	# trace_pipe lack headers, so fetch them from trace
-	(( opt_headers )) && cat trace
-	cat trace_pipe
+    # trace_pipe lack headers, so fetch them from trace
+    (( opt_headers )) && cat trace
+    cat trace_pipe
 fi
 
 ### end tracing
