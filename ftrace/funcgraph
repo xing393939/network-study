@@ -203,7 +203,7 @@ fi
 if ! echo > set_ftrace_filter; then
     edie "ERROR: writing to set_ftrace_filter. Exiting."
 fi
-if (( funcs )); then
+if [[ $funcs ]]; then
     if ! echo "$funcs" > set_graph_function; then
         edie "ERROR: enabling \"$funcs\". Exiting."
     fi
