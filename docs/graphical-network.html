@@ -526,26 +526,26 @@
 <li><a href="http://arthurchiao.art/blog/tcp-listen-a-tale-of-two-queues/" target="_blank">TCP Socket Listen: A Tale of Two Queues</a></li>
 <li>ss&#x547D;&#x4EE4;&#x67E5;&#x770B;TCP socket&#xFF0C;&#x89C1;<a href="https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_diag.c#L18" target="_blank">&#x6E90;&#x7801;</a><ul>
 <li>&#x82E5;&#x662F;LISTEN &#x72B6;&#x6001;&#xFF0C;Recv-Q/Send-Q&#x8868;&#x793A;&#x672A;&#x88AB;accept&#x7684;&#x4E2A;&#x6570;/&#x5168;&#x8FDE;&#x63A5;&#x7684;&#x957F;&#x5EA6;</li>
-<li>&#x82E5;&#x662F;&#x975E;LISTEN &#x72B6;&#x6001;&#xFF0C;Recv-Q/Send-Q&#x8868;&#x793A;&#x5DF2;&#x63A5;&#x6536;&#x672A;&#x88AB;&#x5E94;&#x7528;&#x5C42;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;/&#x8868;&#x793A;&#x5DF2;&#x53D1;&#x9001;&#x672A;&#x88AB;ack&#x7684;&#x5B57;&#x8282;
-```<h1 id="2630&#x6E90;&#x7801;">2.6.30&#x6E90;&#x7801;</h1>
-// &#x901A;&#x8FC7;sk-&gt;sk_max_ack_backlog&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;<a href="https://elixir.bootlin.com/linux/v2.6.32/source/net/socket.c#L1447" target="_blank">https://elixir.bootlin.com/linux/v2.6.32/source/net/socket.c#L1447</a>
-&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn) </li>
+<li>&#x82E5;&#x662F;&#x975E;LISTEN &#x72B6;&#x6001;&#xFF0C;Recv-Q/Send-Q&#x8868;&#x793A;&#x5DF2;&#x63A5;&#x6536;&#x672A;&#x88AB;&#x5E94;&#x7528;&#x5C42;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;/&#x8868;&#x793A;&#x5DF2;&#x53D1;&#x9001;&#x672A;&#x88AB;ack&#x7684;&#x5B57;&#x8282;</li>
 </ul>
 </li>
 </ul>
-<p>// &#x901A;&#x8FC7;queue-&gt;listen_opt-&gt;max_qlen_log&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;<a href="https://elixir.bootlin.com/linux/v2.6.32/source/net/core/request_sock.c#L37" target="_blank">https://elixir.bootlin.com/linux/v2.6.32/source/net/core/request_sock.c#L37</a>
-&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn, net.ipv4.tcp_max_syn_backlog) * 2 </p>
-<h1 id="500&#x6E90;&#x7801;">5.0.0&#x6E90;&#x7801;</h1>
-<p>// &#x901A;&#x8FC7;sk-&gt;sk_max_ack_backlog&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;<a href="https://elixir.bootlin.com/linux/v5.19/source/net/socket.c#L1806" target="_blank">https://elixir.bootlin.com/linux/v5.19/source/net/socket.c#L1806</a>
-&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn)</p>
-<p>&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = net.ipv4.tcp_max_syn_backlog&#xFF0C;&#x540C;&#x65F6;&#x6709;&#x5982;&#x4E0B;&#x63A7;&#x5236;&#x903B;&#x8F91;&#xFF1A;</p>
-<ol>
-<li>&#x82E5;&#x5F53;&#x524D;&#x534A;&#x8FDE;&#x63A5;&#x7684;&#x4E2A;&#x6570;&gt;&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6;&#xFF0C;drop&#x6216;&#x8005;reset</li>
-<li>&#x82E5;&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF0C;drop</li>
-<li>&#x82E5;&#x5F53;&#x524D;&#x534A;&#x8FDE;&#x63A5;&#x7684;&#x4E2A;&#x6570;&gt;&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6;&#x7684;3/4&#xFF0C;drop
-```  </li>
-</ol>
-<h4 id="45-&#x5982;&#x4F55;&#x4F18;&#x5316;tcp">4.5 &#x5982;&#x4F55;&#x4F18;&#x5316;TCP</h4>
+<pre><code># 2.6.30&#x6E90;&#x7801;
+// &#x901A;&#x8FC7;sk-&gt;sk_max_ack_backlog&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;https://elixir.bootlin.com/linux/v2.6.32/source/net/socket.c#L1447
+&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn) 
+
+// &#x901A;&#x8FC7;queue-&gt;listen_opt-&gt;max_qlen_log&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;https://elixir.bootlin.com/linux/v2.6.32/source/net/core/request_sock.c#L37
+&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn, net.ipv4.tcp_max_syn_backlog) * 2 
+
+# 5.0.0&#x6E90;&#x7801;
+// &#x901A;&#x8FC7;sk-&gt;sk_max_ack_backlog&#x53D6;&#x5F97;&#xFF0C;&#x89C1;&#x6E90;&#x7801;&#xFF1A;https://elixir.bootlin.com/linux/v5.19/source/net/socket.c#L1806
+&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = min(backlog, net.core.somaxconn)
+
+&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6; = net.ipv4.tcp_max_syn_backlog&#xFF0C;&#x540C;&#x65F6;&#x6709;&#x5982;&#x4E0B;&#x63A7;&#x5236;&#x903B;&#x8F91;&#xFF1A;
+1. &#x82E5;&#x5F53;&#x524D;&#x534A;&#x8FDE;&#x63A5;&#x7684;&#x4E2A;&#x6570;&gt;&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6;&#xFF0C;drop&#x6216;&#x8005;reset
+2. &#x82E5;&#x5168;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF0C;drop
+3. &#x82E5;&#x5F53;&#x524D;&#x534A;&#x8FDE;&#x63A5;&#x7684;&#x4E2A;&#x6570;&gt;&#x534A;&#x8FDE;&#x63A5;&#x961F;&#x5217;&#x957F;&#x5EA6;&#x7684;3/4&#xFF0C;drop
+</code></pre><h4 id="45-&#x5982;&#x4F55;&#x4F18;&#x5316;tcp">4.5 &#x5982;&#x4F55;&#x4F18;&#x5316;TCP</h4>
 <ul>
 <li>&#x4F7F;&#x7528;tcp_tw_reuse&#x548C;tcp_timestamps&#xFF0C;tcp_tw_recycle&#x5DF2;&#x7ECF;&#x5E9F;&#x5F03;<ul>
 <li>&#x670D;&#x52A1;&#x7AEF;&#x5982;&#x679C;&#x5F00;&#x542F;&#x4E86;tcp_tw_recycle+tcp_timestamps&#xFF0C;&#x4F1A;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;ip&#x8FDB;&#x884C;PAWS</li>
@@ -625,7 +625,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-25T03:32:53.684Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-25T03:33:32.122Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-25T06:05:22.832Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-25T06:05:46.469Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
