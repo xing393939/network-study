@@ -136,6 +136,7 @@
 * ss命令查看TCP socket，见[源码](https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_diag.c#L18)
   * 若是LISTEN 状态，Recv-Q/Send-Q表示未被accept的个数/全连接的长度
   * 若是非LISTEN 状态，Recv-Q/Send-Q表示已接收未被应用层读取的字节/表示已发送未被ack的字节
+
 ```
 # 2.6.30源码
 // 通过sk->sk_max_ack_backlog取得，见源码：https://elixir.bootlin.com/linux/v2.6.32/source/net/socket.c#L1447
