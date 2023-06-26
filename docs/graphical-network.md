@@ -179,6 +179,12 @@
   * 序列号算法：计数器每4us加1，根据四元组hash
   * 时间戳判断：序列号每发4G数据就会回绕，辅以时间戳判断数据有效期
 
+#### 4.8 SYN报文什么时候情况下会被丢弃
+1. 客户端在NAT环境下，服务端开启了tcp_tw_recycle
+1. 半连接队列满了，且没有开启syncookies
+1. 全连接队列满了
 
+#### 4.9 已建立连接的TCP，收到SYN会发生什么
+如下图所示，服务端收到重启后的客户端的syn包(相同的sport)，会回复Challenge ACK。而客户端收到此包后，发现ack号不是自己期望的，而回复reset包，见[源码](https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_input.c#L6172)
 
-
+![img](../images/est_syn.png)
