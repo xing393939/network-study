@@ -161,11 +161,11 @@
   * （PAWS只检查ip+时间戳，而不是ip+port+时间戳，因此会误伤连接）
 * TIME_WAIT、FIN_WAIT-2、CLOSE-WAIT
   * TIME-WAIT的超时时间是写死的2MSL，linux是60秒
-  * FIN_WAIT-2的超时时间是net.ipv4.tcp_fin_timeout
+  * FIN_WAIT-2的超时时间是net.ipv4.tcp_fin_timeout(shutdown关闭连接则没有超时时间)
   * CLOSE-WAIT没有超时时间，需要用户态主动关闭
 * 关闭连接：
-  * 主动方close，相当于同时关闭发送端和接收端，后续收到数据返回reset
-  * 主动方shutdown，可以选择是否关闭发送端和接收端
+  * 主动方close，相当于同时关闭发送端和接收端，后续收到数据返回reset，是孤儿fd
+  * 主动方shutdown，可以选择是否关闭发送端和接收端，此时fd仍然与app关联，不是孤儿fd
 
 #### 4.6 如何理解是TCP面向字节流协议
 * 应用层调用send发送了Hi和I am Xiaolin
@@ -188,3 +188,9 @@
 如下图所示，服务端收到重启后的客户端的syn包(相同的sport)，会回复Challenge ACK。而客户端收到此包后，发现ack号不是自己期望的，而回复reset包，见[源码](https://elixir.bootlin.com/linux/v5.19/source/net/ipv4/tcp_input.c#L6172)
 
 ![img](../images/est_syn.png)
+
+#### 4.10 四次挥手中收到乱序的FIN包会如何处理
+* 主动关闭方在第三次挥手时，先收到fin包A，后收到数据包B
+  * 分析：包B的seq大于包A的seq
+  * 结论：主动关闭方会先把包A放入乱序队列中，直到收到包B
+  * （如果包B一直没来，则依据FIN_WAIT-2的处理逻辑处理）
