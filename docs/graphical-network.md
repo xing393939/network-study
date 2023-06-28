@@ -194,3 +194,42 @@
   * 分析：包B的seq大于包A的seq
   * 结论：主动关闭方会先把包A放入乱序队列中，直到收到包B
   * （如果包B一直没来，则依据FIN_WAIT-2的处理逻辑处理）
+  
+#### 4.11 在TIME_WAIT状态的TCP连接，收到SYN后会发生什么
+* 先判断SYN包是否合法：
+  * 未开启时间戳：SYN包的seq > 期望的seq
+  * 已开启时间戳：满足上一条，还需要SYN包的时间戳 > 最后一次的时间戳
+* SYN包合法：开始第二次握手
+* SYN包不合法：会重发第四次挥手的ack包
+* 在TIME_WAIT状态的TCP连接，收到rst包发生什么？
+  * net.ipv4.tcp_rfc1337=0，则提前结束TIME_WAIT状态，释放连接。
+  * net.ipv4.tcp_rfc1337=1，则会丢掉该RST报文
+
+#### 4.12 TCP连接，客户端断电和进程崩溃有什么区别
+* 没有数据传输，没有开启tcp_keepalive
+  * 客户端断电，服务端仍然保持连接状态
+  * 客户端进程崩溃，内核会完成四次挥手，所以服务端会断开连接
+* 有数据传输，没有开启tcp_keepalive
+  * 客户端宕机后立即重启，服务端继续发送数据，客户端返回reset
+  * 客户端宕机后没有重启，服务端继续发送数据，重试N次后关闭连接
+
+#### 4.13 拔掉网线后，原本的TCP连接还存在吗
+* 拔掉网线后，有数据传输，则会重传最多tcp_retries2次（假设tcp_retries2=15）
+  * 内核会根据tcp_retries2设置的值，计算出一个timeout
+  * （linux下RTO的范围是0.2s~120s，见[源码](https://elixir.bootlin.com/linux/v5.19/source/include/net/tcp.h#L141)）
+  * 所以只要没有超过timeout，就可以重传，直到重传15次
+* 拔掉网线后，没有数据传输，但是开启tcp_keepalive
+  * net.ipv4.tcp_keepalive_time=7200
+  * net.ipv4.tcp_keepalive_intvl=75  
+  * net.ipv4.tcp_keepalive_probes=9
+  * （表示7200秒没有数据包传输，则发9次探测包，每次间隔75秒）
+
+
+
+
+
+
+
+
+
+
