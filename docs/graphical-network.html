@@ -600,6 +600,50 @@
 </ul>
 </li>
 </ul>
+<h4 id="411-&#x5728;timewait&#x72B6;&#x6001;&#x7684;tcp&#x8FDE;&#x63A5;&#xFF0C;&#x6536;&#x5230;syn&#x540E;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;">4.11 &#x5728;TIME_WAIT&#x72B6;&#x6001;&#x7684;TCP&#x8FDE;&#x63A5;&#xFF0C;&#x6536;&#x5230;SYN&#x540E;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;</h4>
+<ul>
+<li>&#x5148;&#x5224;&#x65AD;SYN&#x5305;&#x662F;&#x5426;&#x5408;&#x6CD5;&#xFF1A;<ul>
+<li>&#x672A;&#x5F00;&#x542F;&#x65F6;&#x95F4;&#x6233;&#xFF1A;SYN&#x5305;&#x7684;seq &gt; &#x671F;&#x671B;&#x7684;seq</li>
+<li>&#x5DF2;&#x5F00;&#x542F;&#x65F6;&#x95F4;&#x6233;&#xFF1A;&#x6EE1;&#x8DB3;&#x4E0A;&#x4E00;&#x6761;&#xFF0C;&#x8FD8;&#x9700;&#x8981;SYN&#x5305;&#x7684;&#x65F6;&#x95F4;&#x6233; &gt; &#x6700;&#x540E;&#x4E00;&#x6B21;&#x7684;&#x65F6;&#x95F4;&#x6233;</li>
+</ul>
+</li>
+<li>SYN&#x5305;&#x5408;&#x6CD5;&#xFF1A;&#x5F00;&#x59CB;&#x7B2C;&#x4E8C;&#x6B21;&#x63E1;&#x624B;</li>
+<li>SYN&#x5305;&#x4E0D;&#x5408;&#x6CD5;&#xFF1A;&#x4F1A;&#x91CD;&#x53D1;&#x7B2C;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x7684;ack&#x5305;</li>
+<li>&#x5728;TIME_WAIT&#x72B6;&#x6001;&#x7684;TCP&#x8FDE;&#x63A5;&#xFF0C;&#x6536;&#x5230;rst&#x5305;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#xFF1F;<ul>
+<li>net.ipv4.tcp_rfc1337=0&#xFF0C;&#x5219;&#x63D0;&#x524D;&#x7ED3;&#x675F;TIME_WAIT&#x72B6;&#x6001;&#xFF0C;&#x91CA;&#x653E;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>net.ipv4.tcp_rfc1337=1&#xFF0C;&#x5219;&#x4F1A;&#x4E22;&#x6389;&#x8BE5;RST&#x62A5;&#x6587;</li>
+</ul>
+</li>
+</ul>
+<h4 id="412-tcp&#x8FDE;&#x63A5;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x65AD;&#x7535;&#x548C;&#x8FDB;&#x7A0B;&#x5D29;&#x6E83;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;">4.12 TCP&#x8FDE;&#x63A5;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x65AD;&#x7535;&#x548C;&#x8FDB;&#x7A0B;&#x5D29;&#x6E83;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;</h4>
+<ul>
+<li>&#x6CA1;&#x6709;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x6CA1;&#x6709;&#x5F00;&#x542F;tcp_keepalive<ul>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x65AD;&#x7535;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4ECD;&#x7136;&#x4FDD;&#x6301;&#x8FDE;&#x63A5;&#x72B6;&#x6001;</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x7A0B;&#x5D29;&#x6E83;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x5B8C;&#x6210;&#x56DB;&#x6B21;&#x6325;&#x624B;&#xFF0C;&#x6240;&#x4EE5;&#x670D;&#x52A1;&#x7AEF;&#x4F1A;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</li>
+</ul>
+</li>
+<li>&#x6709;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x6CA1;&#x6709;&#x5F00;&#x542F;tcp_keepalive<ul>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x5B95;&#x673A;&#x540E;&#x7ACB;&#x5373;&#x91CD;&#x542F;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;reset</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x5B95;&#x673A;&#x540E;&#x6CA1;&#x6709;&#x91CD;&#x542F;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x91CD;&#x8BD5;N&#x6B21;&#x540E;&#x5173;&#x95ED;&#x8FDE;&#x63A5;</li>
+</ul>
+</li>
+</ul>
+<h4 id="413-&#x62D4;&#x6389;&#x7F51;&#x7EBF;&#x540E;&#xFF0C;&#x539F;&#x672C;&#x7684;tcp&#x8FDE;&#x63A5;&#x8FD8;&#x5B58;&#x5728;&#x5417;">4.13 &#x62D4;&#x6389;&#x7F51;&#x7EBF;&#x540E;&#xFF0C;&#x539F;&#x672C;&#x7684;TCP&#x8FDE;&#x63A5;&#x8FD8;&#x5B58;&#x5728;&#x5417;</h4>
+<ul>
+<li>&#x62D4;&#x6389;&#x7F51;&#x7EBF;&#x540E;&#xFF0C;&#x6709;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x5219;&#x4F1A;&#x91CD;&#x4F20;&#x6700;&#x591A;tcp_retries2&#x6B21;&#xFF08;&#x5047;&#x8BBE;tcp_retries2=15&#xFF09;<ul>
+<li>&#x5185;&#x6838;&#x4F1A;&#x6839;&#x636E;tcp_retries2&#x8BBE;&#x7F6E;&#x7684;&#x503C;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x4E00;&#x4E2A;timeout</li>
+<li>&#xFF08;linux&#x4E0B;RTO&#x7684;&#x8303;&#x56F4;&#x662F;0.2s~120s&#xFF0C;&#x89C1;<a href="https://elixir.bootlin.com/linux/v5.19/source/include/net/tcp.h#L141" target="_blank">&#x6E90;&#x7801;</a>&#xFF09;</li>
+<li>&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;timeout&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x91CD;&#x4F20;&#xFF0C;&#x76F4;&#x5230;&#x91CD;&#x4F20;15&#x6B21;</li>
+</ul>
+</li>
+<li>&#x62D4;&#x6389;&#x7F51;&#x7EBF;&#x540E;&#xFF0C;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x4F46;&#x662F;&#x5F00;&#x542F;tcp_keepalive<ul>
+<li>net.ipv4.tcp_keepalive_time=7200</li>
+<li>net.ipv4.tcp_keepalive_intvl=75  </li>
+<li>net.ipv4.tcp_keepalive_probes=9</li>
+<li>&#xFF08;&#x8868;&#x793A;7200&#x79D2;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x5305;&#x4F20;&#x8F93;&#xFF0C;&#x5219;&#x53D1;9&#x6B21;&#x63A2;&#x6D4B;&#x5305;&#xFF0C;&#x6BCF;&#x6B21;&#x95F4;&#x9694;75&#x79D2;&#xFF09;</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -643,7 +687,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-27T10:34:12.061Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-27T10:34:47.681Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-06-28T03:16:37.590Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-06-28T03:17:01.724Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
