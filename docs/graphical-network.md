@@ -224,7 +224,25 @@
   * net.ipv4.tcp_keepalive_probes=9
   * （表示7200秒没有数据包传输，则发9次探测包，每次间隔75秒）
 
+#### 4.14 tcp_tw_reuse为什么默认是关闭的
+* tcp_tw_reuse原理：须同时开启tcp_tw_reuse+tcp_timestamps
+  * 客户端在调用connect时可利用time-wait连接，建立新的连接B
+  * 若服务端的历史网络包在新的连接B中到达，通过判断timestamps丢弃
+* tcp_tw_recycle原理：须同时开启tcp_tw_recycle+tcp_timestamps
+  * 开启后内核快速回收time-wait连接
+  * 历史网络包在新的连接B中到达，通过判断timestamps丢弃
+  * （同时在客户端服务端生效，问题是服务端开启后，nat环境的客户端会有问题）
+* tcp_tw_reuse为什么默认是关闭的？
+  * 虽然会判断历史网络包的timestamps，但是没有判断reset包
+  * time-wait提前回收，而第四次挥手又丢包，此时会有问题
+  
+#### 4.14 HTTPS中TLS和TCP能同时握手吗？
+* tls 1.2，没有开启tcp_fast_open：三次握手，四次协商，两次数据请求
+* tls 1.2，开启tcp_fast_open：第二次直接进行四次协商，两次数据请求
+* tls 1.3，没有开启tcp_fast_open：三次握手，两次协商，两次数据请求
+* tls 1.3，开启tcp_fast_open：第二次直接进行两次次协商(夹带数据请求)
 
+  
 
 
 
