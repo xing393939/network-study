@@ -240,8 +240,8 @@
 * tls 1.2，没有开启tcp_fast_open：三次握手，四次协商，两次数据请求
 * tls 1.2，开启tcp_fast_open：第二次直接进行四次协商，两次数据请求
 * tls 1.3，没有开启tcp_fast_open：三次握手，两次协商，两次数据请求
-* tls 1.3，开启tcp_fast_open：第二次直接进行两次次协商(夹带数据请求)
-
+* tls 1.3，开启tcp_fast_open：第二次直接进行两次协商，两次数据请求
+* tls 1.3，开启tcp_fast_open：第二次直接进行两次协商(夹带数据请求)，需tls开启会话恢复机制
   
 
 
