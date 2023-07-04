@@ -189,6 +189,19 @@
             
         </li>
     
+        <li class="chapter " data-level="2.6" data-path="protocal-http2.html">
+            
+                <a href="protocal-http2.html">
+            
+                    
+                    http2协议
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -671,6 +684,18 @@
 <li>tls 1.3&#xFF0C;&#x5F00;&#x542F;tcp_fast_open&#xFF1A;&#x7B2C;&#x4E8C;&#x6B21;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x4E24;&#x6B21;&#x534F;&#x5546;&#xFF0C;&#x4E24;&#x6B21;&#x6570;&#x636E;&#x8BF7;&#x6C42;</li>
 <li>tls 1.3&#xFF0C;&#x5F00;&#x542F;tcp_fast_open&#xFF1A;&#x7B2C;&#x4E8C;&#x6B21;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x4E24;&#x6B21;&#x534F;&#x5546;(&#x5939;&#x5E26;&#x6570;&#x636E;&#x8BF7;&#x6C42;)&#xFF0C;&#x9700;tls&#x5F00;&#x542F;&#x4F1A;&#x8BDD;&#x6062;&#x590D;&#x673A;&#x5236;</li>
 </ul>
+<h4 id="415-tcp-keepalive&#x548C;http-keep-alive&#x662F;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#x5417;">4.15 TCP Keepalive&#x548C;HTTP Keep-Alive&#x662F;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#x5417;</h4>
+<ul>
+<li>TCP &#x7684; Keepalive&#xFF0C;&#x662F;&#x7531; TCP &#x5C42;&#xFF08;&#x5185;&#x6838;&#x6001;&#xFF09; &#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x79F0;&#x4E3A; TCP &#x4FDD;&#x6D3B;&#x673A;&#x5236;&#xFF1B;</li>
+<li>HTTP &#x7684; Keep-Alive&#xFF0C;&#x662F;&#x7531;&#x5E94;&#x7528;&#x5C42;&#xFF08;&#x7528;&#x6237;&#x6001;&#xFF09; &#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x79F0;&#x4E3A; HTTP &#x957F;&#x8FDE;&#x63A5;&#xFF1B;</li>
+</ul>
+<h4 id="416-tcp&#x534F;&#x8BAE;&#x6709;&#x4EC0;&#x4E48;&#x7F3A;&#x9677;">4.16 TCP&#x534F;&#x8BAE;&#x6709;&#x4EC0;&#x4E48;&#x7F3A;&#x9677;</h4>
+<ul>
+<li>&#x5347;&#x7EA7;TCP&#x7684;&#x5DE5;&#x4F5C;&#x5F88;&#x56F0;&#x96BE;&#xFF1B;&#x5982;TCP Fast Open&#x4ECD;&#x6709;&#x5F88;&#x591A;&#x7CFB;&#x7EDF;&#x4E0D;&#x652F;&#x6301;</li>
+<li>TCP&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x5EF6;&#x8FDF;&#xFF1B;&#x9700;&#x8981;&#x4E09;&#x6B21;&#x63E1;&#x624B;</li>
+<li>TCP&#x5B58;&#x5728;&#x961F;&#x5934;&#x963B;&#x585E;&#x95EE;&#x9898;&#xFF1B;&#x5305;&#x5FC5;&#x987B;&#x662F;&#x8FDE;&#x7EED;&#x7684;&#x624D;&#x80FD;&#x63D0;&#x4EA4;&#x5230;&#x7528;&#x6237;&#x6001;</li>
+<li>&#x7F51;&#x7EDC;&#x8FC1;&#x79FB;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5EFA;&#x7ACB;TCP&#x8FDE;&#x63A5;&#xFF1B;&#x7F51;&#x7EDC;&#x5207;&#x6362;&#x5BFC;&#x81F4;ip&#x53D8;&#x66F4;</li>
+</ul>
 
                                 
                                 </section>
@@ -714,7 +739,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-07-01T03:15:45.811Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-01T03:16:09.555Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图解网络","level":"1.2","depth":1,"next":{"title":"mac协议","level":"2.1","depth":1,"path":"docs/protocal-mac.md","ref":"docs/protocal-mac.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/graphical-network.md","mtime":"2023-07-04T03:38:20.826Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-04T03:38:45.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
