@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>网络协议栈初始化 · GitBook</title>
+        <title>tls加密协议 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tcp-two-queue.html" />
+    <link rel="next" href="protocal-http2.html" />
     
     
-    <link rel="prev" href="netfilter.html" />
+    <link rel="prev" href="protocal-proxy.html" />
     
 
     </head>
@@ -189,7 +189,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="protocal-tls.html">
+        <li class="chapter active" data-level="2.6" data-path="protocal-tls.html">
             
                 <a href="protocal-tls.html">
             
@@ -261,7 +261,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="network-proto-init.html">
+        <li class="chapter " data-level="3.4" data-path="network-proto-init.html">
             
                 <a href="network-proto-init.html">
             
@@ -337,7 +337,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >网络协议栈初始化</a>
+        <a href=".." >tls加密协议</a>
     </h1>
 </div>
 
@@ -352,13 +352,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x6808;&#x521D;&#x59CB;&#x5316;">&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x6808;&#x521D;&#x59CB;&#x5316;</h3>
-<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+                                <h3 id="tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;">tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;</h3>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
-<li><a href="https://mp.weixin.qq.com/s/l-pU6bwcRuZjzcFwswpnaw" target="_blank">Linux &#x5185;&#x6838;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x6808;</a></li>
-<li><a href="https://oska874.github.io/%E8%AF%BB%E6%A0%B8/linux%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%88%9D%E5%A7%8B%E5%8C%96.html" target="_blank">Linux&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x6808;&#x521D;&#x59CB;&#x5316;</a></li>
-<li>&#x4E0A;&#x8FF0;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#x5E76;&#x4E0D;&#x5B8C;&#x7F8E;&#xFF0C;&#x5F85;&#x7EED;</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc5246.html" target="_blank">TLS 1.2</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8446.html" target="_blank">TLS 1.3</a></li>
 </ul>
+<pre><code>// TLS 1.2 &#x6293;&#x5305;&#xFF1A;curl &quot;https://tls-v1-2.badssl.com:1012/style.css&quot;
+4.705023    192.168.2.119    44.198.122.103    TLSv1.2     Client Hello
+4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Server Hello
+4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Certificate, Server Key Exchange, Server Hello Done
+4.908619    192.168.2.119    44.198.122.103    TLSv1.2     Client Key Exchange, Change Cipher Spec, Finished
+5.111685    44.198.122.103    192.168.2.119    TLSv1.2     Change Cipher Spec, Finished
+
+// TLS 1.3 &#x6293;&#x5305;&#xFF1A;curl &quot;https://nghttp2.org/stylesheets/screen.css&quot;
+1050.163195    192.168.2.119    139.162.123.134    TLSv1.3     Client Hello
+1050.367307    139.162.123.134    192.168.2.119    TLSv1.3     Server Hello, Change Cipher Spec, Encrypted Extensions, Finished
+1050.370252    192.168.2.119    139.162.123.134    TLSv1.3     Change Cipher Spec, Finished
+</code></pre><p><img src="../images/tcp_options.png" alt="img"></p>
 
                                 
                                 </section>
@@ -386,12 +397,12 @@
 
             
                 
-                <a href="netfilter.html" class="navigation navigation-prev " aria-label="Previous page: nf五链四表">
+                <a href="protocal-proxy.html" class="navigation navigation-prev " aria-label="Previous page: PROXY Protocol">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tcp-two-queue.html" class="navigation navigation-next " aria-label="Next page: 建立tcp连接的两个队列">
+                <a href="protocal-http2.html" class="navigation navigation-next " aria-label="Next page: http2协议">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -402,7 +413,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"网络协议栈初始化","level":"3.4","depth":1,"next":{"title":"建立tcp连接的两个队列","level":"3.5","depth":1,"path":"docs/tcp-two-queue.md","ref":"docs/tcp-two-queue.md","articles":[]},"previous":{"title":"nf五链四表","level":"3.3","depth":1,"path":"docs/netfilter.md","ref":"docs/netfilter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/network-proto-init.md","mtime":"2023-07-04T08:11:22.924Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-04T08:11:50.917Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tls加密协议","level":"2.6","depth":1,"next":{"title":"http2协议","level":"2.7","depth":1,"path":"docs/protocal-http2.md","ref":"docs/protocal-http2.md","articles":[]},"previous":{"title":"PROXY Protocol","level":"2.5","depth":1,"path":"docs/protocal-proxy.md","ref":"docs/protocal-proxy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tls.md","mtime":"2023-07-04T08:11:22.924Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-04T08:11:50.917Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
