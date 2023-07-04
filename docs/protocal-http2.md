@@ -20,7 +20,7 @@ HTTP Frame {
 curl --http2-prior-knowledge -I "http://nghttp2.org"
 
 1. 客户端先发了2个包（共4个Frame），服务端响应2个ack：
-Stream: Magic：明文(固定24B)：PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n
+Stream: Magic,         PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n（固定24字节）
 Stream: SETTINGS,      Stream ID: 0, Length 18
 Stream: WINDOW_UPDATE, Stream ID: 0, Length 4
 Stream: HEADERS,       Stream ID: 1, Length 33, HEAD /
