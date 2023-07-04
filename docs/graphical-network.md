@@ -243,6 +243,15 @@
 * tls 1.3，开启tcp_fast_open：第二次直接进行两次协商，两次数据请求
 * tls 1.3，开启tcp_fast_open：第二次直接进行两次协商(夹带数据请求)，需tls开启会话恢复机制
   
+#### 4.15 TCP Keepalive和HTTP Keep-Alive是一个东西吗
+* TCP 的 Keepalive，是由 TCP 层（内核态） 实现的，称为 TCP 保活机制；
+* HTTP 的 Keep-Alive，是由应用层（用户态） 实现的，称为 HTTP 长连接；
+
+#### 4.16 TCP协议有什么缺陷
+* 升级TCP的工作很困难；如TCP Fast Open仍有很多系统不支持
+* TCP建立连接的延迟；需要三次握手
+* TCP存在队头阻塞问题；包必须是连续的才能提交到用户态
+* 网络迁移需要重新建立TCP连接；网络切换导致ip变更
 
 
 
