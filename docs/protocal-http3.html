@@ -372,10 +372,45 @@
 <li><a href="https://www.rfc-editor.org/rfc/rfc9000.html" target="_blank">RFC QUIC</a></li>
 <li><a href="https://www.rfc-editor.org/rfc/rfc9001.html" target="_blank">RFC Using TLS to Secure QUIC</a></li>
 </ul>
-<pre><code>
+<p><img src="../images/struct-http3-layers.png" alt="img"></p>
+<pre><code>// &#x7528;&#x4E8E;&#x9996;&#x6B21;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;
+QUIC Long Header Packet {
+  Header Form (1) = 1,                  // &#x56FA;&#x5B9A;&#x662F;1
+  Fixed Bit (1) = 1,                    // &#x56FA;&#x5B9A;&#x662F;1
+  Long Packet Type (2),                 // 0~3&#x4F9D;&#x6B21;&#x662F;Initial/0-RTT/Handshake/Retry
+  Type-Specific Bits (4),
+  Version (32),
+  Destination Connection ID Length (8), // Dst Connection ID length
+  Destination Connection ID (0..160),   // Dst Connection ID
+  Source Connection ID Length (8),      // Src Connection ID length
+  Source Connection ID (0..160),        // Src Connection ID
+  Type-Specific Payload (..),
+}
 
-</code></pre><p><img src="../images/struct-http3-layers.png" alt="img"></p>
-<p><img src="../images/http-versions.png" alt="img"></p>
+// &#x7528;&#x4E8E;&#x65E5;&#x5E38;&#x4F20;&#x8F93;&#x6570;&#x636E;
+QUIC Short Header Packets {
+  Header Form (1) = 0,                // &#x56FA;&#x5B9A;&#x662F;0
+  Fixed Bit (1) = 1,                  // &#x56FA;&#x5B9A;&#x662F;1
+  Spin Bit (1),                       // enables passive latency monitoring
+  Reserved Bits (2),
+  Key Phase (1),                      // 0&#x65E0;tls&#xFF0C;1&#x6709;tls
+  Packet Number Length (2),           // Packet Number Length
+  Destination Connection ID (0..160), // Dst Connection ID
+  Packet Number (8..32),              // Packet Number
+  Packet Payload (8..),               // Packet Payload
+}
+
+QUIC Frame {
+  Frame Type (i),             // &#x8BE6;&#x89C1;https://www.rfc-editor.org/rfc/rfc9000.html#name-frames-and-frame-types
+  Type-Dependent Fields (..),
+}
+
+HTTP/3 Frame Format {
+  Type (i),           // 0/1/3/4/5/7/13&#x5206;&#x522B;&#x662F;DATA/HEADERS/CANCEL_PUSH/SETTINGS/PUSH_PROMISE/GOAWAY/MAX_PUSH_ID
+  Length (i),         // Frame Payload length
+  Frame Payload (..), // Frame Payload
+}
+</code></pre><p><img src="../images/http-versions.png" alt="img"></p>
 
                                 
                                 </section>
@@ -419,7 +454,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"http3协议","level":"2.8","depth":1,"next":{"title":"网络包发送","level":"3.1","depth":1,"path":"docs/network-send.md","ref":"docs/network-send.md","articles":[]},"previous":{"title":"http2协议","level":"2.7","depth":1,"path":"docs/protocal-http2.md","ref":"docs/protocal-http2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-http3.md","mtime":"2023-07-04T08:20:21.263Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-04T08:20:46.683Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"http3协议","level":"2.8","depth":1,"next":{"title":"网络包发送","level":"3.1","depth":1,"path":"docs/network-send.md","ref":"docs/network-send.md","articles":[]},"previous":{"title":"http2协议","level":"2.7","depth":1,"path":"docs/protocal-http2.md","ref":"docs/protocal-http2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-http3.md","mtime":"2023-07-04T09:11:19.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-04T09:11:49.599Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
