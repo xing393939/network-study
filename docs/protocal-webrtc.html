@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>建立tcp连接的两个队列 · GitBook</title>
+        <title>webrtc协议 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tcp-reset.html" />
+    <link rel="next" href="protocal-proxy.html" />
     
     
-    <link rel="prev" href="network-proto-init.html" />
+    <link rel="prev" href="protocal-ws.html" />
     
 
     </head>
@@ -176,7 +176,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="protocal-webrtc.html">
+        <li class="chapter active" data-level="2.5" data-path="protocal-webrtc.html">
             
                 <a href="protocal-webrtc.html">
             
@@ -300,7 +300,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.5" data-path="tcp-two-queue.html">
+        <li class="chapter " data-level="3.5" data-path="tcp-two-queue.html">
             
                 <a href="tcp-two-queue.html">
             
@@ -363,7 +363,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >建立tcp连接的两个队列</a>
+        <a href=".." >webrtc协议</a>
     </h1>
 </div>
 
@@ -378,10 +378,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x5EFA;&#x7ACB;tcp&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x4E2A;&#x961F;&#x5217;">&#x5EFA;&#x7ACB;tcp&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x4E2A;&#x961F;&#x5217;</h3>
-<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+                                <h3 id="webrtc&#x534F;&#x8BAE;">webrtc&#x534F;&#x8BAE;</h3>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
-<li><a href="http://arthurchiao.art/blog/tcp-listen-a-tale-of-two-queues/" target="_blank">TCP Socket Listen: A Tale of Two Queues (2022)</a></li>
+<li><a href="https://datatracker.ietf.org/wg/rtcweb/documents/" target="_blank">rfc</a></li>
+<li><a href="https://webrtcforthecurious.com/zh/" target="_blank">&#x7ED9;&#x597D;&#x5947;&#x8005;&#x7684; WebRTC</a></li>
+<li><a href="https://www.w3.org/TR/webrtc/" target="_blank">&#x6D4F;&#x89C8;&#x5668;W3C&#x7684; WebRTC</a></li>
+<li><a href="https://webrtchacks.github.io/sdp-anatomy/" target="_blank">webrtc&#x7684;sdp&#x7684;&#x5B57;&#x6BB5;&#x89E3;&#x91CA;</a></li>
+<li>RFC &#x6807;&#x51C6;&#x5206;&#x5982;&#x4E0B;&#x51E0;&#x7C7B;&#xFF1A;<ul>
+<li>ICE &#x534F;&#x8BAE;&#x76F8;&#x5173;&#x90E8;&#x5206;&#xFF0C;&#x5A92;&#x4F53;&#x63CF;&#x8FF0;&#xFF0C;offer/answer &#x901A;&#x4FE1;&#x8FC7;&#x7A0B;&#x3002;</li>
+<li>P2P &#x7A7F;&#x8D8A;&#x76F8;&#x5173;&#x90E8;&#x5206;&#xFF0C;&#x4E3B;&#x8981;&#x662F; STUN/TURN&#x3002;</li>
+<li>DTLS &#x76F8;&#x5173;&#x90E8;&#x5206;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x76F8;&#x5173;&#x6807;&#x51C6;&#x3002;</li>
+<li>RTP/RTCP/SCTP&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x591A;&#x5A92;&#x4F53;&#x4F20;&#x8F93;&#x76F8;&#x5173;&#x6807;&#x51C6;&#x3002;</li>
+</ul>
+</li>
+<li>&#x97F3;&#x89C6;&#x9891;&#x4F20;&#x8F93;&#xFF1A;<ul>
+<li>RTP&#x4F20;&#x8F93;&#x6D41;&#x6570;&#x636E;&#xFF0C;&#x57FA;&#x4E8E;UDP</li>
+<li>RTCP&#x4F20;&#x8F93;&#x63A7;&#x5236;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x57FA;&#x4E8E;UDP</li>
+<li>&#xFF08;&#x5982;&#x679C;&#x8981;&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#xFF0C;&#x5219;&#x901A;&#x8FC7;DTLS&#x52A0;&#x5BC6;&#x6210;SRTP/SRTCP&#x540E;&#x4F20;&#x8F93;&#xFF09;</li>
+</ul>
+</li>
+<li>&#x5E94;&#x7528;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF1A;&#x5373;datachannel<ul>
+<li>&#x4F20;&#x8F93;SCTP&#x5305;&#xFF0C;&#x57FA;&#x4E8E;UDP</li>
+<li>&#xFF08;&#x5982;&#x679C;&#x8981;&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#xFF0C;&#x5219;&#x901A;&#x8FC7;DTLS&#x52A0;&#x5BC6;&#x540E;&#x4F20;&#x8F93;&#xFF09;</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -410,12 +431,12 @@
 
             
                 
-                <a href="network-proto-init.html" class="navigation navigation-prev " aria-label="Previous page: 网络协议栈初始化">
+                <a href="protocal-ws.html" class="navigation navigation-prev " aria-label="Previous page: websocket协议">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tcp-reset.html" class="navigation navigation-next " aria-label="Next page: TCP reset的场景">
+                <a href="protocal-proxy.html" class="navigation navigation-next " aria-label="Next page: PROXY Protocol">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -426,7 +447,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"建立tcp连接的两个队列","level":"3.5","depth":1,"next":{"title":"TCP reset的场景","level":"4.1","depth":1,"path":"docs/tcp-reset.md","ref":"docs/tcp-reset.md","articles":[]},"previous":{"title":"网络协议栈初始化","level":"3.4","depth":1,"path":"docs/network-proto-init.md","ref":"docs/network-proto-init.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/tcp-two-queue.md","mtime":"2023-07-05T01:01:39.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-05T01:02:14.107Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"webrtc协议","level":"2.5","depth":1,"next":{"title":"PROXY Protocol","level":"2.6","depth":1,"path":"docs/protocal-proxy.md","ref":"docs/protocal-proxy.md","articles":[]},"previous":{"title":"websocket协议","level":"2.4","depth":1,"path":"docs/protocal-ws.md","ref":"docs/protocal-ws.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-webrtc.md","mtime":"2023-07-05T01:01:39.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-05T01:02:14.107Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
