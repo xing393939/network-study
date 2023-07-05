@@ -18,7 +18,7 @@
   * 传输SCTP包，基于UDP
   * （如果要加密传输，则通过DTLS加密后传输）
 
-
+![img](../images/webrtc-protocol-stack.png)
 
 
 
