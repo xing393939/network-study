@@ -31,7 +31,7 @@
 * 如ftp、sip、tftp等有控制连接和数据连接，两个连接是有从属关系的，过滤这样的包没有连接跟踪不好做
 * 要实现NAT，就需要连接跟踪
 
-![img](images/conntrack_callstack.png)
+![img](images/conntrack-callstack.jpg)
 
 #### TCP keepalive
 |参数|socket级别设置|内核级别设置|说明|
