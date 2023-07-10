@@ -269,4 +269,26 @@
   * UDP会返回一个ICMP（端口不可达）的消息。
   * TCP会返回重置报文。
 
+#### 4.20 没有accept，能建立TCP连接吗
+* syn cookies为什么不直接取代半连接队列
+  * 没有保存连接信息，如果第二次握手丢包，无法重发
+  * 解码cookie消耗CPU，还是会被攻击导致CPU耗尽
 
+#### 4.21 用了TCP协议，数据一定不会丢吗
+* 有可能丢：接收缓冲区的“已接收已ack的数据”，若突然宕机则丢失
+* 全连接队列溢出：`netstat -s | grep overflowed`
+* 半连接队列溢出：`netstat -s | grep -i "SYNs to LISTEN sockets dropped"`
+* 内核的qdisc(Queueing Disciplines，排队规则)：
+  * 查看队列长度：`ifconfig eth0|grep txqueuelen`
+  * 修改队列长度：`ifconfig eth0 txqueuelen 1500`
+  * 查看是否丢包：`ifconfig eth0|grep 'TX errors'`dropped数值
+* RingBuffer溢出
+  * 查看网卡配置：`ethtool -g eth0`
+  * 修改网卡配置：`ethtool -G eth1 rx 4096 tx 4096`将rx tx的队列都置为4096
+  * 查看是否丢包：`ifconfig eth0|grep 'RX errors'`overruns数值
+* 网卡带宽查看：`ethtool eth0|grep Speed`
+* 发送缓冲区内核参数：net.ipv4.tcp_wmem
+  * 缓冲区满了，会阻塞用户态或者返回EAGAIN
+* 接收缓冲区内核参数：net.ipv4.tcp_rmem
+  * 缓冲区满了，发送win=0的窗口通知，但若仍有数据到达，则丢包
+* 传输途中丢包：可以用ping和mtr检查网络丢包情况
