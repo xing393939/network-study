@@ -292,3 +292,20 @@
 * 接收缓冲区内核参数：net.ipv4.tcp_rmem
   * 缓冲区满了，发送win=0的窗口通知，但若仍有数据到达，则丢包
 * 传输途中丢包：可以用ping和mtr检查网络丢包情况
+
+#### 4.22 TCP四次挥手，可以变成三次吗
+* 可以，当开启了TCP延迟确认，被关闭方调用close后，ack和fin包一起发送
+* TCP延迟确认，[Nagle和Cork算法](https://zhuanlan.zhihu.com/p/514859682)
+  * Nagel算法：内核默认打开，socket设置TCP_NODELAY可关闭
+  * Cork算法：内核默认关闭，socket设置TCP_CORK可打开
+  * 快速应答：内核默认关闭，socket设置TCP_QUICKACK可打开
+
+
+
+
+
+
+
+
+
+
