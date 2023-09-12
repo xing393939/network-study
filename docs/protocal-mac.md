@@ -14,13 +14,13 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
                           Ethernet II 在二层协议的定义
 
-MAC dst: 目标mac
-MAC src: 原始mac
-E:       EtherType
+MAC dst: 6b，目标mac
+MAC src: 6b，原始mac
+E:       2b，EtherType
          0x0800 - IPv4
          0x0806 - ARP
          0x86DD - IPv6
-FCS:     Frame Check Sequence，wireshark抓包不会展示它
+FCS:     4b，Frame Check Sequence，wireshark抓包不会展示它
 ```
 
 
