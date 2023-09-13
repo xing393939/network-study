@@ -1,12 +1,12 @@
 kprobe:__nf_conntrack_confirm
 {
-        $skb = (struct sk_buff*) arg0;
-        $ip_header = ((struct iphdr *) ($skb->head + $skb->network_header));
-        $tcp_header= ((struct tcphdr *) ($skb->head + $skb->network_header + ($ip_header->ihl << 2)));
-        $sport = $tcp_header->source;
-        $dport = $tcp_header->dest;
-        $dport = ($dport >> 8) | (($dport << 8) & 0xff00);
-        $sport = ($sport >> 8) | (($sport << 8) & 0xff00);
+	$skb = (struct sk_buff*) arg0;
+	$ip_header = ((struct iphdr *) ($skb->head + $skb->network_header));
+	$tcp_header= ((struct tcphdr *) ($skb->head + $skb->network_header + ($ip_header->ihl << 2)));
+	$sport = $tcp_header->source;
+	$dport = $tcp_header->dest;
+	$dport = ($dport >> 8) | (($dport << 8) & 0xff00);
+	$sport = ($sport >> 8) | (($sport << 8) & 0xff00);
 	@mysport[tid] = $sport;
 	@mydport[tid] = $dport;
 	@start[tid] = nsecs;
