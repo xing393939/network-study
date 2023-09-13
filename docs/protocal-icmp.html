@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>tls加密协议 · GitBook</title>
+        <title>icmp协议 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-http2.html" />
+    <link rel="next" href="protocal-tcp.html" />
     
     
-    <link rel="prev" href="protocal-proxy.html" />
+    <link rel="prev" href="reserved-ip.html" />
     
 
     </head>
@@ -163,7 +163,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="protocal-icmp.html">
+        <li class="chapter active" data-level="2.4" data-path="protocal-icmp.html">
             
                 <a href="protocal-icmp.html">
             
@@ -228,7 +228,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.9" data-path="protocal-tls.html">
+        <li class="chapter " data-level="2.9" data-path="protocal-tls.html">
             
                 <a href="protocal-tls.html">
             
@@ -402,7 +402,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >tls加密协议</a>
+        <a href=".." >icmp协议</a>
     </h1>
 </div>
 
@@ -417,25 +417,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;">tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;</h3>
+                                <h3 id="icmp&#x534F;&#x8BAE;">icmp&#x534F;&#x8BAE;</h3>
 <h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
-<li><a href="https://www.rfc-editor.org/rfc/rfc5246.html" target="_blank">TLS 1.2</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc8446.html" target="_blank">TLS 1.3</a></li>
-<li><a href="https://blog.csdn.net/luo15242208310/article/details/122908768" target="_blank">wireshark&#x6293;&#x5305;&#x652F;&#x6301;HTTP/2 Over TLS</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc792" target="_blank">RFC 792</a></li>
+<li><a href="https://news.ycombinator.com/item?id=37455621" target="_blank">how does linux nat a ping?</a></li>
 </ul>
-<pre><code>// TLS 1.2 &#x6293;&#x5305;&#xFF1A;curl &quot;https://tls-v1-2.badssl.com:1012/style.css&quot;
-4.705023    192.168.2.119    44.198.122.103    TLSv1.2     Client Hello
-4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Server Hello
-4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Certificate, Server Key Exchange, Server Hello Done
-4.908619    192.168.2.119    44.198.122.103    TLSv1.2     Client Key Exchange, Change Cipher Spec, Finished
-5.111685    44.198.122.103    192.168.2.119    TLSv1.2     Change Cipher Spec, Finished
+<pre><code>// ping 1.1.1.1 &#x7684;&#x6293;&#x5305;
+src=192.168.2.119 dst=1.1.1.1 type=0x08 code=0x00 checksum=0x4d49 id=0x0001 seq=0x0012
+src=192.168.2.119 dst=1.1.1.1 type=0x00 code=0x00 checksum=0x5549 id=0x0001 seq=0x0012
 
-// TLS 1.3 &#x6293;&#x5305;&#xFF1A;curl &quot;https://nghttp2.org/stylesheets/screen.css&quot;
-1050.163195    192.168.2.119    139.162.123.134    TLSv1.3     Client Hello
-1050.367307    139.162.123.134    192.168.2.119    TLSv1.3     Server Hello, Change Cipher Spec, Encrypted Extensions, Finished
-1050.370252    192.168.2.119    139.162.123.134    TLSv1.3     Change Cipher Spec, Finished
-</code></pre><p><img src="../images/http-versions.png" alt="img"></p>
+src=192.168.2.119 dst=1.1.1.1 type=0x08 code=0x00 checksum=0x4d48 id=0x0001 seq=0x0013
+src=192.168.2.119 dst=1.1.1.1 type=0x00 code=0x00 checksum=0x5548 id=0x0001 seq=0x0013
+
+src=192.168.2.119 dst=1.1.1.1 type=0x08 code=0x00 checksum=0x4d47 id=0x0001 seq=0x0014
+src=192.168.2.119 dst=1.1.1.1 type=0x00 code=0x00 checksum=0x5547 id=0x0001 seq=0x0014
+</code></pre><p><img src="../images/icmp-1.png" alt=""></p>
+<p><img src="../images/icmp-2.png" alt=""></p>
 
                                 
                                 </section>
@@ -463,12 +461,12 @@
 
             
                 
-                <a href="protocal-proxy.html" class="navigation navigation-prev " aria-label="Previous page: PROXY Protocol">
+                <a href="reserved-ip.html" class="navigation navigation-prev " aria-label="Previous page: ip保留地址">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="protocal-http2.html" class="navigation navigation-next " aria-label="Next page: http2协议">
+                <a href="protocal-tcp.html" class="navigation navigation-next " aria-label="Next page: tcp协议">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -479,7 +477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tls加密协议","level":"2.9","depth":1,"next":{"title":"http2协议","level":"2.10","depth":1,"path":"docs/protocal-http2.md","ref":"docs/protocal-http2.md","articles":[]},"previous":{"title":"PROXY Protocol","level":"2.8","depth":1,"path":"docs/protocal-proxy.md","ref":"docs/protocal-proxy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tls.md","mtime":"2023-09-13T00:24:06.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-13T00:24:30.431Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"icmp协议","level":"2.4","depth":1,"next":{"title":"tcp协议","level":"2.5","depth":1,"path":"docs/protocal-tcp.md","ref":"docs/protocal-tcp.md","articles":[]},"previous":{"title":"ip保留地址","level":"2.3","depth":1,"path":"docs/reserved-ip.md","ref":"docs/reserved-ip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-icmp.md","mtime":"2023-09-13T00:24:06.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-13T00:24:30.431Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
