@@ -1,7 +1,7 @@
 kprobe:kfree_skb
 {
-        $skb = (struct sk_buff*) arg0;
-        $ip_header = ((struct iphdr *) ($skb->head + $skb->network_header));
+	$skb = (struct sk_buff*) arg0;
+	$ip_header = ((struct iphdr *) ($skb->head + $skb->network_header));
 	if ($ip_header->daddr == 0x7802a8c0) 
 	{
 		//@[kstack(10)] = count();
@@ -12,7 +12,7 @@ kprobe:kfree_skb
 		$sport = ($sport >> 8) | (($sport << 8) & 0xff00);
 		if ($dport == 8100) {
 			time("%H:%M:%S ");
-        		printf("%s:%d > %s:%d\n", ntop($ip_header->saddr), $sport, ntop($ip_header->daddr), $dport);
+			printf("%s:%d > %s:%d\n", ntop($ip_header->saddr), $sport, ntop($ip_header->daddr), $dport);
 		}
 	}
 }
