@@ -166,6 +166,7 @@
 * 关闭连接：
   * 主动方close，相当于同时关闭发送端和接收端，后续收到数据返回reset，是孤儿fd
   * 主动方shutdown，可以选择是否关闭发送端和接收端，此时fd仍然与app关联，不是孤儿fd
+  * [close和shutdown的对比](https://learnku.com/articles/83712)
 
 #### 4.6 如何理解是TCP面向字节流协议
 * 应用层调用send发送了Hi和I am Xiaolin
