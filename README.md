@@ -17,8 +17,11 @@
 |STD 7       | TCP  | [9293](http://www.rfc-editor.org/rfc/rfc9293.html)|
 |STD 37      | ARP  | [826](http://www.rfc-editor.org/rfc/rfc826.html) [详解](https://zhuanlan.zhihu.com/p/427573801)|
 |STD 86      | IPv6 | [8200](http://www.rfc-editor.org/rfc/rfc8200.html)|
-|STD 89      | ICMPv6 | [4443](http://www.rfc-editor.org/rfc/rfc4443.html)|
-|            | NDPv6 | [4861](http://www.rfc-editor.org/rfc/rfc4861.html)，取代ARP|
+|STD 89      | ICMPv6  | [4443](http://www.rfc-editor.org/rfc/rfc4443.html)|
+|            | NDPv6   | [4861](http://www.rfc-editor.org/rfc/rfc4861.html)，取代ARP|
+|STD 99      | HTTP/1.1| [9112](https://www.rfc-editor.org/rfc/rfc9112.html)|
+|            | HTTP/2  | [9113](https://www.rfc-editor.org/rfc/rfc9113.html)|
+|            | HTTP/3  | [9114](https://www.rfc-editor.org/rfc/rfc9114.html)|
 
 #### 三次握手四次挥手
 
