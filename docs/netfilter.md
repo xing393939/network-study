@@ -23,7 +23,7 @@
 |(路由判断)	| 	| 	| 	|Y	|| 
 |raw	    |Y	| 	| 	|Y	||
 |(连接跟踪）	|Y	| 	| 	|Y	|| 
-|mangle	Y	|Y	|Y	|Y	|Y  |Y|
+|mangle		|Y	|Y	|Y	|Y  |Y|
 |nat (DNAT)	|Y	| 	| 	|Y	||
 |(路由判断)	|Y	| 	| 	|Y	||
 |filter	 	|   |Y	|Y	|Y	||
