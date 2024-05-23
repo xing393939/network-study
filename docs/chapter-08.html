@@ -578,6 +578,7 @@
 <ul>
 <li>fs.file-max&#x5BF9;root&#x7528;&#x6237;&#x65E0;&#x6548;</li>
 <li>nofile&#x4E00;&#x5B9A;&#x8981;&#x5C0F;&#x4E8E;nr_open</li>
+<li>&#x6D4B;&#x8BD5;&#x914D;&#x7F6E;&#x5BF9;&#x8FDB;&#x7A0B;&#x7684;&#x5F71;&#x54CD;&#xFF1A;c-demo/test_nr_open.c</li>
 </ul>
 <table>
 <thead>
@@ -609,11 +610,11 @@
 <td>/etc/sysctl.conf</td>
 <td>sysctl -a</td>
 <td>sysctl -w fs.nr_open = 9</td>
-<td>&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6; <br>sysctl -p</td>
+<td>&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5E76; <br>sysctl -p</td>
 </tr>
 </tbody>
 </table>
-<pre><code>100&#x4E07;&#x7684;&#x8BBE;&#x7F6E;&#xFF1A;
+<pre><code>// 100&#x4E07;&#x7684;&#x8BBE;&#x7F6E;
 sysctl -w net.ipv4.ip_local_port_range=&quot;5000 65000&quot;
 sysctl -w fs.file-max=1100000
 sysctl -w fs.nr_open=1100000
@@ -624,16 +625,15 @@ sysctl -w net.ipv4.tcp_max_syn_backlog=40960
 sysctl -w net.ipv4.tcp_mem=&quot;600000 800000 1000000&quot;
 sysctl -w net.netfilter.nf_conntrack_max=6553600
 
+// &#x524D;&#x8005;&#x5728;&#x5F53;&#x524D;&#x7EC8;&#x7AEF;&#x751F;&#x6548;&#xFF0C;&#x540E;&#x8005;&#x5728;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x751F;&#x6548;
 ulimit -n 1000000 
 echo -e &quot;* hard nofile 1000000\n* soft nofile 1000000&quot; &gt;&gt; /etc/security/limits.conf
-(&#x524D;&#x8005;&#x5728;&#x5F53;&#x524D;&#x7EC8;&#x7AEF;&#x751F;&#x6548;&#xFF0C;&#x540E;&#x8005;&#x5728;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x751F;&#x6548;)
 
+// &#x67E5;&#x770B;&#x5F53;&#x524D;&#x914D;&#x7F6E;
 sysctl net.ipv4.ip_local_port_range fs.file-max fs.nr_open \
 net.ipv4.tcp_max_orphans net.ipv4.tcp_max_syn_backlog \
 net.ipv4.tcp_mem net.ipv4.tcp_rmem net.ipv4.tcp_wmem \
 net.core.somaxconn net.ipv4.tcp_syncookies
-
-&#x6362;c6i.large
 </code></pre><h4 id="udp&#x548C;tcp&#x7AEF;&#x53E3;&#x53EF;&#x4EE5;&#x76F8;&#x540C;">UDP&#x548C;TCP&#x7AEF;&#x53E3;&#x53EF;&#x4EE5;&#x76F8;&#x540C;</h4>
 <pre><code>TCP&#xFF1A;10.0.2.0&#x5411;10.0.2.2&#x7684;22&#x7AEF;&#x53E3;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x6BCF;&#x6B21;&#x6536;&#x5305;&#x540E;&#x5BFB;&#x627E;socket&#x7684;&#x6D41;&#x7A0B;
 tcp_v4_rcv(skb)
@@ -705,7 +705,7 @@ udp_rcv(skb)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8章-一台机器最多能支持多少条TCP连接","level":"3.2.7","depth":2,"next":{"title":"第9章-网络性能优化建议","level":"3.2.8","depth":2,"path":"docs/chapter-09.md","ref":"docs/chapter-09.md","articles":[]},"previous":{"title":"第7章-一条TCP连接消耗多大内存","level":"3.2.6","depth":2,"path":"docs/chapter-07.md","ref":"docs/chapter-07.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/chapter-08.md","mtime":"2024-05-23T08:07:04.176Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-05-23T08:07:26.748Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8章-一台机器最多能支持多少条TCP连接","level":"3.2.7","depth":2,"next":{"title":"第9章-网络性能优化建议","level":"3.2.8","depth":2,"path":"docs/chapter-09.md","ref":"docs/chapter-09.md","articles":[]},"previous":{"title":"第7章-一条TCP连接消耗多大内存","level":"3.2.6","depth":2,"path":"docs/chapter-07.md","ref":"docs/chapter-07.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/chapter-08.md","mtime":"2024-05-23T09:50:18.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-05-23T09:50:42.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
