@@ -35,11 +35,11 @@ Transport Protocol:  4Bits
                      \x0 (binary: 0000): AF_UNSET: Used for the LOCAL command.
                      \x1 (binary: 0001): STREAM: TCP
                      \x2 (binary: 0010): DGRAM: Datagram (UDP or SOCK_DGRAM)
-Address Length:      16 bytes (地址+端口字段所占字节)
-Source Address:       4 bytes (IPv4)
-Destination Address:  4 bytes (IPv4)
-Source Port:          2 bytes (IPv4)
-Destination Port:     2 bytes (IPv4)
+Address Length:      2 bytes (地址+端口字段所占字节)
+Source Address:      4 bytes (IPv4)
+Destination Address: 4 bytes (IPv4)
+Source Port:         2 bytes (IPv4)
+Destination Port:    2 bytes (IPv4)
 ```
 
 
