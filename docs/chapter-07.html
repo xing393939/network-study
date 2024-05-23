@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>tls加密协议 · GitBook</title>
+        <title>第7章-一条TCP连接消耗多大内存 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="protocal-http2.html" />
+    <link rel="next" href="chapter-08.html" />
     
     
-    <link rel="prev" href="protocal-proxy.html" />
+    <link rel="prev" href="chapter-06.html" />
     
 
     </head>
@@ -228,7 +228,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.9" data-path="protocal-tls.html">
+        <li class="chapter " data-level="2.9" data-path="protocal-tls.html">
             
                 <a href="protocal-tls.html">
             
@@ -366,7 +366,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.6" data-path="chapter-07.html">
+        <li class="chapter active" data-level="3.2.6" data-path="chapter-07.html">
             
                 <a href="chapter-07.html">
             
@@ -558,7 +558,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >tls加密协议</a>
+        <a href=".." >第7章-一条TCP连接消耗多大内存</a>
     </h1>
 </div>
 
@@ -573,25 +573,119 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;">tls&#x52A0;&#x5BC6;&#x534F;&#x8BAE;</h3>
-<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
-<ul>
-<li><a href="https://www.rfc-editor.org/rfc/rfc5246.html" target="_blank">TLS 1.2</a></li>
-<li><a href="https://www.rfc-editor.org/rfc/rfc8446.html" target="_blank">TLS 1.3</a></li>
-<li><a href="https://blog.csdn.net/luo15242208310/article/details/122908768" target="_blank">wireshark&#x6293;&#x5305;&#x652F;&#x6301;HTTP/2 Over TLS</a></li>
-</ul>
-<pre><code>// TLS 1.2 &#x6293;&#x5305;&#xFF1A;curl &quot;https://tls-v1-2.badssl.com:1012/style.css&quot;
-4.705023    192.168.2.119    44.198.122.103    TLSv1.2     Client Hello
-4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Server Hello
-4.908168    44.198.122.103    192.168.2.119    TLSv1.2     Certificate, Server Key Exchange, Server Hello Done
-4.908619    192.168.2.119    44.198.122.103    TLSv1.2     Client Key Exchange, Change Cipher Spec, Finished
-5.111685    44.198.122.103    192.168.2.119    TLSv1.2     Change Cipher Spec, Finished
+                                <h3 id="&#x4E00;&#x6761;tcp&#x8FDE;&#x63A5;&#x6D88;&#x8017;&#x591A;&#x5927;&#x5185;&#x5B58;">&#x4E00;&#x6761;TCP&#x8FDE;&#x63A5;&#x6D88;&#x8017;&#x591A;&#x5927;&#x5185;&#x5B58;</h3>
+<h4 id="linux&#x5185;&#x6838;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x5185;&#x5B58;">Linux&#x5185;&#x6838;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x5185;&#x5B58;</h4>
+<pre><code>&#x5E38;&#x7528;&#x547D;&#x4EE4;&#xFF1A;
+1. &#x67E5;&#x770B;kmem cache&#xFF1A;cat /proc/slabinfo
+2. &#x67E5;&#x770B;kmem cache&#xFF1A;slabtop
+3. &#x67E5;&#x770B;kmem cache&#xFF1A;cd linux-4.8/tools/vm &amp;&amp; make slabinfo &amp;&amp; ./slabinfo
+4. &#x67E5;&#x770B;slab merging&#xFF1A;cd linux-4.8/tools/vm &amp;&amp; make slabinfo &amp;&amp; ./slabinfo -a
 
-// TLS 1.3 &#x6293;&#x5305;&#xFF1A;curl &quot;https://nghttp2.org/stylesheets/screen.css&quot;
-1050.163195    192.168.2.119    139.162.123.134    TLSv1.3     Client Hello
-1050.367307    139.162.123.134    192.168.2.119    TLSv1.3     Server Hello, Change Cipher Spec, Encrypted Extensions, Finished
-1050.370252    192.168.2.119    139.162.123.134    TLSv1.3     Change Cipher Spec, Finished
-</code></pre><p><img src="../images/http-versions.png" alt="img"></p>
+&#x67E5;&#x770B;CPU&#x6838;&#x6570;&#x548C;NUMA&#x5185;&#x5B58;&#xFF1A;
+1. cat /proc/cpuinfo | grep &quot;processor&quot;
+2. dmidecode | grep &quot;Socket Designation&quot;
+3. dmidecode | grep &quot;Memory Device$&quot; -A 5
+4. numactl --hardware                     // &#x67E5;&#x770B;numa&#x6240;&#x6709;Node
+5. cat /proc/zoneinfo | grep &quot;^Node&quot; -A 1 // &#x67E5;&#x770B;Node&#x5BF9;&#x5E94;&#x7684;Zone
+
+&#x5185;&#x6838;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#xFF1A;
+&#x6BCF;&#x4E2A;CPU &#x5BF9;&#x5E94;&#x4E00;&#x4E2A;Node
+&#x6BCF;&#x4E2A;Node&#x6709;&#x82E5;&#x5E72;&#x4E2A;Zone&#xFF1A;&#x5E38;&#x89C1;&#x7684;&#x662F;ZONE_DMA&#x3001;ZONE_DMA32&#x3001;ZONE_NORMAL
+&#x6BCF;&#x4E2A;Zone&#x7528;&#x4F19;&#x4F34;&#x7CFB;&#x7EDF;&#x5206;&#x914D;&#x7A7A;&#x95F2;&#x9875;&#x9762;:
+struct zone {
+    struct free_area free_area[11]; // 0~10&#x5206;&#x522B;&#x662F;4K&#x5230;4M
+}
+
+struct free_area {
+    struct list_head free_list[4];  // 0~3&#x5206;&#x522B;&#x662F;UNMOVABLE, MOVABLE, RECLAIMABLE, PCPTYPES
+    unsigned long    nr_free;
+};
+
+slab&#x5206;&#x914D;&#x5668;&#xFF1A;
+struct kmem_cache *kmem_cache_create(char *name, size_t size, size_t align, long flags, NULL)
+             void *kmem_cache_alloc(struct kmem_cache *s, gfp_t gfpflags)
+                   kmem_cache_free(struct kmem_cache *s, void *x)
+</code></pre><h4 id="tcp&#x8FDE;&#x63A5;&#x76F8;&#x5173;&#x5185;&#x6838;&#x5BF9;&#x8C61;">TCP&#x8FDE;&#x63A5;&#x76F8;&#x5173;&#x5185;&#x6838;&#x5BF9;&#x8C61;</h4>
+<pre><code>socket(AF_INET, SOCK_STREAM, 0)                                        // &#x521B;&#x5EFA;TCP&#x7684;socket
+|-SYSC_socket(family = 2, type = 1, protocol = 0)
+  |-sock_create(family, type, protocol, &amp;sock)
+    |-__sock_create(..., family, type, protocol, res, 0)
+      |-sock = sock_alloc()
+        |-inode = new_inode_pseudo(sock_mnt-&gt;mnt_sb)
+          |-inode = alloc_inode(sb)
+            |-inode = sb-&gt;s_op-&gt;alloc_inode(sb)                        // &#x5373;&#x662F;sock_alloc_inode
+              |-inode = sock_alloc_inode(sb)
+                |-ei = kmem_cache_alloc(sock_inode_cachep, GFP_KERNEL) // &#x7533;&#x8BF7;&#x5185;&#x5B58;struct socket_alloc
+                |-wq = kmalloc(sizeof(*wq), GFP_KERNEL)                // &#x7533;&#x8BF7;&#x5185;&#x5B58;struct socket_wq
+      |-pf-&gt;create(net, sock, protocol, kern)                          // &#x5373;&#x662F;inet_create
+        |-inet_create(net, sock, protocol, kern)
+          |-sk = sk_alloc(net, PF_INET, GFP_KERNEL, answer_prot, kern) 
+            |-sk = sk_prot_alloc(prot, priority, family) 
+              |-sk = kmem_cache_alloc(slab, priority);                 // &#x7533;&#x8BF7;&#x5185;&#x5B58;struct sock 
+  |-sock_map_fd(sock, flags)
+    |-sock_alloc_file(sock, flags, NULL)
+      |-dentry = d_alloc_pseudo(sock_mnt-&gt;mnt_sb, &amp;name)
+        |-dentry = __d_alloc(sb, name)
+          |-dentry = kmem_cache_alloc(dentry_cache, GFP_KERNEL)        // &#x7533;&#x8BF7;&#x5185;&#x5B58;struct dentry
+      |-file = alloc_file(&amp;path, mode, &amp;socket_file_ops)
+        |-file = get_empty_filp()
+          |-file = kmem_cache_zalloc(filp_cachep, GFP_KERNEL)          // &#x7533;&#x8BF7;&#x5185;&#x5B58;struct file
+</code></pre><table>
+<thead>
+<tr>
+<th>&#x7ED3;&#x6784;&#x4F53;</th>
+<th>&#x5927;&#x5C0F;</th>
+<th>slab&#x540D;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>struct sock</td>
+<td>1.92K</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>struct socket_alloc</td>
+<td>0.63K</td>
+<td>sock_inode_cache</td>
+</tr>
+<tr>
+<td>struct dentry</td>
+<td>0.19K</td>
+<td>dentry</td>
+</tr>
+<tr>
+<td>struct file</td>
+<td>0.25K</td>
+<td>flip</td>
+</tr>
+<tr>
+<td>struct socket_wq</td>
+<td>0.06K</td>
+<td>kmalloc-64</td>
+</tr>
+</tbody>
+</table>
+<h4 id="socket&#x5185;&#x6838;&#x5BF9;&#x8C61;">socket&#x5185;&#x6838;&#x5BF9;&#x8C61;</h4>
+<ul>
+<li><a href="https://blog.csdn.net/jinking01/article/details/105682389" target="_blank">dentry&#x548C;inode&#x7684;&#x5173;&#x7CFB;</a></li>
+</ul>
+<p><img src="../images/struct_socket3.jpg" alt="img"></p>
+<p><img src="../images/dentry_inode.png" alt="img"></p>
+<pre><code>dentry &#x5C31;&#x662F;&#x76EE;&#x5F55;&#x9879;&#xFF0C;&#x4FDD;&#x5B58;&#x7740;&#x8BF8;&#x5982;&#x6587;&#x4EF6;&#x540D;&#x3001;&#x8DEF;&#x5F84;&#x7B49;&#x4FE1;&#x606F;
+inode &#x5C31;&#x662F;&#x7D22;&#x5F15;&#x8282;&#x70B9;&#xFF0C;&#x4FDD;&#x5B58;&#x5177;&#x4F53;&#x6587;&#x4EF6;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6BD4;&#x5982;&#x6743;&#x9650;&#x3001;&#x4FEE;&#x6539;&#x65E5;&#x671F;&#x3001;&#x8BBE;&#x5907;&#x53F7;&#x7B49;&#x7B49;
+&#xFF08;1&#xFF09;/home/user1 &#x76EE;&#x5F55;&#x9879;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868; d_subdirs&#xFF0C;&#x91CC;&#x9762;&#x94FE;&#x63A5;&#x7740; /home/user1/file1 &#x7684;&#x76EE;&#x5F55;&#x9879;
+&#xFF08;2&#xFF09;/home/user1/file1 &#x76EE;&#x5F55;&#x9879;&#x91CC;&#x7684; d_u &#x4E5F;&#x52A0;&#x5165;&#x5230;&#x4E86;&#x8FD9;&#x4E2A;&#x94FE;&#x8868;
+&#xFF08;3&#xFF09;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E0A;&#x4E0B;&#x5173;&#x7CFB;&#x5C31;&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#x4E86;&#x3002;&#x540C;&#x6837;&#xFF0C;/home/user1 &#x7684; d_parent &#x5C06;&#x6307;&#x5411;&#x5B83;&#x7684;&#x7236;&#x76EE;&#x5F55; /home&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x81EA;&#x5DF1;&#x7684; d_u &#x94FE;&#x63A5;&#x5230; /home &#x7684; d_subdirs&#x3002;file1 &#x7684;&#x76EE;&#x5F55;&#x9879;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; d_inode &#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x4E00;&#x4E2A; inode &#x7ED3;&#x6784;
+&#xFF08;4&#xFF09;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x7D22;&#x5F15;&#x8282;&#x70B9;&#x4E86;&#xFF0C;&#x5E76;&#x4E14; file1 &#x76EE;&#x5F55;&#x9879;&#x91CC;&#x7684; d_alias &#x4E5F;&#x52A0;&#x5165;&#x5230;&#x4E86; inode &#x7684;&#x94FE;&#x8868; i_dentry &#x4E2D;
+&#xFF08;5&#xFF09;&#x8FD9;&#x6837; dentry &#x548C; inode &#x7684;&#x5173;&#x7CFB;&#x4E5F;&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#x4E86;&#x3002;&#x524D;&#x9762;&#x8BB2;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x786C;&#x8FDE;&#x63A5;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x7684;&#x8BDD;&#x5C31;&#x4F1A;&#x6709;&#x591A;&#x4E2A; dentry &#x4E0E; inode &#x76F8;&#x5173;&#x8054;&#xFF0C;&#x8BF7;&#x770B;&#x56FE;&#x4E2D; /home/user2/file2&#xFF0C;&#x5B83;&#x548C; file1 &#x4E92;&#x4E3A;&#x786C;&#x94FE;&#x63A5;&#x3002;&#x548C; file1 &#x4E00;&#x6837;&#xFF0C;file2 &#x4E5F;&#x628A;&#x81EA;&#x5DF1;&#x7684; d_inode &#x6307;&#x5411;&#x8FD9;&#x4E2A; inode &#x7ED3;&#x6784;
+&#xFF08;6&#xFF09;&#x5E76;&#x4E14;&#x628A; d_alias &#x52A0;&#x5165;&#x5230;&#x4E86; inode &#x7684;&#x94FE;&#x8868; i_dentry &#x91CC;
+&#xFF08;7&#xFF09;&#x8FD9;&#x6837;&#x65E0;&#x8BBA;&#x662F;&#x901A;&#x8FC7; /home/user1/file1 &#x8FD8;&#x662F; /home/user2/file2&#xFF0C;&#x8BBF;&#x95EE;&#x7684;&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x3002;
+</code></pre><h4 id="&#x975E;establish&#x72B6;&#x6001;&#x7684;&#x5185;&#x5B58;&#x5F00;&#x9500;">&#x975E;ESTABLISH&#x72B6;&#x6001;&#x7684;&#x5185;&#x5B58;&#x5F00;&#x9500;</h4>
+<ul>
+<li>FIN_WAIT2&#x548C;TIME_WAIT&#x72B6;&#x6001;&#x4E0B;&#x7684;TCP&#x8FDE;&#x63A5;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x7EA6;0.4K</li>
+<li>&#x6B64;&#x65F6;dentry&#x3001;flip&#x3001;sock_inode_cache&#x3001;TCP&#x5DF2;&#x88AB;&#x56DE;&#x6536;&#xFF0C;&#x591A;&#x4E86;&#x4E00;&#x4E2A;0.25K&#x7684;tw_sock_TCP</li>
+</ul>
 
                                 
                                 </section>
@@ -619,12 +713,12 @@
 
             
                 
-                <a href="protocal-proxy.html" class="navigation navigation-prev " aria-label="Previous page: PROXY Protocol">
+                <a href="chapter-06.html" class="navigation navigation-prev " aria-label="Previous page: 第6章-深度理解TCP连接建立过程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="protocal-http2.html" class="navigation navigation-next " aria-label="Next page: http2协议">
+                <a href="chapter-08.html" class="navigation navigation-next " aria-label="Next page: 第8章-一台机器最多能支持多少条TCP连接">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -635,7 +729,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tls加密协议","level":"2.9","depth":1,"next":{"title":"http2协议","level":"2.10","depth":1,"path":"docs/protocal-http2.md","ref":"docs/protocal-http2.md","articles":[]},"previous":{"title":"PROXY Protocol","level":"2.8","depth":1,"path":"docs/protocal-proxy.md","ref":"docs/protocal-proxy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-tls.md","mtime":"2024-05-23T08:07:04.176Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-05-23T08:07:26.748Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7章-一条TCP连接消耗多大内存","level":"3.2.6","depth":2,"next":{"title":"第8章-一台机器最多能支持多少条TCP连接","level":"3.2.7","depth":2,"path":"docs/chapter-08.md","ref":"docs/chapter-08.md","articles":[]},"previous":{"title":"第6章-深度理解TCP连接建立过程","level":"3.2.5","depth":2,"path":"docs/chapter-06.md","ref":"docs/chapter-06.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/chapter-07.md","mtime":"2024-05-23T08:07:04.176Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-05-23T08:07:26.748Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
