@@ -3,7 +3,8 @@
 #### 最大打开文件数
 * fs.file-max对root用户无效
 * nofile一定要小于nr_open
-* 测试配置对进程的影响：c-demo/test_nr_open.c
+* 测试进程最大打开文件数：c-demo/test_nr_open.c
+* 测试100万连接：c1000k/Makefile
 
 | 级别    | 配置文件 | 查看 | 临时修改 | 永久修改 |
 | --     | ----    | --  | ----    | ----   |
