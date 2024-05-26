@@ -1,0 +1,799 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ip保留地址 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="protocal-icmp.html" />
+    
+    
+    <link rel="prev" href="protocal-ip.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">目录</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="graphical-network.html">
+            
+                <a href="graphical-network.html">
+            
+                    
+                    图解网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    RFC协议
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="protocal-mac.html">
+            
+                <a href="protocal-mac.html">
+            
+                    
+                    mac协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="protocal-ip.html">
+            
+                <a href="protocal-ip.html">
+            
+                    
+                    ip协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="reserved-ip.html">
+            
+                <a href="reserved-ip.html">
+            
+                    
+                    ip保留地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="protocal-icmp.html">
+            
+                <a href="protocal-icmp.html">
+            
+                    
+                    icmp协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="protocal-tcp.html">
+            
+                <a href="protocal-tcp.html">
+            
+                    
+                    tcp协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="protocal-ws.html">
+            
+                <a href="protocal-ws.html">
+            
+                    
+                    websocket协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="protocal-webrtc.html">
+            
+                <a href="protocal-webrtc.html">
+            
+                    
+                    webrtc协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="protocal-proxy.html">
+            
+                <a href="protocal-proxy.html">
+            
+                    
+                    PROXY Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="protocal-tls.html">
+            
+                <a href="protocal-tls.html">
+            
+                    
+                    tls加密协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="protocal-http2.html">
+            
+                <a href="protocal-http2.html">
+            
+                    
+                    http2协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="protocal-http3.html">
+            
+                <a href="protocal-http3.html">
+            
+                    
+                    http3协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    深入理解Linux网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="environment-construction.html">
+            
+                <a href="environment-construction.html">
+            
+                    
+                    环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter-02.html">
+            
+                <a href="chapter-02.html">
+            
+                    
+                    第2章-内核是如何接收网络包的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="chapter-03.html">
+            
+                <a href="chapter-03.html">
+            
+                    
+                    第3章-内核是如何与用户进程协作的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="chapter-04.html">
+            
+                <a href="chapter-04.html">
+            
+                    
+                    第4章-内核是如何发送网络包的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="chapter-05.html">
+            
+                <a href="chapter-05.html">
+            
+                    
+                    第5章-深度理解本机网络IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="chapter-06.html">
+            
+                <a href="chapter-06.html">
+            
+                    
+                    第6章-深度理解TCP连接建立过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="chapter-07.html">
+            
+                <a href="chapter-07.html">
+            
+                    
+                    第7章-一条TCP连接消耗多大内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="chapter-08.html">
+            
+                <a href="chapter-08.html">
+            
+                    
+                    第8章-一台机器最多能支持多少条TCP连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="chapter-09.html">
+            
+                <a href="chapter-09.html">
+            
+                    
+                    第9章-网络性能优化建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="chapter-10.html">
+            
+                <a href="chapter-10.html">
+            
+                    
+                    第10章-容器网络虚拟化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="network-send.html">
+            
+                <a href="network-send.html">
+            
+                    
+                    网络包发送
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="network-recv.html">
+            
+                <a href="network-recv.html">
+            
+                    
+                    网络包接收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="netfilter.html">
+            
+                <a href="netfilter.html">
+            
+                    
+                    nf五链四表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="network-proto-init.html">
+            
+                <a href="network-proto-init.html">
+            
+                    
+                    网络协议栈初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="tcp-two-queue.html">
+            
+                <a href="tcp-two-queue.html">
+            
+                    
+                    建立tcp连接的两个队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    实践
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="tcp-reset.html">
+            
+                <a href="tcp-reset.html">
+            
+                    
+                    TCP reset的场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="packetdrill.html">
+            
+                <a href="packetdrill.html">
+            
+                    
+                    packetdrill工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ip保留地址</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="ip&#x4FDD;&#x7559;&#x5730;&#x5740;">IP&#x4FDD;&#x7559;&#x5730;&#x5740;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x5730;&#x5740;&#x7DB2;&#x6BB5; (CIDR)</th>
+<th>&#x5730;&#x5740;&#x6578;</th>
+<th>&#x6548;&#x7528;&#x57DF;</th>
+<th>&#x7528;&#x9014;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0.0.0/8</td>
+<td>1678w</td>
+<td>&#x8EDF;&#x4EF6;</td>
+<td>&#x7528;&#x65BC;&#x5EE3;&#x64AD;&#x8CC7;&#x8A0A;&#x5230;&#x7576;&#x524D;&#x4E3B;&#x6A5F;&#x3002;</td>
+</tr>
+<tr>
+<td>10.0.0.0/8</td>
+<td>1678w</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>A&#x7C7B;&#x7F51;&#x7EDC;&#x3002;</td>
+</tr>
+<tr>
+<td>100.64.0.0/10</td>
+<td>419w</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;&#x5728;&#x96FB;&#x4FE1;&#x7D1A;NAT&#x74B0;&#x5883;&#x4E2D;&#x670D;&#x52D9;&#x63D0;&#x4F9B;&#x5546;&#x8207;&#x5176;&#x7528;&#x6236;&#x901A;&#x4FE1;&#x3002;</td>
+</tr>
+<tr>
+<td>127.0.0.0/8</td>
+<td>1678w</td>
+<td>&#x4E3B;&#x6A5F;</td>
+<td>&#x7528;&#x65BC;&#x5230;&#x672C;&#x5730;&#x4E3B;&#x6A5F;&#x7684;&#x74B0;&#x56DE;&#x5730;&#x5740;&#x3002;</td>
+</tr>
+<tr>
+<td>169.254.0.0/16</td>
+<td>6w</td>
+<td>&#x93C8;&#x8DEF;</td>
+<td>&#x7528;&#x65BC;&#x55AE;&#x93C8;&#x8DEF;&#x7684;&#x5169;&#x500B;&#x4E3B;&#x6A5F;&#x4E4B;&#x9593;&#x7684;&#x93C8;&#x8DEF;&#x672C;&#x5730;&#x5730;&#x5740;</td>
+</tr>
+<tr>
+<td>172.16.0.0/12</td>
+<td>104w</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>B&#x7C7B;&#x7F51;&#x7EDC;&#x3002;</td>
+</tr>
+<tr>
+<td>192.0.0.0/24</td>
+<td>256</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;IANA&#x7684;IPv4&#x7279;&#x6B8A;&#x7528;&#x9014;&#x5730;&#x5740;&#x8868;&#x3002;</td>
+</tr>
+<tr>
+<td>192.0.2.0/24</td>
+<td>256</td>
+<td>&#x6587;&#x4EF6;</td>
+<td>&#x5206;&#x914D;&#x70BA;&#x7528;&#x65BC;&#x6587;&#x4EF6;&#x548C;&#x7BC4;&#x4F8B;&#x4E2D;&#x7684;&#x300C;TEST-NET&#x300D;</td>
+</tr>
+<tr>
+<td>192.88.99.0/24</td>
+<td>256</td>
+<td>&#x4E92;&#x806F;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;6to4&#x4EFB;&#x64AD;&#x4E2D;&#x7E7C;&#x3002;&#xFF08;&#x5DF2;&#x5EE2;&#x68C4;&#xFF09;</td>
+</tr>
+<tr>
+<td>192.168.0.0/16</td>
+<td>6w</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>C&#x7C7B;&#x7F51;&#x7EDC;&#x3002;</td>
+</tr>
+<tr>
+<td>198.18.0.0/15</td>
+<td>13w</td>
+<td>&#x5C08;&#x7528;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;&#x6E2C;&#x8A66;&#x5169;&#x500B;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x7DB2;&#x7D61;&#x7684;&#x7DB2;&#x9593;&#x901A;&#x4FE1;&#x3002;</td>
+</tr>
+<tr>
+<td>198.51.100.0/24</td>
+<td>256</td>
+<td>&#x6587;&#x4EF6;</td>
+<td>&#x5206;&#x914D;&#x70BA;&#x7528;&#x65BC;&#x6587;&#x4EF6;&#x548C;&#x7BC4;&#x4F8B;&#x4E2D;&#x7684;&#x300C;TEST-NET-2&#x300D;</td>
+</tr>
+<tr>
+<td>203.0.113.0/24</td>
+<td>256</td>
+<td>&#x6587;&#x4EF6;</td>
+<td>&#x5206;&#x914D;&#x70BA;&#x7528;&#x65BC;&#x6587;&#x4EF6;&#x548C;&#x7BC4;&#x4F8B;&#x4E2D;&#x7684;&#x300C;TEST-NET-3&#x300D;</td>
+</tr>
+<tr>
+<td>224.0.0.0/4</td>
+<td>26843w</td>
+<td>&#x4E92;&#x806F;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;&#x591A;&#x64AD;&#x3002;</td>
+</tr>
+<tr>
+<td>233.252.0.0/24</td>
+<td>256</td>
+<td>&#x6587;&#x4EF6;</td>
+<td>&#x5206;&#x914D;&#x70BA;&#x7528;&#x65BC;&#x6587;&#x4EF6;&#x548C;&#x7BC4;&#x4F8B;&#x4E2D;&#x7684;&#x300C;MCAST-TEST-NET&#x300D;</td>
+</tr>
+<tr>
+<td>240.0.0.0/4</td>
+<td>26843w</td>
+<td>&#x4E92;&#x806F;&#x7DB2;</td>
+<td>&#x7528;&#x65BC;&#x5C07;&#x4F86;&#x4F7F;&#x7528;&#x3002;</td>
+</tr>
+<tr>
+<td>255.255.255.255</td>
+<td>1</td>
+<td>&#x5B50;&#x7DB2;&#x7D61;</td>
+<td>&#x7528;&#x65BC;&#x53D7;&#x9650;&#x5EE3;&#x64AD;&#x5730;&#x5740;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="protocal-ip.html" class="navigation navigation-prev " aria-label="Previous page: ip协议">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="protocal-icmp.html" class="navigation navigation-next " aria-label="Next page: icmp协议">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ip保留地址","level":"1.3.3","depth":2,"next":{"title":"icmp协议","level":"1.3.4","depth":2,"path":"docs/protocal-icmp.md","ref":"docs/protocal-icmp.md","articles":[]},"previous":{"title":"ip协议","level":"1.3.2","depth":2,"path":"docs/protocal-ip.md","ref":"docs/protocal-ip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/reserved-ip.md","mtime":"2024-05-26T07:26:57.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-05-26T07:27:22.041Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
