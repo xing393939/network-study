@@ -5,7 +5,7 @@
 * [Client/Server Protocol](https://dev.mysql.com/doc/dev/mysql-server/latest/PAGE_PROTOCOL.html#protocol_overview)
 
 ```
-Packet {
+MySQL Protocal {
   payload_length (3),        // Payload length
   sequence_id (1),           // 默认是0，包大于16MB需要分包，从0开始增长
   payload (..),              // Payload
@@ -39,7 +39,7 @@ Server payload3 {            // eof包
   status_flags (2),
 }
 
-Server payload4 {            // ResultSet包
+Server ResultSet {           // ResultSet包，由多个MySQL Protocal包组成
   ResultSet Header,             
   Field,                     // 多个，数据列信息
   EOF,
@@ -64,7 +64,7 @@ Server payload4 {            // ResultSet包
 // Server payload3
 05 00 00 01 fe 00 00 02 00                        .........
 
-// Server payload4 见下图
+// Server ResultSet 见下图
 ```
 
 ![](../images/mysql_protocal.jpg)
