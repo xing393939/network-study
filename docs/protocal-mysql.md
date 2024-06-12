@@ -64,7 +64,7 @@ Server ResultSet {           // ResultSet包，由多个MySQL Protocal包组成
 // Server payload3
 05 00 00 01 fe 00 00 02 00                        .........
 
-// Server ResultSet 见下图
+// Server ResultSet，发送sql：select @@version_comment limit 1; 返回结果见下图
 ```
 
 ![](../images/mysql_protocal.jpg)
