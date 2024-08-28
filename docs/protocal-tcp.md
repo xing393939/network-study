@@ -52,8 +52,8 @@ Urgent Pointer:        紧急指针，仅当URG=1时使用
 
 #### 三次握手四次挥手
 
-![img](images/tcp_connect.png)
-![img](images/tcp_close.jpg)
+![img](../images/tcp_connect.png)
+![img](../images/tcp_close.jpg)
 
 #### TCP keepalive
 |参数|socket级别设置|内核级别设置|说明|
