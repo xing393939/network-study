@@ -1,4 +1,4 @@
-### mysql协议
+### mysql网络协议
 
 #### 参考文章
 * [MySQL网络协议分析](https://scala.cool/2017/11/mysql-protocol/)
@@ -10,7 +10,7 @@ MySQL Protocal {
   sequence_id (1),           // 默认是0，包大于16MB需要分包，从0开始增长
   payload (..),              // Payload
 }
-
+-----------------------------------------------------------------------
 Client payload {
   type (1),                  // 0x01关闭连接 0x02切换数据库 0x03查询SQL ... 
   content (..),              // 具体内容
@@ -38,7 +38,7 @@ Server payload3 {            // eof包
   warnings (2),
   status_flags (2),
 }
-
+-----------------------------------------------------------------------
 Server ResultSet {           // ResultSet包，由多个MySQL Protocal包组成
   ResultSet Header,             
   Field,                     // 多个，数据列信息
@@ -53,15 +53,15 @@ Server ResultSet {           // ResultSet包，由多个MySQL Protocal包组成
 // Client payload，发送sql：use godpan;
 0c 00 00 00 03 75 73 65 20 67 6f 64 70 61 6e 3b   .....use godpan;
 
-// Server payload1
+// Server payload1，ok包
 07 00 00 00 00 00 00 02 00 00 00                  ...........
 
-// Server payload2
+// Server payload2，err包：Unknown database 'godpan'
 22 00 00 01 ff 19 04 23 34 32 30 30 30 55 6e 6b   "......#42000Unk
 6e 6f 77 6e 20 64 61 74 61 62 61 73 65 20 27 67   nown database 'g
 6f 64 70 61 6e 27                                 odpan'
 
-// Server payload3
+// Server payload3，eof包
 05 00 00 01 fe 00 00 02 00                        .........
 
 // Server ResultSet，发送sql：select @@version_comment limit 1; 返回结果见下图
