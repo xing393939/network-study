@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>mysql协议 · GitBook</title>
+        <title>mysql网络协议 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -290,7 +290,7 @@
                 <a href="protocal-mysql.html">
             
                     
-                    mysql协议
+                    mysql网络协议
             
                 </a>
             
@@ -611,7 +611,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >mysql协议</a>
+        <a href=".." >mysql网络协议</a>
     </h1>
 </div>
 
@@ -626,7 +626,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="mysql&#x534F;&#x8BAE;">mysql&#x534F;&#x8BAE;</h3>
+                                <h3 id="mysql&#x7F51;&#x7EDC;&#x534F;&#x8BAE;">mysql&#x7F51;&#x7EDC;&#x534F;&#x8BAE;</h3>
 <h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
 <li><a href="https://scala.cool/2017/11/mysql-protocol/" target="_blank">MySQL&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;</a></li>
@@ -637,7 +637,7 @@
   sequence_id (1),           // &#x9ED8;&#x8BA4;&#x662F;0&#xFF0C;&#x5305;&#x5927;&#x4E8E;16MB&#x9700;&#x8981;&#x5206;&#x5305;&#xFF0C;&#x4ECE;0&#x5F00;&#x59CB;&#x589E;&#x957F;
   payload (..),              // Payload
 }
-
+-----------------------------------------------------------------------
 Client payload {
   type (1),                  // 0x01&#x5173;&#x95ED;&#x8FDE;&#x63A5; 0x02&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93; 0x03&#x67E5;&#x8BE2;SQL ... 
   content (..),              // &#x5177;&#x4F53;&#x5185;&#x5BB9;
@@ -665,7 +665,7 @@ Server payload3 {            // eof&#x5305;
   warnings (2),
   status_flags (2),
 }
-
+-----------------------------------------------------------------------
 Server ResultSet {           // ResultSet&#x5305;&#xFF0C;&#x7531;&#x591A;&#x4E2A;MySQL Protocal&#x5305;&#x7EC4;&#x6210;
   ResultSet Header,             
   Field,                     // &#x591A;&#x4E2A;&#xFF0C;&#x6570;&#x636E;&#x5217;&#x4FE1;&#x606F;
@@ -677,15 +677,15 @@ Server ResultSet {           // ResultSet&#x5305;&#xFF0C;&#x7531;&#x591A;&#x4E2A
 <pre><code>// Client payload&#xFF0C;&#x53D1;&#x9001;sql&#xFF1A;use godpan;
 0c 00 00 00 03 75 73 65 20 67 6f 64 70 61 6e 3b   .....use godpan;
 
-// Server payload1
+// Server payload1&#xFF0C;ok&#x5305;
 07 00 00 00 00 00 00 02 00 00 00                  ...........
 
-// Server payload2
+// Server payload2&#xFF0C;err&#x5305;&#xFF1A;Unknown database &apos;godpan&apos;
 22 00 00 01 ff 19 04 23 34 32 30 30 30 55 6e 6b   &quot;......#42000Unk
 6e 6f 77 6e 20 64 61 74 61 62 61 73 65 20 27 67   nown database &apos;g
 6f 64 70 61 6e 27                                 odpan&apos;
 
-// Server payload3
+// Server payload3&#xFF0C;eof&#x5305;
 05 00 00 01 fe 00 00 02 00                        .........
 
 // Server ResultSet&#xFF0C;&#x53D1;&#x9001;sql&#xFF1A;select @@version_comment limit 1; &#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x89C1;&#x4E0B;&#x56FE;
@@ -729,7 +729,7 @@ Server ResultSet {           // ResultSet&#x5305;&#xFF0C;&#x7531;&#x591A;&#x4E2A
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql协议","level":"1.4.12","depth":2,"next":{"title":"深入理解Linux网络","level":"1.5","depth":1,"ref":"","articles":[{"title":"环境搭建","level":"1.5.1","depth":2,"path":"docs/environment-construction.md","ref":"docs/environment-construction.md","articles":[]},{"title":"第2章-内核是如何接收网络包的","level":"1.5.2","depth":2,"path":"docs/chapter-02.md","ref":"docs/chapter-02.md","articles":[]},{"title":"第3章-内核是如何与用户进程协作的","level":"1.5.3","depth":2,"path":"docs/chapter-03.md","ref":"docs/chapter-03.md","articles":[]},{"title":"第4章-内核是如何发送网络包的","level":"1.5.4","depth":2,"path":"docs/chapter-04.md","ref":"docs/chapter-04.md","articles":[]},{"title":"第5章-深度理解本机网络IO","level":"1.5.5","depth":2,"path":"docs/chapter-05.md","ref":"docs/chapter-05.md","articles":[]},{"title":"第6章-深度理解TCP连接建立过程","level":"1.5.6","depth":2,"path":"docs/chapter-06.md","ref":"docs/chapter-06.md","articles":[]},{"title":"第7章-一条TCP连接消耗多大内存","level":"1.5.7","depth":2,"path":"docs/chapter-07.md","ref":"docs/chapter-07.md","articles":[]},{"title":"第8章-一台机器最多能支持多少条TCP连接","level":"1.5.8","depth":2,"path":"docs/chapter-08.md","ref":"docs/chapter-08.md","articles":[]},{"title":"第9章-网络性能优化建议","level":"1.5.9","depth":2,"path":"docs/chapter-09.md","ref":"docs/chapter-09.md","articles":[]},{"title":"第10章-容器网络虚拟化","level":"1.5.10","depth":2,"path":"docs/chapter-10.md","ref":"docs/chapter-10.md","articles":[]}]},"previous":{"title":"http3协议","level":"1.4.11","depth":2,"path":"docs/protocal-http3.md","ref":"docs/protocal-http3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-mysql.md","mtime":"2024-08-28T00:59:41.728Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-08-28T01:00:05.966Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql网络协议","level":"1.4.12","depth":2,"next":{"title":"深入理解Linux网络","level":"1.5","depth":1,"ref":"","articles":[{"title":"环境搭建","level":"1.5.1","depth":2,"path":"docs/environment-construction.md","ref":"docs/environment-construction.md","articles":[]},{"title":"第2章-内核是如何接收网络包的","level":"1.5.2","depth":2,"path":"docs/chapter-02.md","ref":"docs/chapter-02.md","articles":[]},{"title":"第3章-内核是如何与用户进程协作的","level":"1.5.3","depth":2,"path":"docs/chapter-03.md","ref":"docs/chapter-03.md","articles":[]},{"title":"第4章-内核是如何发送网络包的","level":"1.5.4","depth":2,"path":"docs/chapter-04.md","ref":"docs/chapter-04.md","articles":[]},{"title":"第5章-深度理解本机网络IO","level":"1.5.5","depth":2,"path":"docs/chapter-05.md","ref":"docs/chapter-05.md","articles":[]},{"title":"第6章-深度理解TCP连接建立过程","level":"1.5.6","depth":2,"path":"docs/chapter-06.md","ref":"docs/chapter-06.md","articles":[]},{"title":"第7章-一条TCP连接消耗多大内存","level":"1.5.7","depth":2,"path":"docs/chapter-07.md","ref":"docs/chapter-07.md","articles":[]},{"title":"第8章-一台机器最多能支持多少条TCP连接","level":"1.5.8","depth":2,"path":"docs/chapter-08.md","ref":"docs/chapter-08.md","articles":[]},{"title":"第9章-网络性能优化建议","level":"1.5.9","depth":2,"path":"docs/chapter-09.md","ref":"docs/chapter-09.md","articles":[]},{"title":"第10章-容器网络虚拟化","level":"1.5.10","depth":2,"path":"docs/chapter-10.md","ref":"docs/chapter-10.md","articles":[]}]},"previous":{"title":"http3协议","level":"1.4.11","depth":2,"path":"docs/protocal-http3.md","ref":"docs/protocal-http3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/protocal-mysql.md","mtime":"2024-08-28T01:16:13.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-08-28T01:16:38.923Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
